@@ -8,3 +8,5 @@ CREATE TABLE questions (
 INSERT INTO questions (title, body) VALUES
   ('Spring Boot で MySQL に接続するには？', 'application.properties に何を書けばよいですか。'),
   ('Docker Compose で MySQL を起動したい', 'compose.yaml の書き方を教えてください。');
+
+  CREATE DATABASE dotachan;

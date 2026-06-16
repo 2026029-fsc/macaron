@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head th:replace="~{fragments/layout :: head('土壇場でキャンセルが来ても安心！ドタチャン！')}">
+</head>
+
+<body>
+    <header>
+        <ul class="header">
+            <li><a href="/register">会員登録</a></li>
+            <li><a href="/storeLogin">店舗ログイン</a></li>
+            <li><a href="/login">一般会員ログイン</a></li>
+        </ul>
+    </header>
+    <h1>ドタチャン</h1>
+
+    <h2>突発セール情報</h2>
+    <h3>sale name</h3>
+
+    <form action="/keySerch" method="get">
+        <input type="text" id="keySerch" name="keySerch" placeholder="キーワード検索">
+        <button type="submit">検索</button>
+    </form>
+    <form action="/genreSerch" method="get">
+        <select name="genreSerch" id="genreSerch">
+            <option value="">選択してください</option>
+            <option value="yakitori">焼き鳥</option>
+            <option value="yakiniku">焼肉</option>
+            <option value="sushi">寿司</option>
+            <option value="itarian">イタリアン</option>
+            <option value="hanba-ga-">ハンバーガー</option>
+        </select>
+        <button type="submit">検索</button>
+    </form>
+
+    <h2>恒常セール情報</h2>
+    <h3>sale name</h3>
+</body>
+
+</html>

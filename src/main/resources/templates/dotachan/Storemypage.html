@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+</head>
+
+<body>
+    <div th:replace="~{header :: common-header}"></div>
+    <form action="/blog/register" method="post">
+
+        <h3>アカウント情報</h3>
+        <input type="text" name="title" required placeholder="メールアドレス"><br>
+
+        <h3>店舗詳細画面</h3>
+        <a>必須項目</a><br>
+        <input type="text" name="title" required placeholder="店舗名"><br>
+        <input type="text" name="title" required placeholder="店舗住所"><br>
+        <input type="text" name="title" required placeholder="店舗電話番号"><br>
+        <input type="text" name="title" required placeholder="支払い方法"><br>
+        <input type="text" name="title" required placeholder="ジャンル"><br>
+        <a>任意項目</a><br>
+        <input type="text" name="title" required placeholder="価格帯"><br>
+        <input type="text" name="title" required placeholder="自由記述欄"><br>
+        <h3>恒常セール</h3>
+        <input type="text" name="title" required placeholder="恒常セール名"><br>
+        <input type="text" name="title" required placeholder="恒常セール内容"><br>
+        <input type="text" name="title" required placeholder="恒常セール名"><br>
+        <input type="text" name="title" required placeholder="恒常セール内容"><br>
+        <input type="text" name="title" required placeholder="恒常セール名"><br>
+        <input type="text" name="title" required placeholder="恒常セール内容"><br>
+        <h3>クーポン登録</h3>
+        <input type="text" name="title" required placeholder="クーポン内容"><br>
+        <button type="submit">保存</button>
+    </form>
+
+
+</body>
+
+</html>

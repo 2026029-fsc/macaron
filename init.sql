@@ -3,12 +3,13 @@
   USE dotachan;
 
   CREATE TABLE User(
-    id VARCHAR(254) NOT NULL PRIMARY KEY,
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    mail VARCHAR(254) NOT NULL UNIQUE,
     name VARCHAR(30) NOT NULL,
     password VARCHAR(255) NOT NULL,
     reviewed BOOLEAN NOT NULL
   );
-      INSERT INTO User (id, name, password, reviewed)
+      INSERT INTO User (mail, name, password, reviewed)
     VALUES('komo@com', 'komo', '$2y$10$KyVGOWdiYzM20FelSjynGefbVigdTviw4ZkbGE/JotuKe3MjiOia.', TRUE), 
     -- komokatatakahiro
     ('masa@com', 'masa', '$2y$10$oRIrthmAt1fIomV/Lt.pBeC1LDQ46.mAra7FOcfPMngupPRrzvqzm', FALSE),

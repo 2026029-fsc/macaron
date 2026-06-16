@@ -5,19 +5,22 @@
   CREATE TABLE User(
     id VARCHAR(254) NOT NULL PRIMARY KEY,
     name VARCHAR(30) NOT NULL,
-    password VARCHAR(30) NOT NULL,
+    password VARCHAR(255) NOT NULL,
     reviewed BOOLEAN NOT NULL
   );
       INSERT INTO User (id, name, password, reviewed)
-    VALUES('komo@com', 'komo', 'komo', TRUE),
-    ('masa@com', 'masa', 'masa', FALSE),
-    ('nishi@com', 'nishi', 'nishi', TRUE);
+    VALUES('komo@com', 'komo', '$2y$10$KyVGOWdiYzM20FelSjynGefbVigdTviw4ZkbGE/JotuKe3MjiOia.', TRUE), 
+    -- komokatatakahiro
+    ('masa@com', 'masa', '$2y$10$oRIrthmAt1fIomV/Lt.pBeC1LDQ46.mAra7FOcfPMngupPRrzvqzm', FALSE),
+    -- mukaedamasayoshi
+    ('nishi@com', 'nishi', '$2y$10$rsFA7/2tSllqZkYFa/oTiurOCJTMYfPFuqXkcM96pLMVxn8vbYAXW', TRUE);
+    -- nishiyamaryuushin
 
     CREATE TABLE Store(
    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
    name VARCHAR(100) NOT NULL,
    email VARCHAR(254) NOT NULL UNIQUE,
-   password VARCHAR(30) NOT NULL,
+   password VARCHAR(255) NOT NULL,
    address VARCHAR(100)NOT NULL,
    phone_number INT NOT NULL,
    payment VARCHAR(100) NOT NULL,
@@ -27,9 +30,12 @@
    free_desc VARCHAR(1000)
   );
     INSERT INTO Store (name, email, password, address, phone_number, payment, genre)
-  VALUE('こもかた', 'komo@example.com', 'takahiro','福岡県', '0120444444','現金', '海鮮'),
-  ('むかえだ', 'masa@example.com', 'masayosi','佐賀県', '0120444445','現金', '肉'),
-  ('にしやま', 'nishi@example.com', 'ryuushinn','福岡県', '0120444446','paypay', '野菜');
+  VALUE('こもかた', 'komo@example.com', '$2y$10$59st1xNeyQUQ3Uup5V2LT.t6/nP1CgrOevMN2MbD6RGgLpxXWjVay','福岡県', '0120444444','現金', '海鮮'),
+  -- takahirokomokata
+  ('むかえだ', 'masa@example.com', '$2y$10$2Y3eRJuXHlXw3/aqomj1Re92Yflz89gIwaPLbvsXw1/rIZv2WlwAW','佐賀県', '0120444445','現金', '肉'),
+  -- masayoshimukaeda
+  ('にしやま', 'nishi@example.com', '$2y$10$UdEiioBDH.U1cj5sRYdiqOHbbxA.zkyKof3lwUAZ1hsn8UjQ2g9B6','福岡県', '0120444446','paypay', '野菜');
+  -- ryuushinnnishiyama
 
   CREATE TABLE Sale(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,

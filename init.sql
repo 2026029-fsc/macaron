@@ -16,7 +16,7 @@
     CREATE TABLE Store(
    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
    name VARCHAR(100) NOT NULL,
-   email VARCHAR(254) NOT NULL,
+   email VARCHAR(254) NOT NULL UNIQUE,
    password VARCHAR(30) NOT NULL,
    address VARCHAR(100)NOT NULL,
    phone_number INT NOT NULL,
@@ -32,17 +32,19 @@
   ('にしやま', 'nishi@example.com', 'ryuushinn','福岡県', '0120444446','paypay', '野菜');
 
   CREATE TABLE Sale(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     store_id INT           NOT NULL,
     name     VARCHAR(100)  NOT NULL,
     contents VARCHAR(1000) NOT NULL,
     FOREIGN KEY (store_id)   REFERENCES Store(id)
   );
     INSERT INTO Sale(store_id, name, contents)
-  VALUE(2, 'タイムセール', '一割武器'),
-  (3, 'ハッピーアワー', 'ドリンク290円'),
-  (4, '夕方セール', '対象商品20%off');
+  VALUE(1, 'タイムセール', '一割引き'),
+  (2, 'ハッピーアワー', 'ドリンク290円'),
+  (3, '夕方セール', '対象商品20%off');
 
    CREATE TABLE Suddensale(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     store_id INT,
     name VARCHAR(100) NOT NULL,
     contents VARCHAR(1000) NOT NULL,
@@ -50,11 +52,12 @@
     FOREIGN KEY (store_id)  REFERENCES Store(id)
   );
     INSERT INTO Suddensale(store_id, name, contents, completed)
-  VALUE(2, '余った', '余りました助けて', FALSE),
-  (3, 'ドタキャン', '助けて', FALSE),
-  (4, '終わりや', 'あかん', FALSE);
+  VALUE(1, '余った', '余りました助けて', FALSE),
+  (2, 'ドタキャン', '助けて', FALSE),
+  (3, '終わり', 'むり', FALSE);
 
   CREATE TABLE StoreReview(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     store_id INT,
     comments VARCHAR(1000) NOT NULL,
     evaluation BOOLEAN NOT NULL,
@@ -63,8 +66,8 @@
     FOREIGN KEY (user_id)  REFERENCES User(id)
   );
   INSERT INTO StoreReview(store_id, comments,  evaluation, user_id)
-  VALUE(2, 'まず', FALSE, 'nishi@com'),
-  (3, 'いいね', TRUE, 'masa@com'),
-  (4, 'うま', TRUE, 'komo@com');
+  VALUE(1, 'まず', FALSE, 'nishi@com'),
+  (2, 'いいね', TRUE, 'masa@com'),
+  (3, 'うま', TRUE, 'komo@com');
 
   SHOW TABLE;

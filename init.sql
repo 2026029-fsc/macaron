@@ -10,6 +10,7 @@ INSERT INTO questions (title, body) VALUES
   ('Docker Compose で MySQL を起動したい', 'compose.yaml の書き方を教えてください。');
 
   CREATE DATABASE dotachan;
+  USE dotachan;
   CREATE TABLE User(
     id VARCHAR(50) NOT NULL PRIMARY KEY,
     name VARCHAR(30) NOT NULL,

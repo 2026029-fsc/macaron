@@ -16,6 +16,7 @@ INSERT INTO questions (title, body) VALUES
     password VARCHAR(30) NOT NULL,
     reviewed BOOLEAN NOT NULL
   );
+
     CREATE TABLE Store(
    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
    name VARCHAR(100) NOT NULL,
@@ -29,23 +30,24 @@ INSERT INTO questions (title, body) VALUES
    coupon VARCHAR(1000),
    free_desc VARCHAR(1000)
   );
+
   CREATE TABLE Sale(
-    store_id INT           NOT NULL AUTO_INCREMENT,
+    store_id INT           NOT NULL,
     name     VARCHAR(100)  NOT NULL,
     contents VARCHAR(1000) NOT NULL,
     FOREIGN KEY (store_id)   REFERENCES Store(id)
   );
+
    CREATE TABLE Suddensale(
-    store_id INT AUTO_INCREMENT,
+    store_id INT,
     name VARCHAR(100) NOT NULL,
     contents VARCHAR(1000) NOT NULL,
     completed BOOLEAN NOT NULL,
     FOREIGN KEY (store_id)  REFERENCES Store(id)
   );
 
-
   CREATE TABLE StoreReview(
-    store_id INT AUTO_INCREMENT,
+    store_id INT,
     comments VARCHAR(1000) NOT NULL,
     evaluation BOOLEAN NOT NULL,
     user_id VARCHAR(50) NOT NULL,

@@ -55,4 +55,4 @@ INSERT INTO questions (title, body) VALUES
     FOREIGN KEY (store_id)  REFERENCES Store(id),
     FOREIGN KEY (user_id)  REFERENCES User(id)
   );
-  SHOW TABLE;
+  SHOW TABLES;

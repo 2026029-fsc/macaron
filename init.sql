@@ -5,7 +5,7 @@
   CREATE TABLE User(
     id VARCHAR(254) NOT NULL PRIMARY KEY,
     name VARCHAR(30) NOT NULL,
-    password VARCHAR(30) NOT NULL,
+    password VARCHAR(255) NOT NULL,
     reviewed BOOLEAN NOT NULL
   );
       INSERT INTO User (id, name, password, reviewed)
@@ -17,7 +17,7 @@
    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
    name VARCHAR(100) NOT NULL,
    email VARCHAR(254) NOT NULL UNIQUE,
-   password VARCHAR(30) NOT NULL,
+   password VARCHAR(255) NOT NULL,
    address VARCHAR(100)NOT NULL,
    phone_number INT NOT NULL,
    payment VARCHAR(100) NOT NULL,

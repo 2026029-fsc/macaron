@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>無料会員登録(個人)</title>
+</head>
+<body>
+    <p>利用者の登録</p>
+    <form action="/correct" method="post">
+        <p>メールアドレスを入力してください。</p>
+        <input type="text" id="email" name="email" placeholder="メールアドレス">
+        <p>パスワードを入力してください。</p>
+        <input type="text" id="password" name="password" placeholder="パスワード">
+        <p>パスワードを入力してください。(確認用)</p>
+        <input type="text" id="password2" name="password2" placeholder="パスワード"><br>
+        <button type="submit">登録</button>
+    </form>
+</body>
+</html>

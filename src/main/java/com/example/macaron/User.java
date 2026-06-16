@@ -3,14 +3,14 @@ package com.example.macaron;
 //メール、名前、パスワード、レビューフラグが編集可能
 public class User {
     private final int id;
-    private String mailid;
-    private String name;
-    private String password;
-    private boolean reviewd;
+    private final String mail;
+    private final String name;
+    private final String password;
+    private final boolean reviewd;
     
-    public User(int id, String mailid, String name, String password, boolean reviewd) {
+    public User(int id, String mail, String name, String password, boolean reviewd) {
         this.id = id;
-        this.mailid = mailid;
+        this.mail = mail;
         this.name = name;
         this.password = password;
         this.reviewd = reviewd;
@@ -18,8 +18,8 @@ public class User {
     public int getId() {
         return id;
     }
-    public String getMailid() {
-        return mailid;
+    public String getMail() {
+        return mail;
     }
     public String getName() {
         return name;
@@ -31,16 +31,4 @@ public class User {
         return reviewd;
     }
 
-    public void setMailid(String mailid) {
-        this.mailid = mailid;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public void setPassword(String password) {
-        this.password = password;
-    }
-    public void setReviewd(boolean reviewd) {
-        this.reviewd = reviewd;
-    }
 }

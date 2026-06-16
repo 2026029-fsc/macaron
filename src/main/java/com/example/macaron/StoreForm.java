@@ -1,19 +1,20 @@
 package com.example.macaron;
 
-public class Store {
-    private final int id;
-    private final String name;
-    private final String email;
-    private final String password;
-    private final String address;
-    private final int phone_number;
-    private final String payment;
-    private final int price_range;
-    private final String genre;
-    private final String coupon;
-    private final String free_desc;
+//編集するためにfinalなし
+public class StoreForm {
+    private int id;
+    private String name;
+    private String email;
+    private String password;
+    private String address;
+    private int phone_number;
+    private String payment;
+    private int price_range;
+    private String genre;
+    private String coupon;
+    private String free_desc;
 
-    public Store(int id, String name, String email, String password, String address, int phone_number, String payment,
+    public StoreForm(int id, String name, String email, String password, String address, int phone_number, String payment,
             int price_range, String genre, String coupon, String free_desc) {
         this.id = id;
         this.name = name;
@@ -72,6 +73,15 @@ public class Store {
         return free_desc;
     }
 
- 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public void setCoupon(String coupon) {
+        this.coupon = coupon;
+    }
+    public void setFree_desc(String free_desc) {
+        this.free_desc = free_desc;
+    }
+
 
 }

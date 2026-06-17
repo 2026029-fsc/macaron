@@ -1,7 +1,7 @@
 package com.example.macaron;
 
 public class Sale {
-    private final int id;
+    private final Long id;
     private final int store_id;
     private final String name;
     private final String contents;

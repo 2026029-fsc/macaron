@@ -9,8 +9,7 @@ public class Store {
     private final String address;
     private final int phone_number;
     private final String payment;
-    private final int price_range;
-    private final String genre;
+    private final int price_range;    
     private String coupon;
     private String free_desc;
 

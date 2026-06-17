@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div th:fragment="layout">
+        <p>土壇場チャンスセール</p>
+        <h2>ドタチャン</h2>
+        <p>博多の飲食店・小売店・店舗・セール情報</p>
+        <button th:if="${session.username == null && session.userEmail == null}" class="button" onclick="location.href='/touroku'">会員登録</button>
+        <button th:if="${session.username == null && session.userEmail == null}" class="button" onclick="location.href='/tempologin'">店舗ログイン</button>
+        <button th:if="${session.username == null && session.userEmail == null}" class="button" onclick="location.href='/ippanlogin'">一般ユーザーログイン</button>
+
+        <button th:if="${session.userEmail}" class="button" onclick="location.href='/mypage'">マイページ</button>
+        <button th:if="${session.userEmail}" class="button" onclick="location.href='/logout'">ログアウト</button>
+
+        <button th:if="${session.storeEmail}" class="button" onclick="location.href='/toppatu'">突発セール編集</button>
+        <button th:if="${session.storeEmail}" class="button" onclick="location.href='/mypage_coupon'">マイページ・クーポン編集</button>
+        <button th:if="${session.storeEmail}" class="button" onclick="location.href='/logout'">ログアウト</button>
+    </div>
+</body>
+
+</html>

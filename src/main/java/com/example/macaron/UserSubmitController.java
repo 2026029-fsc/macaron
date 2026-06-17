@@ -43,10 +43,10 @@ public class UserSubmitController {
     }
 
     // マイページにデータベースから持ってきた値を表示させたい
-    @GetMapping("/mypage")
+    @GetMapping("/mypage/{id}")
     public String mypage(@PathVariable Long id, Model model) {//ブラウザでもらった値をjavaに変換、モデルに渡す
         Optional<User> userOpt = userSubmitService.findById(id);//サービスにお願いする(リポジトリを通り、データベースから値をもらう)
         model.addAttribute("user", userOpt.get());//"user"という箱に詰める
-        return "/mypage";//表示させるhtml
+        return "/mypage/{id}";//表示させるhtml
     }
 }

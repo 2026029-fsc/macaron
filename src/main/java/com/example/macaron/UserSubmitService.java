@@ -26,11 +26,14 @@ public class UserSubmitService {
 
     // パスワードをハッシュ化する
     public boolean authenticate(String mail, String password) {
-        Optional<User> hash = userSubmitRepository.findPasswordHash(mail);
-        if (hash.isEmpty()) {
+        Optional<String> hash = userSubmitRepository.findPasswordHash(mail);
+        //値があればStringで帰ってくるからOptional<String>が戻り値の型
+        
+        if (hash.isEmpty()) {//DBに値があるかどうか
             return false;
         }
         return passwordEncoder.matches(password, hash.get());
+        //optionalに含まれるget()メソッド　DBから値をとってくる
     }
 
 }

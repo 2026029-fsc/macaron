@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>店舗詳細画面</title>
+</head>
+
+<body>
+  <div>
+    <h2><span th:text="${Store.name}" class="storeName">店舗名</span></h2>
+    <p>ジャンル：<span th:text="${Store.genre}"></span></p>
+    <p>住所：<span th:text="${Store.address}"></p>
+  </div>
+
+  <div>
+    <h2>突発セール</h2>
+    <div th:each = "SuddenSale : {SuddenSales}" class="Suddensale">
+      <h3 th:text="${SuddenSale.name}">セール名</h3>
+      <p th:text="${SuddenSale.contents}">セール内容</p>
+    </div>
+  </div>
+
+  <div>
+    <h2>恒常セール</h2>
+    <div th:each = "Sale : {Sales}" class="sale">
+      <h3 th:text="${Sale.name}">セール名</h3>
+      <p th:text="${Sale.contents}">セール内容</p>
+    </div>
+  </div>
+</body>
+
+</html>

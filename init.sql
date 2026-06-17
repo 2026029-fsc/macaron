@@ -7,25 +7,26 @@
   
 SET NAMES utf8mb4;
   
-DROP DATABASE IF EXISTS dotachan;
+-- DROP DATABASE IF EXISTS dotachan;
 CREATE DATABASE dotachan DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+
 USE dotachan;
 
 
 -- テーブル =====================================================================
 
 CREATE TABLE User(
-  id        INT           NOT NULL    AUTO_INCREMENT    PRIMARY KEY,
-  mail      VARCHAR(254)  NOT NULL    UNIQUE,
-  name      VARCHAR(30)   NOT NULL,
-  password  VARCHAR(255)  NOT NULL,
-  reviewed  BOOLEAN       NOT NULL
+  id            INT             NOT NULL    AUTO_INCREMENT    PRIMARY KEY,
+  mail          VARCHAR(254)    NOT NULL    UNIQUE,
+  name          VARCHAR(30)     NOT NULL,
+  password      VARCHAR(255)    NOT NULL,
+  reviewed      BOOLEAN         NOT NULL
 );
 
 CREATE TABLE Store(
-  id        INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id            INT             NOT NULL    AUTO_INCREMENT    PRIMARY KEY,
   name          VARCHAR(100)    NOT NULL,
-  email         VARCHAR(254)    NOT NULL  UNIQUE,
+  email         VARCHAR(254)    NOT NULL    UNIQUE,
   password      VARCHAR(255)    NOT NULL,
   address       VARCHAR(100)    NOT NULL,
   phone_number  INT NOT NULL,
@@ -37,7 +38,7 @@ CREATE TABLE Store(
 );
 
 CREATE TABLE Sale(
-  id            INT             NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id            INT             NOT NULL    AUTO_INCREMENT    PRIMARY KEY,
   store_id      INT             NOT NULL,
   name          VARCHAR(100)    NOT NULL,
   contents      VARCHAR(1000)   NOT NULL,
@@ -45,7 +46,7 @@ CREATE TABLE Sale(
 );
 
 CREATE TABLE Suddensale(
-  id            INT             NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id            INT             NOT NULL    AUTO_INCREMENT    PRIMARY KEY,
   store_id      INT,
   name          VARCHAR(100)    NOT NULL,
   contents      VARCHAR(1000)   NOT NULL,
@@ -54,7 +55,7 @@ CREATE TABLE Suddensale(
 );
 
 CREATE TABLE StoreReview(
-  id            INT             NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id            INT             NOT NULL    AUTO_INCREMENT    PRIMARY KEY,
   store_id      INT,
   comments      VARCHAR(1000)   NOT NULL,
   evaluation    BOOLEAN         NOT NULL,

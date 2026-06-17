@@ -21,20 +21,28 @@ public class ViewService {
     };
 
     // Sale情報をジャンル検索
-    public List<Saleview> serchByGenre(String keyword) {
+    public Saledto serchByGenre(String keyword) {
         if (keyword == null || keyword.isBlank()) {
-            return saleRepository.previewSale();
+            List<Saleview> sale = saleRepository.previewSale();
+            List<SuddenSaleview> ssale = suddensaleRepository.previewSuddenSale();
+            return new Saledto(sale, ssale);
         } else {
-            return saleRepository.serchByGenre(keyword);
+            List<Saleview> sale = saleRepository.serchByGenre(keyword);
+            List<SuddenSaleview> ssale = suddensaleRepository.previewSuddenSale();
+            return new Saledto(sale, ssale);
         }
     }
 
-    //Sale情報をキーワード検索
-    public List<Saleview> saleserchByKeyword(String keyword) {
+    // Sale情報をキーワード検索
+    public Saledto saleserchByKeyword(String keyword) {
         if (keyword == null || keyword.isBlank()) {
-            return saleRepository.previewSale();
+            List<Saleview> sale = saleRepository.previewSale();
+            List<SuddenSaleview> ssale = suddensaleRepository.previewSuddenSale();
+            return new Saledto(sale, ssale);
         } else {
-            return saleRepository.searchByKeyword(keyword);
+            List<Saleview> sale = saleRepository.searchByKeyword(keyword);
+            List<SuddenSaleview> ssale = suddensaleRepository.previewSuddenSale();
+            return new Saledto(sale, ssale);
         }
     }
 
@@ -52,7 +60,7 @@ public class ViewService {
         }
     }
 
-    //SuddenSaleをキーワード検索
+    // SuddenSaleをキーワード検索
     public List<SuddenSaleview> suudensaleserchByKeyword(String keyword) {
         if (keyword == null || keyword.isBlank()) {
             return suddensaleRepository.previewSuddenSale();

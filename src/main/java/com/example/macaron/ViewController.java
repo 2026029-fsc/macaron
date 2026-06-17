@@ -28,6 +28,8 @@ public class ViewController {
     // return "store/detail";// 戻るHTML
     // }
 
+
+    //全体サーチ
     @GetMapping("/home")
     public String saleDetail(Model model) {
         model.addAttribute("Sale", viewService.previewSale().getSale());
@@ -37,13 +39,16 @@ public class ViewController {
 
     @GetMapping("/keywordSerch")
     public String storeSerch(@RequestParam String keyword, Model model) {
-        model.addAttribute("Sale", viewService.saleserchByKeyword(keyword));
+        model.addAttribute("Sale", viewService.saleserchByKeyword(keyword).getSale());
+        model.addAttribute("SuddenSale", viewService.previewSale().getSsale());
         return "dotachan/home";
     }
 
+    //ジャンルサーチ
     @GetMapping("/genreSerch")
     public String genreSerch(@RequestParam String genreSerch, Model model) {
-        model.addAttribute("Sale", viewService.serchByGenre(genreSerch));
+        model.addAttribute("Sale", viewService.serchByGenre(genreSerch).getSale());
+        model.addAttribute("SuddenSale", viewService.previewSale().getSsale());
         return "dotachan/home";
     }
 }

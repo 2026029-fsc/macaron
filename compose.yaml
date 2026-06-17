@@ -3,7 +3,7 @@ services:
     image: mysql:8.4
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: qa-app
+      MYSQL_DATABASE: dotachan
     ports:
       - "3307:3306"
     volumes:

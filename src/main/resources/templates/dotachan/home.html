@@ -15,7 +15,17 @@
     <h1>ドタチャン</h1>
 
     <h2>突発セール情報</h2>
-    <h3>sale name</h3>
+    <p th:if="${#lists.isEmpty(SuddenSale)}"> 現在突発的なセールは開催されていません</p>
+    <table>
+        <tr>
+            <th>SuddenSale Name</th>
+            <!-- <th>Contents</th> -->
+        </tr>
+        <tr th:each="SuddenSale : ${SuddenSale}" >
+            <td><a th:href="@{/home/{id}(id=${SuddenSale.id})}" th:text="${SuddenSale.name}" th:text="${SuddenSale.storeName}">現在セールは開催されていません</a></td>
+            <!-- <td><span th:text="${blog.notes}">473</span></td> -->
+        </tr>
+    </table>
 
     <form action="/keySerch" method="get">
         <input type="text" id="keySerch" name="keySerch" placeholder="キーワード検索">
@@ -34,7 +44,18 @@
     </form>
 
     <h2>恒常セール情報</h2>
-    <h3>sale name</h3>
+    <p th:if="${#lists.isEmpty(Sale)}"> 現在セールは開催されていません</p>
+    <table>
+        <tr>
+            <th>Sale Name</th>
+            <!-- <th>Contents</th> -->
+        </tr>
+        <tr th:each="Sale : ${Sale}" >
+            <td><a th:href="@{/home/{id}(id=${Sale.id})}" th:text="${Sale.name}" th:text="${Sale.storeName}">現在セールは開催されていません</a></td>
+            <!-- <td><span th:text="${blog.notes}">473</span></td> -->
+        </tr>
+    </table>
+
 </body>
 
 </html>

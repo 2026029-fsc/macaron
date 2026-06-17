@@ -50,3 +50,5 @@ public class SuddenSaleForm {
         this.completed = completed;
     }
 }
+
+//a

@@ -42,3 +42,5 @@ public class SaleForm {
         this.contents = contents;
     }
 }
+
+//a

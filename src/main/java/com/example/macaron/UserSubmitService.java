@@ -12,6 +12,6 @@ public class UserSubmitService {
     
  //mypageに新規ユーザーの情報を追加する
     public void userRegister(UserForm form){
-      userSubmitRepository.mypage(new UserForm(0,form.getMail(), form.getName(),form.getPassword(),false));
+      userSubmitRepository.mypage(new User(0,form.getMail(), form.getName(),form.getPassword(),false));
     }
 }

@@ -13,7 +13,7 @@ public class UserSubmitRepository {
 
     //mypageに新規ユーザーの情報を追加する
     public void mypage(UserForm form){
-    jdbcClient.sql("INSERT INTO User (mail,name,password,reviewd)VALUES(:id,:name,:password,:reviewd)")
+    jdbcClient.sql("INSERT INTO User (mail,name,password,reviewd)VALUES(:mail,:name,:password,:reviewd)")
         .param("mail",form.getMail())
         .param("name",form.getName())
         .param("password",form.getPassword())

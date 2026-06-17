@@ -26,7 +26,7 @@ public class LoginController {
   }
 
   @PostMapping("/userLogin")
-  public String login(@ModelAttribute LoginForm form, HttpSession session, RedirectAttributes redirectAttributes) {
+  public String userLogin(@ModelAttribute LoginForm form, HttpSession session, RedirectAttributes redirectAttributes) {
     if (userService.authenticate(form.getEmail(), form.getPassword())) {
       session.setAttribute("userEmail", form.getEmail());
       return "redirect:/mypage";
@@ -43,7 +43,7 @@ public class LoginController {
   }
 
   @PostMapping("/storeLogin")
-  public String login(@ModelAttribute LoginForm form, HttpSession session,RedirectAttributes redirectAttributes) {
+  public String storeLogin(@ModelAttribute LoginForm form, HttpSession session,RedirectAttributes redirectAttributes) {
     if (StoreService.authenticate(form.getEmail(), form.getPassword())) {
       session.setAttribute("storeEmail", form.getEmail());
       return "redirect:/mystore";

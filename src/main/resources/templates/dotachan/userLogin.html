@@ -16,8 +16,8 @@
 
     <p><label for="password">パスワード:</label>
     <input type="password" id="password" name="password"></p>
-
-    <p th:if="${errorMessage}" th:text="${errorMessage}">エラーメッセージ</p>
+<!-- エラーメッセージ -->
+    <p th:if="${errorMessage}" th:text="${errorMessage}"></p> 
     
     <p>下記に記載のプライバシーポリシー・規約に同意のうえ以下の「ログイン」を押してください。</p>
     <button type="submit">ログイン</button>

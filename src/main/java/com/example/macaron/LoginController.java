@@ -10,11 +10,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class LoginController {
-    private final UserService userService;
+    private final UserSubmitService userSubmitService;
     private final StoreService storeService;
 
-    public LoginController(UserService userService, StoreService storeService){
-        this.userService = userService;
+    public LoginController(UserSubmitService userSubmitService, StoreService storeService){
+        this.userSubmitService = userSubmitService;
         this.storeService = storeService;
 
     }
@@ -27,11 +27,10 @@ public class LoginController {
 
   @PostMapping("/userLogin")
   public String userLogin(@ModelAttribute LoginForm form, HttpSession session, RedirectAttributes redirectAttributes) {
-    if (userService.authenticate(form.getEmail(), form.getPassword())) {
+    if (userSubmitService.authenticate(form.getEmail(), form.getPassword())) {
       session.setAttribute("userEmail", form.getEmail());
       return "redirect:/mypage";
     }
-
     redirectAttributes.addFlashAttribute("errorMessage", "ユーザー名かパスワードが違います");
     return "redirect:/userLogin";
   }

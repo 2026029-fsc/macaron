@@ -33,11 +33,21 @@ public class StoreRepository {
 
     public void updateSale(Long id, int store_id, String name, String contents) {
         jdbcClient.sql(
-                "INSERT INTO Store ( store_id, name, contents) VALUES ( :store_id, :name :contents)")
+                "INSERT INTO Sale ( store_id, name, contents) VALUES ( :store_id, :name :contents)")
                 .param("store_id", store_id)
                 .param("name", name)
                 .param("contents", contents)
                 .update();
 
+    }
+
+    public void updateSuddenSale(Long id, int store_id, String name, String contents) {
+        jdbcClient.sql(
+                "INSERT INTO SuddenSale (store_id, name, contents) VALUES ( :store_id, :name :contents)")
+                .param("store_id", store_id)
+                .param("name", name)
+                .param("contents", contents)
+                // .param("completed", completed)
+                .update();
     }
 }

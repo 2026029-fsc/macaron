@@ -35,4 +35,8 @@ public class StoreSubmitService {
     public void updateSale(Long id, SaleForm form) {
         storeRepository.updateSale(id, form.getStore_id(), form.getName(), form.getContents());
     }
+
+    public void updateSuddenSale(Long id, SuddenSaleForm form) {
+        storeRepository.updateSuddenSale(id, form.getStore_id(), form.getName(), form.getContents());
+    }
 }

@@ -44,4 +44,11 @@ public class StoreSubmitController {
         return "redirect:/store";
     }
 
+    @PostMapping("/suddensale/{id}")
+    public String updateSuddenSale(@PathVariable Long id, @ModelAttribute SuddenSaleForm form) {
+        storeSubmitService.updateSuddenSale(id, form);
+
+        return "redirect:/store";
+    }
+
 }

@@ -29,6 +29,14 @@
       <p th:text="${Sale.contents}">セール内容</p>
     </div>
   </div>
+
+  <table>
+    <h3>店舗情報</h3>
+    <tr> <td>電話番号</td> <td><a href="tel:${Store.phone_number}" th:text=""></a></td> </tr>
+    <tr> <td>決済方法</td> <td><p th:text="${Store.payment}"></p></td> </tr>
+    <tr> <td>電話番号</td> <td><a href="tel:${Store.phone_number}" th:text=""></a></td> </tr>
+    
+  </table>
 </body>
 
 </html>

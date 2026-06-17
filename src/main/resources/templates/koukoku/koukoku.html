@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div th:fragment="koukoku">
+        <a th:if="${session.username == null && session.userEmail == null}" href="/loginuser">
+            <img src="./UserLogin.png" alt="UserLogin">
+        </a>
+
+        <a th:if="${session.username == null && session.userEmail == null}" href="/loginstore">
+            <img src="./StoreLogin.png" alt="StoreLogin">
+        </a>
+
+        <a href="https://?????????">
+            <img src="./Koukoku.png" alt="Koukoku" class="koukoku">
+        </a>
+
+        <td>今月のお店
+            <a th:href="@{/store/{id}(id=${store.id})}">
+                <img src="./store_image.png" alt="今月のお店">
+            </a>
+        </td>
+
+    </div>
+</body>
+
+</html>

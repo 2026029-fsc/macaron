@@ -10,36 +10,52 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class LoginController {
-    private final LoginService loginService;
+    private final UserService userService;
+    private final StoreService storeService;
 
-    public LoginController(loginService loginService){
-        this.loginService = loginService;
+    public LoginController(UserService userService, StoreService storeService){
+        this.userService = userService;
+        this.storeService = storeService;
+
     }
     
-  @GetMapping("/login")
-  public String loginForm() {
-    return "login";
+  //一般ユーザログイン
+  @GetMapping("/userLogin")
+  public String userLoginForm() {
+    return "userLogin";
   }
 
-  @PostMapping("/login")
-  public String login(@ModelAttribute LoginForm form, HttpSession session,RedirectAttributes redirectAttributes) {
-    if (userService.authenticate(form.getMail(), form.getPassword())) {
-      session.setAttribute("username", form.getUsername());
-      redirectAttributes.addFlashAttribute("message", "ログインしました");
+  @PostMapping("/userLogin")
+  public String login(@ModelAttribute LoginForm form, HttpSession session, RedirectAttributes redirectAttributes) {
+    if (userService.authenticate(form.getEmail(), form.getPassword())) {
+      session.setAttribute("userEmail", form.getEmail());
       return "redirect:/mypage";
     }
-    if (StoreService.authenticate(form.getname(), form.getPassword())) {
-      session.setAttribute("name", form.name());
-      redirectAttributes.addFlashAttribute("errorMessage", "ログインしました");
+
+    redirectAttributes.addFlashAttribute("errorMessage", "ユーザー名かパスワードが違います");
+    return "redirect:/userLogin";
+  }
+
+  //店舗ログイン
+  @GetMapping("/storeLogin")
+  public String storeLoginForm() {
+    return "storeLogin";
+  }
+
+  @PostMapping("/storeLogin")
+  public String login(@ModelAttribute LoginForm form, HttpSession session,RedirectAttributes redirectAttributes) {
+    if (StoreService.authenticate(form.getEmail(), form.getPassword())) {
+      session.setAttribute("storeEmail", form.getEmail());
       return "redirect:/mystore";
     }
     redirectAttributes.addFlashAttribute("errorMessage", "ユーザー名かパスワードが違います");
-    return "redirect:/login";
+    return "redirect:/storeLogin";
   }
 
+  //ログアウト処理
   @PostMapping("/logout")
   public String logout(HttpSession session) {
     session.invalidate();
-    return "redirect:/books";
+    return "redirect:/";
   }
 }

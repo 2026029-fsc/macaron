@@ -21,7 +21,15 @@ public class SuddenSaleRepository {
     }
 
     //SuddenSale情報をジャンル検索
-    public List<SuddenSaleview> storeSerch(String keyword) {
+    public List<SuddenSaleview> serchByGenre(String keyword) {
+        return jdbcClient.sql("SELECT Suddensale.id, Suddensale.name AS suddensaleName, Store.name AS storeName FROM Suddensale JOIN Store ON Suddensale.store_id = Store.id WHERE genre LIKE :keyword LIMIT 3")
+                .param("keyword", "%" + keyword + "%")
+                .query(SuddenSaleview.class)
+                .list();
+    }
+
+    //SuddenSale情報をキーワード検索
+    public List<SuddenSaleview> serchByKeyword(String keyword) {
         return jdbcClient.sql("SELECT Suddensale.id, Suddensale.name AS suddensaleName, Store.name AS storeName FROM Suddensale JOIN Store ON Suddensale.store_id = Store.id WHERE genre LIKE :keyword LIMIT 3")
                 .param("keyword", "%" + keyword + "%")
                 .query(SuddenSaleview.class)

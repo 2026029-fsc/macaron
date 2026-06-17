@@ -21,11 +21,20 @@ public class ViewService {
     };
 
     // Sale情報をジャンル検索
-    public List<Saleview> storeSaleSerch(String keyword) {
+    public List<Saleview> serchByGenre(String keyword) {
         if (keyword == null || keyword.isBlank()) {
             return saleRepository.previewSale();
         } else {
-            return saleRepository.storeSerch(keyword);
+            return saleRepository.serchByGenre(keyword);
+        }
+    }
+
+    //Sale情報をキーワード検索
+    public List<Saleview> saleserchByKeyword(String keyword) {
+        if (keyword == null || keyword.isBlank()) {
+            return saleRepository.previewSale();
+        } else {
+            return saleRepository.searchByKeyword(keyword);
         }
     }
 
@@ -39,7 +48,16 @@ public class ViewService {
         if (keyword == null || keyword.isBlank()) {
             return suddensaleRepository.previewSuddenSale();
         } else {
-            return suddensaleRepository.storeSerch(keyword);
+            return suddensaleRepository.serchByGenre(keyword);
+        }
+    }
+
+    //SuddenSaleをキーワード検索
+    public List<SuddenSaleview> suudensaleserchByKeyword(String keyword) {
+        if (keyword == null || keyword.isBlank()) {
+            return suddensaleRepository.previewSuddenSale();
+        } else {
+            return suddensaleRepository.serchByKeyword(keyword);
         }
     }
 

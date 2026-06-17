@@ -36,14 +36,14 @@ public class ViewController {
     }
 
     @GetMapping("/keywordSerch")
-    public String storeSerch(@RequestParam String keywordSerch, Model model) {
-        model.addAttribute("Sale", viewService.storeSaleSerch(keywordSerch));
+    public String storeSerch(@RequestParam String keyword, Model model) {
+        model.addAttribute("Sale", viewService.saleserchByKeyword(keyword));
         return "dotachan/home";
     }
 
     @GetMapping("/genreSerch")
-    public String genreSerch(@RequestParam String keywordSerch, Model model) {
-        model.addAttribute("Sale", viewService.storeSaleSerch(keywordSerch));
+    public String genreSerch(@RequestParam String genreSerch, Model model) {
+        model.addAttribute("Sale", viewService.serchByGenre(genreSerch));
         return "dotachan/home";
     }
 }

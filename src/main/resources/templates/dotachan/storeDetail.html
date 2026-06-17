@@ -16,7 +16,7 @@
 
   <div>
     <h2>突発セール</h2>
-    <div th:each = "SuddenSale : {SuddenSales}" class="Suddensale">
+    <div th:each="SuddenSale : {SuddenSales}" class="Suddensale">
       <h3 th:text="${SuddenSale.name}">セール名</h3>
       <p th:text="${SuddenSale.contents}">セール内容</p>
     </div>
@@ -24,19 +24,71 @@
 
   <div>
     <h2>恒常セール</h2>
-    <div th:each = "Sale : {Sales}" class="sale">
+    <div th:each="Sale : {Sales}" class="sale">
       <h3 th:text="${Sale.name}">セール名</h3>
       <p th:text="${Sale.contents}">セール内容</p>
     </div>
   </div>
 
-  <table>
+  <table class="store_info">
     <h3>店舗情報</h3>
-    <tr> <td>電話番号</td> <td><a href="tel:${Store.phone_number}" th:text=""></a></td> </tr>
-    <tr> <td>決済方法</td> <td><p th:text="${Store.payment}"></p></td> </tr>
-    <tr> <td>電話番号</td> <td><a href="tel:${Store.phone_number}" th:text=""></a></td> </tr>
-    
+
+    <tr>
+      <td>電話番号：</td>
+      <td><a href="tel:${Store.phone_number}" th:text=""></a></td>
+    </tr>
+    <tr>
+      <td>決済方法：</td>
+      <td>
+        <p th:text="${Store.payment}"></p>
+      </td>
+    </tr>
+    <tr>
+      <td>電話番号：</td>
+      <td><a href="tel:${Store.phone_number}" th:text=""></a></td>
+    </tr>
+    <tr>
+      <td>お店からのコメント：</td>
+      <td>
+        <p th:text="${Store.free_desc}"></p>
+      </td>
+    </tr>
   </table>
+
+  <div class="coupon">
+    <h3>お得なクーポン</h3>
+    <p th:text="${Store.coupon}"></p>
+  </div>
+
+  <div class="review_box">
+    <h3>口コミ</h3>
+    <div class="review_post">
+      <fieldset>
+        <legend>あなたの評価：</legend>
+        <div>
+          <input type="radio" id="huey" name="drone" value="true" checked />
+          <label for="huey">👍</label>
+        </div>
+        <div>
+          <input type="radio" id="louie" name="drone" value="false" />
+          <label for="louie">👎</label>
+        </div>
+        <p><textarea placeholder="このお店はいかがでしたか？" id="post" name="post" class="postbox"></textarea></p>
+        <button type="submit" class="blogbutton">投稿!</button>
+      </fieldset>
+
+      <div th:each="storeReview : ${StoreReview}">
+        <fieldset>
+          <p th:text="User.name">投稿者名</p>
+          <p th:if="${#storeReview.evaluation==true}">👍</p>
+          <p th:if="${#storeReview.evaluation==false}">👎</p>
+          <p th:text="${storeReview.comments}">コメント</p>
+        </fieldset>
+      </div>
+
+    </div>
+  </div>
+
 </body>
 
 </html>

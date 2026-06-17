@@ -8,11 +8,9 @@
 
 <body>
     <div th:replace="~{header :: common-header}"></div>
-    <form action="/mystore/register" method="post">
-
-        <h3>アカウント情報</h3>
-        <input type="text" name="title" required placeholder="メールアドレス"><br>
-
+    <h3>アカウント情報</h3>
+    <input type="text" name="title" required placeholder="メールアドレス"><br>
+    <form action="/store/{id}" method="post">
         <h3>店舗詳細画面</h3>
         <a>必須項目</a><br>
         <input type="text" name="title" required placeholder="店舗名"><br>
@@ -23,15 +21,19 @@
         <a>任意項目</a><br>
         <input type="text" name="title" required placeholder="価格帯"><br>
         <input type="text" name="title" required placeholder="自由記述欄"><br>
+        <h3>クーポン登録</h3>
+        <input type="text" name="title" required placeholder="クーポン内容"><br>
+
+
+        <button type="submit">保存</button>
+    </form>
+    <form action="/sale/{id}" method="post">
         <h3>恒常セール</h3>
         <input type="text" name="title" required placeholder="恒常セール名"><br>
         <input type="text" name="title" required placeholder="恒常セール内容"><br>
         <input type="text" name="title" required placeholder="恒常セール名"><br>
         <input type="text" name="title" required placeholder="恒常セール内容"><br>
-        <input type="text" name="title" required placeholder="恒常セール名"><br>
-        <input type="text" name="title" required placeholder="恒常セール内容"><br>
-        <h3>クーポン登録</h3>
-        <input type="text" name="title" required placeholder="クーポン内容"><br>
+
         <button type="submit">保存</button>
     </form>
 

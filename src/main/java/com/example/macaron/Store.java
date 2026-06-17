@@ -13,7 +13,7 @@ public class Store {
     private final String genre;
     private String coupon;
     private String free_desc;
-
+    
     public Store(Long id, String name, String email, String password, String address, int phone_number, String payment,
             int price_range, String genre, String coupon, String free_desc) {
         this.id = id;
@@ -28,6 +28,7 @@ public class Store {
         this.coupon = coupon;
         this.free_desc = free_desc;
     }
+   
 
     public Long getId() {
         return id;

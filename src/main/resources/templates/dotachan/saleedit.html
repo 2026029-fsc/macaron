@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+</head>
+
+<body>
+    <div th:replace="~{header :: common-header}"></div>
+    <form action="/blog/register" method="post">
+        <h3>突発セール登録</h3>
+        <input type="text" name="title" required placeholder="突発セール名"><br>
+        <input type="text" name="title" required placeholder="内容"><br>
+        <button type="submit">登録</button>
+        <h3>開催中の突発セール</h3>
+        <input type="text" name="title" required placeholder="突発セール名"><br>
+        <button type="submit">完了</button><br>
+        <input type="text" name="title" required placeholder="突発セール名"><br>
+        <button type="submit">完了</button><br>
+    </form>
+</body>

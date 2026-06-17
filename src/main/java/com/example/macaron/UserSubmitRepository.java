@@ -31,4 +31,13 @@ public class UserSubmitRepository {
         .optional();
     }
 
+    //パスワードをハッシュ化する
+public Optional <User> findPasswordHash(String mail){
+    return jdbcClient.sql("SELECT password_hash FROM User WHERE mail=:mail")
+    .param("mail",mail)
+    .query(User.class)
+    .optional();
+}
+
+
 }

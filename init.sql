@@ -19,7 +19,8 @@ CREATE TABLE User(
   mail      VARCHAR(254)  NOT NULL    UNIQUE,
   name      VARCHAR(30)   NOT NULL,
   password  VARCHAR(255)  NOT NULL,
-  reviewed  BOOLEAN       NOT NULL
+  reviewed  BOOLEAN       NOT NULL,
+  password_hash VARCHAR(255) NOT NULL -- ハッシュ化のために追加
 );
 
 CREATE TABLE Store(

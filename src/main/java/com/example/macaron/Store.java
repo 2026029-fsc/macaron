@@ -1,7 +1,7 @@
 package com.example.macaron;
 
 public class Store {
-    private final int id;
+    private final Long id;
     private final String name;
     private final String email;
     private final String password;
@@ -13,7 +13,7 @@ public class Store {
     private final String coupon;
     private final String free_desc;
 
-    public Store(int id, String name, String email, String password, String address, int phone_number, String payment,
+    public Store(Long id, String name, String email, String password, String address, int phone_number, String payment,
             int price_range, String genre, String coupon, String free_desc) {
         this.id = id;
         this.name = name;
@@ -28,7 +28,7 @@ public class Store {
         this.free_desc = free_desc;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 

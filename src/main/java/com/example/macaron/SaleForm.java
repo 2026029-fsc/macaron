@@ -14,9 +14,10 @@ public class SaleForm {
     //     this.contents = contents;
     // }
 
-    public int getId() {
-        return id;
-    }
+
+    // public int getId() {
+    //     return id;
+    // }
     public int getStore_id() {
         return store_id;
     }
@@ -27,9 +28,9 @@ public class SaleForm {
         return contents;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    // public void setId(int id) {
+    //     this.id = id;
+    // }
     public void setStore_id(int store_id) {
         this.store_id = store_id;
     }
@@ -37,10 +38,18 @@ public class SaleForm {
     public void setName(String name) {
         this.name = name;
     }
-    
+   
     public void setContents(String contents) {
         this.contents = contents;
     }
 }
 
-//a
+
+
+
+
+
+
+
+
+

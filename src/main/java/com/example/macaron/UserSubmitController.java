@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UserSubmitController {
@@ -28,12 +27,11 @@ public class UserSubmitController {
     @PostMapping("/correct")
     public String userRegister(@ModelAttribute UserForm form) { // 入力した値をModelにわたす。
         userSubmitService.userRegister(form); // サービス、に渡す(その後リポジトリを通り、データベースに保存する。)
-
         return "redirect:/dotachan/correct"; // 戻るURLのhtml
     }
 
     // localhost:8080/correctをブラウザで入力
-    @GetMapping("/correct")
+    @GetMapping("/dotachan/correct")
     public String correct() {
         return "/dotachan/correct";// 表示させるhtml
     }
@@ -51,5 +49,4 @@ public class UserSubmitController {
         model.addAttribute("user", userOpt.get());//"user"という箱に詰める
         return "/mypage";//表示させるhtml
     }
-
 }

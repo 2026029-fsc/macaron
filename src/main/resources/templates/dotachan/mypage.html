@@ -7,10 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-    <p>こんにちは。<span th:text="${}"></span>さん</p> 
-    <!-- データベースから持ってくる -->
-     <p>メールアドレス:<span th:text="${}"></span></p>
-    <p>パスワード<span th:text="${}"></span></p>
+    <p>こんにちは。<span th:text="${user.name}"></span>さん</p> 
+     <p>メールアドレス:<span th:text="${user.mail}"></span></p>
+    <p>パスワード<span th:text="${user.password}"></span></p>
 
 </body>
 </html>

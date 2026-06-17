@@ -1,11 +1,14 @@
 package com.example.macaron;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 
 @Controller
 public class UserSubmitController {
@@ -35,13 +38,18 @@ public class UserSubmitController {
         return "/dotachan/correct";// 表示させるhtml
     }
 
-    //localhost:8080/subscribeをブラウザで入力
+    // localhost:8080/subscribeをブラウザで入力
     @GetMapping("/subscribe")
     public String subscribe() {
-        return "/dotachan/subscribe";//表示させるhtml
+        return "/dotachan/subscribe";// 表示させるhtml
     }
 
-    
-    
+    // マイページにデータベースから持ってきた値を表示させたい
+    @GetMapping("/mypage")
+    public String mypage(@PathVariable Long id, Model model) {//ブラウザでもらった値をjavaに変換、モデルに渡す
+        Optional<User> userOpt = userSubmitService.findById(id);//サービスにお願いする(リポジトリを通り、データベースから値をもらう)
+        model.addAttribute("user", userOpt.get());//"user"という箱に詰める
+        return "/mypage";//表示させるhtml
+    }
 
 }

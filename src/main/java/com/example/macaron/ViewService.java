@@ -1,7 +1,6 @@
 package com.example.macaron;
 
 import java.util.List;
-
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,12 +13,14 @@ public class ViewService {
         this.saleRepository = saleRepository;
     }
 
-    //Sale情報の表示
-    public List<Saleview> previewSale() {
-        return saleRepository.previewSale();
-    }
+    // Sale情報の表示
+    public Saledto previewSale() {
+        List<Saleview> sale = saleRepository.previewSale();
+        List<SuddenSaleview> ssale = suddensaleRepository.previewSuddenSale();
+        return new Saledto(sale, ssale);
+    };
 
-    //Sale情報をジャンル検索
+    // Sale情報をジャンル検索
     public List<Saleview> storeSaleSerch(String keyword) {
         if (keyword == null || keyword.isBlank()) {
             return saleRepository.previewSale();
@@ -28,12 +29,12 @@ public class ViewService {
         }
     }
 
-    //Sale情報の表示
+    // SuddenSale情報の表示
     public List<SuddenSaleview> previewSuddenSale() {
         return suddensaleRepository.previewSuddenSale();
     }
 
-    //Sale情報をジャンル検索
+    // SuddenSale情報をジャンル検索
     public List<SuddenSaleview> storeSuddenSaleSerch(String keyword) {
         if (keyword == null || keyword.isBlank()) {
             return suddensaleRepository.previewSuddenSale();
@@ -41,6 +42,5 @@ public class ViewService {
             return suddensaleRepository.storeSerch(keyword);
         }
     }
-
 
 }

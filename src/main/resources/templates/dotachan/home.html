@@ -22,13 +22,14 @@
             <!-- <th>Contents</th> -->
         </tr>
         <tr th:each="SuddenSale : ${SuddenSale}" >
-            <td><a th:href="@{/home/{id}(id=${SuddenSale.id})}" th:text="${SuddenSale.name}" th:text="${SuddenSale.storeName}">現在セールは開催されていません</a></td>
+            <td><a th:href="@{/home/{id}(id=${SuddenSale.id})}" th:text="${SuddenSale.suddensaleName}">現在セールは開催されていません</a></td> 
+            <td><a href="@{/home/{id}(id=${SuddenSale.id})}" th:text="${SuddenSale.storeName}"></a></td>
             <!-- <td><span th:text="${blog.notes}">473</span></td> -->
         </tr>
     </table>
 
-    <form action="/keySerch" method="get">
-        <input type="text" id="keySerch" name="keySerch" placeholder="キーワード検索">
+    <form action="/keywordSerch" method="get">
+        <input type="text" id="keyword" name="keyword" placeholder="キーワード検索">
         <button type="submit">検索</button>
     </form>
     <form action="/genreSerch" method="get">
@@ -51,7 +52,8 @@
             <!-- <th>Contents</th> -->
         </tr>
         <tr th:each="Sale : ${Sale}" >
-            <td><a th:href="@{/home/{id}(id=${Sale.id})}" th:text="${Sale.name}" th:text="${Sale.storeName}">現在セールは開催されていません</a></td>
+            <td><a th:href="@{/home/{id}(id=${Sale.id})}" th:text="${Sale.saleName}">現在セールは開催されていません</a></td>
+            <td><a th:href="@{/home/{id}(id=${Sale.id})}" th:text="${Sale.storeName}"></a></td>
             <!-- <td><span th:text="${blog.notes}">473</span></td> -->
         </tr>
     </table>

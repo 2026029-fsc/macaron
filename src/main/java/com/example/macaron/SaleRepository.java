@@ -15,14 +15,14 @@ public class SaleRepository {
 
     //Sale情報の表示
     public List<Saleview> previewSale() {
-        return jdbcClient.sql("SELECT Sale.id, Sale.name, Store.name AS storeName FROM Sale JOIN Store ON Sale.store_id = Store.id LIMIT 3")
+        return jdbcClient.sql("SELECT Sale.id, Sale.name AS saleName, Store.name AS storeName FROM Sale JOIN Store ON Sale.store_id = Store.id LIMIT 3")
                 .query(Saleview.class)
                 .list();
     }
 
     //Sale情報をジャンル検索
     public List<Saleview> storeSerch(String keyword) {
-        return jdbcClient.sql("SELECT Sale.id, Sale.name, Store.name FROM Sale JOIN Store ON Sale.store_id = Store.id WHERE genre LIKE :keyword LIMIT 3")
+        return jdbcClient.sql("SELECT Sale.id, Sale.name AS saleName, Store.name AS storeName FROM Sale JOIN Store ON Sale.store_id = Store.id WHERE genre LIKE :keyword LIMIT 3")
                 .param("keyword", "%" + keyword + "%")
                 .query(Saleview.class)
                 .list();

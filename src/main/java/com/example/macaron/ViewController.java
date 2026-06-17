@@ -15,28 +15,35 @@ public class ViewController {
 
     // @GetMapping("/home")
     // public String home() {
-    //     return "dotachan/home";
+    // return "dotachan/home";
     // }
 
     // @GetMapping("/home")
     // public String saleDetail(@PathVariable Long id, Model model) {
-    //     Optional<Sale> blogOpt = viewService.findById(id);
-    //     if (blogOpt.isEmpty()) {
-    //         return "redirect:/blog";
-    //     }
-    //     model.addAttribute("store", StoreOpt.get());
-    //     return "store/detail";// 戻るHTML
+    // Optional<Sale> blogOpt = viewService.findById(id);
+    // if (blogOpt.isEmpty()) {
+    // return "redirect:/blog";
+    // }
+    // model.addAttribute("store", StoreOpt.get());
+    // return "store/detail";// 戻るHTML
     // }
 
     @GetMapping("/home")
     public String saleDetail(Model model) {
-        model.addAttribute("home", viewService.previewSale());
+        model.addAttribute("Sale", viewService.previewSale().getSale());
+        model.addAttribute("SuddenSale", viewService.previewSale().getSsale());
         return "dotachan/home";
     }
 
-    @GetMapping("/keySerch")
-    public String storeSerch(@RequestParam String keySerch, Model model) {
-        model.addAttribute("blog", viewService.storeSaleSerch(keySerch));
+    @GetMapping("/keywordSerch")
+    public String storeSerch(@RequestParam String keywordSerch, Model model) {
+        model.addAttribute("Sale", viewService.storeSaleSerch(keywordSerch));
+        return "dotachan/home";
+    }
+
+    @GetMapping("/genreSerch")
+    public String genreSerch(@RequestParam String keywordSerch, Model model) {
+        model.addAttribute("Sale", viewService.storeSaleSerch(keywordSerch));
         return "dotachan/home";
     }
 }

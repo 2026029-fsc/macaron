@@ -19,19 +19,22 @@
     <table>
         <tr>
             <th>SuddenSale Name</th>
-            <!-- <th>Contents</th> -->
         </tr>
         <tr th:each="SuddenSale : ${SuddenSale}" >
-            <td><a th:href="@{/home/{id}(id=${SuddenSale.id})}" th:text="${SuddenSale.suddensaleName}">現在セールは開催されていません</a></td> 
-            <td><a href="@{/home/{id}(id=${SuddenSale.id})}" th:text="${SuddenSale.storeName}"></a></td>
-            <!-- <td><span th:text="${blog.notes}">473</span></td> -->
+            <td><a th:href="@{/store_detail/{id}(id=${SuddenSale.store_id})}" th:text="${SuddenSale.name}">現在セールは開催されていません</a></td> 
+        </tr>
+        <tr th:each="Store : ${Store}" >
+            <td><a th:href="@{/store_detail/{id}(id=${Store.id})}" th:text="${Store.name}"></a></td>
         </tr>
     </table>
 
+    <!-- キーワード検索 -->
     <form action="/keywordSerch" method="get">
         <input type="text" id="keyword" name="keyword" placeholder="キーワード検索">
         <button type="submit">検索</button>
     </form>
+
+    <!-- ジャンル検索 -->
     <form action="/genreSerch" method="get">
         <select name="genreSerch" id="genreSerch">
             <option value="">選択してください</option>
@@ -45,9 +48,9 @@
         <button type="submit">検索</button>
     </form>
 
-    <div>
-        
-        <a th:href="@{/home/{id}(id=${Sale.id})}" th:text="${Sale.storeName}"></a>
+    <!-- 広告 -->
+    <div th:each="Store : ${Store}">
+        <a th:href="@{/store_detail/{id}(id=${Store.id})}" th:text="${Store.name}"></a>
     </div>
 
 
@@ -56,12 +59,12 @@
     <table>
         <tr>
             <th>Sale Name</th>
-            <!-- <th>Contents</th> -->
         </tr>
         <tr th:each="Sale : ${Sale}" >
-            <td><a th:href="@{/home/{id}(id=${Sale.id})}" th:text="${Sale.saleName}">現在セールは開催されていません</a></td>
-            <td><a th:href="@{/home/{id}(id=${Sale.id})}" th:text="${Sale.storeName}"></a></td>
-            <!-- <td><span th:text="${blog.notes}">473</span></td> -->
+            <td><a th:href="@{/store_detail/{id}(id=${Sale.store_id})}" th:text="${Sale.name}">現在セールは開催されていません</a></td>
+        </tr>
+        <tr th:each="Store : ${Store}" ></tr>
+            <td><a th:href="@{/store_detail/{id}(id=${Sale.id})}" th:text="${Store.name}"></a></td>
         </tr>
     </table>
 

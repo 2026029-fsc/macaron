@@ -7,15 +7,15 @@ public class Store {
     private final String email;
     private String password;
     private final String address;
-    private final int phone_number;
+    private final Integer phone_number;
     private final String payment;
-    private final int price_range;
+    private final Integer price_range;
     private final String genre;
     private String coupon;
     private String free_desc;
 
-    public Store(int id, String name, String email, String password, String address, int phone_number, String payment,
-            int price_range, String genre, String coupon, String free_desc) {
+    public Store(int id, String name, String email, String password, String address, Integer phone_number, String payment,
+            Integer price_range, String genre, String coupon, String free_desc) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -49,7 +49,7 @@ public class Store {
         return address;
     }
 
-    public int getPhone_number() {
+    public Integer getPhone_number() {
         return phone_number;
     }
 
@@ -57,7 +57,7 @@ public class Store {
         return payment;
     }
 
-    public int getPrice_range() {
+    public Integer getPrice_range() {
         return price_range;
     }
 

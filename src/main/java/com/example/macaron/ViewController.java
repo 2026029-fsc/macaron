@@ -17,20 +17,20 @@ public class ViewController {
         this.viewService = viewService;
     }
 
-    // @GetMapping("/home")
-    // public String home() {
-    // return "dotachan/home";
-    // }
+    @GetMapping("/home")
+    public String home() {
+    return "dotachan/home";
+    }
 
-    // @GetMapping("/home")
-    // public String saleDetail(@PathVariable Long id, Model model) {
-    // Optional<Sale> blogOpt = viewService.findById(id);
-    // if (blogOpt.isEmpty()) {
-    // return "redirect:/blog";
-    // }
-    // model.addAttribute("store", StoreOpt.get());
-    // return "store/detail";// 戻るHTML
-    // }
+    @GetMapping("/home")
+    public String saleDetail(@PathVariable Long id, Model model) {
+    Optional<Sale> blogOpt = viewService.findById(id);
+    if (blogOpt.isEmpty()) {
+    return "redirect:/blog";
+    }
+    model.addAttribute("store", StoreOpt.get());
+    return "store/detail";// 戻るHTML
+    }
 
 
     //全体サーチ
@@ -77,5 +77,8 @@ public class ViewController {
 
         return "dotachan/StoreDetail";
     }
+
+    @PostMapping("/store_detail/{id}")
+    public String detailpost()
 
 }

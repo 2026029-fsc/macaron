@@ -23,6 +23,10 @@ public class StoreSubmitController {
     public String showmystorePage() {
         return "dotachan/mystore";
     }
+    @GetMapping("/Suddensale")
+    public String showsuddensalePage() {
+        return "dotachan/Suddensale";
+    }
     
     @PostMapping("/store/{id}")
     public String updateStore(@PathVariable Long id, @ModelAttribute StoreForm form) {

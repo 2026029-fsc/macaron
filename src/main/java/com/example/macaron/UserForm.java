@@ -1,25 +1,27 @@
 package com.example.macaron;
 
+import jakarta.validation.constraints.NotBlank;//文字列が空白のみで構成されていないか確認
+import jakarta.validation.constraints.Email;//メールアドレスの形式をチェック
+import jakarta.validation.constraints.Size;//文字列の長さを制限
+
+
 //編集するためにfinalなし
 public class UserForm {
     // private int id;
-    private String mail;
+    @NotBlank(message = "名前を入力してください")
     private String name;
+    @NotBlank(message = "メールアドレスを入力してください")
+    @Email(message = "メールアドレスの形式が正しくありません")
+    @Size(max = 100, message = "メールアドレスは100文字以内で入力してください")
+private String email;
+
+    private String mail;
+     
+    @NotBlank(message = "パスワードを入力してください")
     private String password;
-    private String confirmPassword;
+
     private boolean reviewed;
     
-    // public UserForm(int id, String mail, String name, String password, boolean reviewd) {
-    //     this.id = id;
-    //     this.mail = mail;
-    //     this.name = name;
-    //     this.password = password;
-    //     this.reviewd = reviewd;
-    // }
-
-    // public int getId() {
-    //     return id;
-    // }
     public String getMail() {
         return mail;
     }
@@ -28,9 +30,6 @@ public class UserForm {
     }
     public String getPassword() {
         return password;
-    }
-    public String getConfirmPassword() {
-        return confirmPassword;
     }
     public boolean getReviewed() {
         return reviewed;
@@ -44,9 +43,6 @@ public class UserForm {
     }
     public void setPassword(String password) {
         this.password = password;
-    }
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
     }
     public void setReviewd(boolean reviewed) {
         this.reviewed = reviewed;

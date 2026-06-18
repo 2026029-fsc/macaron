@@ -10,14 +10,14 @@
   <div class = login-form>  
   <h2>一般会員の方</h2>
 
-  <form action="/userlogin" method="post">
+  <form action="/userLogin" method="post">
     <p><label for="mail">メールアドレス:</label>
     <input type="text" id="mail" name="mail"></p>
 
     <p><label for="password">パスワード:</label>
     <input type="password" id="password" name="password"></p>
 <!-- エラーメッセージ -->
-    <p th:if="${errorMessage}" th:text="${errorMessage}"></p> 
+    <p th:if="${errorMessage}" th:text="${errorMessage}">エラー</p> 
     
     <p>下記に記載のプライバシーポリシー・規約に同意のうえ以下の「ログイン」を押してください。</p>
     <button type="submit">ログイン</button>

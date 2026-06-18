@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -22,23 +23,19 @@ public class UserSubmitController {
     public String register() {
         return "dotachan/register";
     }
-
-// 今岡変更
-    // localhost:8080/registerをブラウザで入力。
+    // localhost:8080/resisterをブラウザで入力。
     @PostMapping("/correct")
-    public String userRegister(@ModelAttribute UserForm form, Model model) {  // 入力した値をModelにわたす。
+    public String userRegister(@ModelAttribute UserForm form, Model model) { // 入力した値をModelにわたす。
+   // 今岡変更
+        // // パスワードの一致チェック 
+        // if (!form.getPassword().equals(form.getPassword2())) {
+        //     model.addAttribute("passError", "パスワードと確認用パスワードが一致しません。");
+        //     return "dotachan/register"; 
+        // }
         
-        // パスワードの一致チェック 
-        if (!form.getPassword().equals(form.getConfirmPassword())) {
-            model.addAttribute("passError", "パスワードと確認用パスワードが一致しません。");
-            return "dotachan/register"; 
-        }
-        // 一致していた場合のみ、サービスを呼び出してDB保存する
-        userSubmitService.userRegister(form);
-        return "redirect:/dotachan/correct"; 
+        userSubmitService.register(form.getName(),form.getMail(),form.getPassword()); // サービス、に渡す(その後リポジトリを通り、データベースに保存する。)
+        return "redirect:/dotachan/correct"; // 戻るURLのhtml
     }
-
-//今岡変更ここまで
 
 
     // localhost:8080/correctをブラウザで入力
@@ -54,13 +51,37 @@ public class UserSubmitController {
     }
 
     // マイページにデータベースから持ってきた値を表示させたい
-    @GetMapping("/mypage")
+    @GetMapping("/mypage/{id}")
     public String mypage(@PathVariable Long id, Model model) {//ブラウザでもらった値をjavaに変換、モデルに渡す
         Optional<User> userOpt = userSubmitService.findById(id);//サービスにお願いする(リポジトリを通り、データベースから値をもらう)
         model.addAttribute("user", userOpt.get());//"user"という箱に詰める
-        return "/mypage";//表示させるhtml
+        return "/mypage/{id}";//表示させるhtml
     }
-    
+    // @GetMapping("/mypage/{id}")    //今岡追加
+    // public String showAccountPage(@PathVariable("id") Long userId, Model model) {
+    //     Optional<User> userOpt = userSubmitService.findById(userId);
+    //     model.addAttribute("user", userOpt.get());
+    //     return "redirect:/mypage"+ userOpt.get().getId();
+    // }
+       @PostMapping("/register")
+        public String register(
+            @RequestParam String name,
+            @RequestParam String mail,
+            @RequestParam String password,Model model) {
+
+        if (name.isBlank() || mail.isBlank() || password.isBlank()) {
+            model.addAttribute("errorMessage", "すべての項目を入力してください。");
+            return "/register";
+        }
+        userSubmitService.register(name, mail, password);
+
+        return "redirect:/correct";
+    }
 }
+
+
+
+
+
 
 

@@ -15,8 +15,6 @@ public class UserSubmitService {
         this.passwordEncoder = passwordEncoder;
     }
 
-   
-
     // mypageに新規ユーザーの情報を追加する
     // public void userRegister(UserForm form) {
     // userSubmitRepository.mypage(new User(null, form.getMail(), form.getName(),
@@ -37,7 +35,7 @@ public class UserSubmitService {
     // //optionalに含まれるget()メソッド DBから値をとってくる
     // }
 
-    // ハッシュ化して登録したい。。。
+    // パスワードをハッシュ化して登録
     public void register(String name, String mail, String password) {
         String passwordhash = passwordEncoder.encode(password);
         userSubmitRepository.insertUser(name, mail, passwordhash);

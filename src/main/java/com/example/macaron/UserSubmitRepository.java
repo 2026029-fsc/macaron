@@ -6,21 +6,22 @@ import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class UserSubmitRepository {
+public class UserSubmitRepository extends SuperRepository {
     private final JdbcClient jdbcClient;
 
     public UserSubmitRepository(JdbcClient jdbcClient) {
         this.jdbcClient = jdbcClient;
     }
 
-    // mypageに新規ユーザーの情報を追加する
-    public void mypage(User form) {
-        jdbcClient.sql("INSERT INTO User (mail,name,password,reviewed)VALUES(:mail,:name,:password,:reviewed)")
-                .param("mail", form.getMail())
-                .param("name", form.getName())
-                .param("password", form.getPassword())
-                .param("reviewed", form.getReviewed())
-                .update();
+    public void insertUser(String name, String mail, String passwordhash) {
+
+        jdbcClient.sql("INSERT INTO User (mail,name,password,reviewed) VALUES (:mail,:name,:password,:reviewed)")
+        .param("mail", mail)
+        .param("name", name)
+        .param("password", passwordhash)
+        .param("reviewed", false)
+        .update();
+        
     }
 
     // Userのidを選択してそのメールアドレスとユーザーネームとパスワードを表示したい
@@ -31,13 +32,13 @@ public class UserSubmitRepository {
                 .optional();
     }
 
-    // パスワードをハッシュ化する
-    public Optional<String> findPasswordHash(String mail) {// <String>にする！
-        return jdbcClient.sql("SELECT password_hash FROM User WHERE mail= :mail")
-                .param("mail", mail)
-                // .query(User.class)
-                .query(String.class)// ここもString!!!
-                .optional();
-    }
+    // パスワードを取り出す
+    // public Optional<String> findPasswordHash(String mail) {// <String>にする！
+    // return jdbcClient.sql("SELECT password FROM User WHERE mail= :mail")
+    // .param("mail", mail)
+    // // .query(User.class)
+    // .query(String.class)// ここもString!!!
+    // .optional();
+    // }
 
 }

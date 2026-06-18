@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -26,7 +27,7 @@ public class UserSubmitController {
     // localhost:8080/resisterをブラウザで入力。
     @PostMapping("/correct")
     public String userRegister(@ModelAttribute UserForm form) { // 入力した値をModelにわたす。
-        userSubmitService.userRegister(form); // サービス、に渡す(その後リポジトリを通り、データベースに保存する。)
+        userSubmitService.register(form.getName(),form.getMail(),form.getPassword()); // サービス、に渡す(その後リポジトリを通り、データベースに保存する。)
         return "redirect:/dotachan/correct"; // 戻るURLのhtml
     }
 
@@ -48,5 +49,21 @@ public class UserSubmitController {
         Optional<User> userOpt = userSubmitService.findById(id);//サービスにお願いする(リポジトリを通り、データベースから値をもらう)
         model.addAttribute("user", userOpt.get());//"user"という箱に詰める
         return "/mypage/{id}";//表示させるhtml
+    }
+
+       @PostMapping("/register")
+    public String register(
+            @RequestParam String name,
+            @RequestParam String mail,
+            @RequestParam String password,
+            Model model) {
+
+        if (name.isBlank() || mail.isBlank() || password.isBlank()) {
+            model.addAttribute("errorMessage", "すべての項目を入力してください。");
+            return "/register";
+        }
+        userSubmitService.register(name, mail, password);
+
+        return "redirect:/correct";
     }
 }

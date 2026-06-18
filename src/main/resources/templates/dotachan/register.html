@@ -8,11 +8,14 @@
 </head>
 <body>
     <p>利用者の登録</p>
-    <form action="/correct" method="post">
+    <p th:if="${errorMessage}" th:text="${errorMessage}"></p>
+
+    <form th:action="@{/correct}" method="post">
         <p>ユーザーネームを入力してください。</p>
         <input type="text" id="name" name="name" placeholder="ユーザーネーム">
         <p>メールアドレスを入力してください。</p>
         <input type="text" id="mail" name="mail" placeholder="メールアドレス">
+        <input type="email" th:field="${registerForm.email}" required class="form-control"> 
         <p>パスワードを入力してください。</p>
         <input type="password" id="password" name="password" placeholder="パスワード">
         <p>パスワードを入力してください。(確認用)</p>

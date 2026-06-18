@@ -34,6 +34,7 @@ public class ViewController {
     public String saleDetail(Model model) {
         model.addAttribute("Sale", viewService.previewSale().getSale());
         model.addAttribute("SuddenSale", viewService.previewSale().getSsale());
+        model.addAttribute("Store", viewService.previewSale().getStore());
         return "dotachan/home";
     }
 
@@ -41,6 +42,7 @@ public class ViewController {
     public String storeSerch(@RequestParam String keyword, Model model) {
         model.addAttribute("Sale", viewService.saleserchByKeyword(keyword).getSale());
         model.addAttribute("SuddenSale", viewService.previewSale().getSsale());
+        model.addAttribute("Store", viewService.previewSale().getStore());
         return "dotachan/home";
     }
 
@@ -49,6 +51,7 @@ public class ViewController {
     public String genreSerch(@RequestParam String genreSerch, Model model) {
         model.addAttribute("Sale", viewService.serchByGenre(genreSerch).getSale());
         model.addAttribute("SuddenSale", viewService.previewSale().getSsale());
+        model.addAttribute("Store", viewService.previewSale().getStore());
         return "dotachan/home";
     }
 }

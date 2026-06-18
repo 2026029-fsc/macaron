@@ -7,17 +7,21 @@ import org.springframework.stereotype.Service;
 public class ViewService {
     private final SuddenSaleRepository suddensaleRepository;
     private final SaleRepository saleRepository;
+    private final StoreRepository storeRepository;
 
-    public ViewService(SuddenSaleRepository suddensaleRepository, SaleRepository saleRepository) {
+    public ViewService(SuddenSaleRepository suddensaleRepository, SaleRepository saleRepository,
+            StoreRepository storeRepository) {
         this.suddensaleRepository = suddensaleRepository;
         this.saleRepository = saleRepository;
+        this.storeRepository = storeRepository;
     }
 
     // Sale情報の表示
     public Saledto previewSale() {
         List<Saleview> sale = saleRepository.previewSale();
         List<SuddenSaleview> ssale = suddensaleRepository.previewSuddenSale();
-        return new Saledto(sale, ssale);
+        List<Storeview> store = storeRepository.previewAd();
+        return new Saledto(sale, ssale, store);
     };
 
     // Sale情報をジャンル検索
@@ -25,11 +29,13 @@ public class ViewService {
         if (keyword == null || keyword.isBlank()) {
             List<Saleview> sale = saleRepository.previewSale();
             List<SuddenSaleview> ssale = suddensaleRepository.previewSuddenSale();
-            return new Saledto(sale, ssale);
+            List<Storeview> store = storeRepository.previewAd();
+            return new Saledto(sale, ssale, store);
         } else {
             List<Saleview> sale = saleRepository.serchByGenre(keyword);
             List<SuddenSaleview> ssale = suddensaleRepository.previewSuddenSale();
-            return new Saledto(sale, ssale);
+            List<Storeview> store = storeRepository.previewAd();
+            return new Saledto(sale, ssale, store);
         }
     }
 
@@ -38,11 +44,13 @@ public class ViewService {
         if (keyword == null || keyword.isBlank()) {
             List<Saleview> sale = saleRepository.previewSale();
             List<SuddenSaleview> ssale = suddensaleRepository.previewSuddenSale();
-            return new Saledto(sale, ssale);
+            List<Storeview> store = storeRepository.previewAd();
+        return new Saledto(sale, ssale, store);
         } else {
             List<Saleview> sale = saleRepository.searchByKeyword(keyword);
             List<SuddenSaleview> ssale = suddensaleRepository.previewSuddenSale();
-            return new Saledto(sale, ssale);
+            List<Storeview> store = storeRepository.previewAd();
+        return new Saledto(sale, ssale, store);
         }
     }
 

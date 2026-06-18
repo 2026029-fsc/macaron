@@ -45,6 +45,12 @@
         <button type="submit">検索</button>
     </form>
 
+    <div>
+        
+        <a th:href="@{/home/{id}(id=${Sale.id})}" th:text="${Sale.storeName}"></a>
+    </div>
+
+
     <h2>恒常セール情報</h2>
     <p th:if="${#lists.isEmpty(Sale)}"> 現在セールは開催されていません</p>
     <table>

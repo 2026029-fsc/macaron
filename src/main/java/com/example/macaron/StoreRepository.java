@@ -50,4 +50,23 @@ public class StoreRepository {
                 // .param("completed", completed)
                 .update();
     }
+
+    public List<SuddenSale> findAll() {
+        return jdbcClient.sql("SELECT id, name ,  completed FROM Suddensale")
+                .query(SuddenSale.class)
+                .list();
+    }
+
+    public void switchSuddenSale(Long id) {
+        jdbcClient.sql("UPDATE Suddensale SET completed = NOT completed WHERE id = :id")
+                .param("id", id)
+                .update();
+    }
+
+
+
+    // public interface SuddensaleRepository extends JpaRepository<Suddensale, Long>
+    // {
+    // }
+
 }

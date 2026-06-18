@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.ui.Model;
 
 @Controller
 public class StoreSubmitController {
@@ -18,20 +19,11 @@ public class StoreSubmitController {
         this.storeSubmitService = storeSubmitService;
     }
 
-    // @PostMapping("/mystore/register")
-    // public String register(
-    // @RequestParam("name") String name,
-    // @RequestParam("address") String address,
-    // @RequestParam("phone_number") int phone_number,
-    // @RequestParam("payment") String payment,
-    // @RequestParam("genre") String genre,
-    // @RequestParam("price_range") int price_range,
-    // @RequestParam("free_desc") String free_desc,
-    // @RequestParam("coupon") String coupon) {
-    // storeSubmitService.editstore(name, address, phone_number, payment, genre,
-    // price_range, free_desc,
-    // coupon);
-    // return "redirect:/mystore";
+    @GetMapping("/mystore")
+    public String showmystorePage() {
+        return "dotachan/mystore";
+    }
+    
     @PostMapping("/store/{id}")
     public String updateStore(@PathVariable Long id, @ModelAttribute StoreForm form) {
         storeSubmitService.updateStore(id, form);
@@ -47,8 +39,31 @@ public class StoreSubmitController {
     @PostMapping("/suddensale/{id}")
     public String updateSuddenSale(@PathVariable Long id, @ModelAttribute SuddenSaleForm form) {
         storeSubmitService.updateSuddenSale(id, form);
-
         return "redirect:/store";
     }
 
+    @Autowired
+    private StoreSubmitService StoreSubmitService;
+
+    @GetMapping("/suddensale")
+    public String showSuddensale(Model model) {
+        model.addAttribute("Suddensale", StoreSubmitService.showSuddensale());
+        return "saleedit";
+    }
+
+    @PostMapping("/suddensale/switch")
+    public String switchSuddenSale(@RequestParam("id") Long id) {
+        StoreSubmitService.switchSuddenSale(id);
+        return "redirect:/suddensale";
+    }
+
+    // @Autowired
+    // private SuddensaleService suddensaleService;
+
+    // @GetMapping("/suddensale")
+    // public String showSuddensale(Model model) {
+    // List<Suddensale> list = suddensaleService.findAll();
+    // model.addAttribute("Suddensale", list);
+    // return "suddensale";
+    // }
 }

@@ -8,12 +8,14 @@
 </head>
 
 <body>
+  <!-- 店舗名 -->
   <div>
     <h2><span th:text="${Store.name}" class="storeName">店舗名</span></h2>
     <p>ジャンル：<span th:text="${Store.genre}"></span></p>
     <p>住所：<span th:text="${Store.address}"></p>
   </div>
 
+  <!-- SuddenSale情報が必要 -->
   <div>
     <h2>突発セール</h2>
     <div th:each="SuddenSale : {SuddenSales}" class="Suddensale">
@@ -22,6 +24,7 @@
     </div>
   </div>
 
+  <!-- Sale情報が必要 -->
   <div>
     <h2>恒常セール</h2>
     <div th:each="Sale : {Sales}" class="sale">
@@ -30,6 +33,7 @@
     </div>
   </div>
 
+  <!-- 店舗情報が必要 -->
   <table class="store_info">
     <h3>店舗情報</h3>
 
@@ -60,6 +64,8 @@
     <p th:text="${Store.coupon}"></p>
   </div>
 
+
+  <!-- 口コミ情報が必要 -->
   <div class="review_box">
     <h3>口コミ</h3>
     <div class="review_post">

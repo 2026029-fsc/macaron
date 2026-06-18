@@ -1,6 +1,8 @@
 package com.example.macaron;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
 
@@ -17,6 +19,14 @@ public class SaleRepository {
     public List<Saleview> previewSale() {
         return jdbcClient.sql("SELECT Sale.id, Sale.name AS saleName, Store.name AS storeName FROM Sale JOIN Store ON Sale.store_id = Store.id LIMIT 3")
                 .query(Saleview.class)
+                .list();
+    }
+
+    //西山 idで絞り込んでのSale情報の表示(Storeテーブルとの結合なし)
+    public List<Sale> previewSaleForId(Long id) {
+        return jdbcClient.sql("SELECT * FROM Sale WHERE id = :id ")
+                .param("id",id)
+                .query(Sale.class)
                 .list();
     }
 

@@ -1,8 +1,12 @@
 package com.example.macaron;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -53,6 +57,25 @@ public class ViewController {
     }
 
     
-    //
+    //西山 店舗の詳細表示
+    @GetMapping("/store_detail/{id}")
+    public String detail(@PathVariable Long id, Model model){
+        Optional<Store> storeOpt = viewService.StoreDetailId(id);
+        if(storeOpt.isEmpty()){
+            return "redirect:/home";
+        }
+        model.addAttribute("Store",storeOpt.get());
+
+        List<Sale> saleList = viewService.SaleDetailId(id);
+        model.addAttribute("Sales",saleList);
+
+        List<SuddenSale> ssaleList = viewService.SSaleDetailId(id);
+        model.addAttribute("SuddenSales",ssaleList);
+
+        List<Review> review = viewService.reviews(id);
+        model.addAttribute("Review",review);
+
+        return "dotachan/StoreDetail";
+    }
 
 }

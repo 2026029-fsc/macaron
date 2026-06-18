@@ -1,16 +1,23 @@
 package com.example.macaron;
 
 import java.util.List;
+import java.util.Optional;
+
+import org.springframework.jdbc.object.StoredProcedure;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ViewService {
+    private final StoreRepository storeRepository;
     private final SuddenSaleRepository suddensaleRepository;
     private final SaleRepository saleRepository;
+    private final StoreReviewRepository storeReviewRepository;
 
-    public ViewService(SuddenSaleRepository suddensaleRepository, SaleRepository saleRepository) {
+    public ViewService(StoreRepository storeRepository,SuddenSaleRepository suddensaleRepository, SaleRepository saleRepository, StoreReviewRepository storeReviewRepository) {
+        this.storeRepository = storeRepository;
         this.suddensaleRepository = suddensaleRepository;
         this.saleRepository = saleRepository;
+        this.storeReviewRepository = storeReviewRepository;
     }
 
     // Sale情報の表示
@@ -68,5 +75,21 @@ public class ViewService {
             return suddensaleRepository.serchByKeyword(keyword);
         }
     }
+
+
+    //西山 店舗情報の詳細表示 Store、Sale、SSale、Review
+    public Optional<Store> StoreDetailId(Long id) {
+        return storeRepository.previewStore(id);
+    };
+    public List<Sale> SaleDetailId(Long id) {
+        return saleRepository.previewSaleForId(id);
+    };
+    public List<SuddenSale> SSaleDetailId(Long id) {
+        return suddensaleRepository.previewSuddenSaleForId(id);
+    };
+    public List<Review> reviews(Long id){
+        return storeReviewRepository.previewSaleForId(id);
+    }
+
 
 }

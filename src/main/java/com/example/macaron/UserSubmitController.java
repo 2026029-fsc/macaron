@@ -1,7 +1,6 @@
 package com.example.macaron;
 
 import java.util.Optional;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,8 +21,8 @@ public class UserSubmitController {
 
     // localhost:8080/resisterをブラウザ(URL)で入力したときに表示させる
     @GetMapping("/register")
-    public String register(Model model) {
-        model.addAttribute("form",user());
+    public String register() {
+        // model.addAttribute("form",user());//よくわからない？？
         return "dotachan/register";
     }
 
@@ -58,12 +57,8 @@ public class UserSubmitController {
     @PostMapping("/register")
     public String register(//登録するときのメソッド
             @RequestParam String name, @RequestParam String mail, @RequestParam String password,
-            @RequestParam String password2, Model model) {
-        // 登録時にすべての項目が入力されているか
-        // if (name.isBlank() || mail.isBlank() || password.isBlank() || password2.isBlank()) {
-        //     model.addAttribute("errorMessage", "すべての項目を入力してください。");
-        //     return "register";
-        // }
+            @RequestParam String password2) {
+        
         userSubmitService.register(name, mail, password);
         return "redirect:/correct";
 
@@ -74,19 +69,7 @@ public class UserSubmitController {
         // }
         // return "redirect:/correct";
 
-        // UserForm.javaにかいてあるエラーがある場合
-    //     if (user.hasErrors()) {
-    //         return "register"; // エラーがある場合は入力画面に戻す
-    //     }
-    //     return "correct";
-    // }
-
-    // @PostMapping("/register")
-    // public String register(@Validated UserForm userForm, BindingResult result) {
-    // if (result.hasErrors()) {
-    // return "register"; // エラーがある場合は入力画面に戻す
-    // }
-    // return "correct";
-    // }
+      
+   
 }
 }

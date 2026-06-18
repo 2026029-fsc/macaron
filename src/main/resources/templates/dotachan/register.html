@@ -10,23 +10,15 @@
     <p>利用者の登録</p>
     <!-- <p th:if="${errorMessage}" th:text="${errorMessage}"></p> -->
 
-    <form action="@{/correct}" th:object="${form}" method="post" >
+    <form action="/correct"  method="post" >
         <p>ユーザーネームを入力してください。</p>
-        <input type="text" th:field="*{name}" id="name" name="name" placeholder="ユーザーネーム">
-        <span th:errors="*{name}" style="color: red;"></span>
-        
+        <input type="text" id="name" name="name" required placeholder="ユーザーネーム" pattern=".*\S.*" title="ユーザーネームを入力してください。">
         <p>メールアドレスを入力してください。</p>
-        <input type="text" th:field="*{mail}" id="mail" name="mail" placeholder="メールアドレス">
-         <span th:errors="*{mail}" style="color: red;"></span>
-         <!-- <input type="email" th:field="${registerForm.email}" required class="form-control">  -->
-        
+        <input type="text" id="mail" name="mail" required placeholder="メールアドレス" pattern=".*\S.*" title="メールアドレスを入力してください。">
          <p>パスワードを入力してください。</p>
-        <input type="password" th:field="*{password}" id="password" name="password" placeholder="パスワード">
-        <span th:errors="*{password}" style="color: red;"></span>
-
+        <input type="password" id="password" name="password" required placeholder="パスワード" pattern=".*\S.*" title="パスワードを入力してください。">
         <p>パスワードを入力してください。(確認用)</p>
-        <input type="password" th:field="*{password2}"id="password2" name="password2" placeholder="パスワード"><br>
-        <span th:errors="*{password2}" style="color: red;"></span>
+        <input type="password" id="password2" name="password2" required placeholder="パスワード" pattern=".*\S.*" title="パスワードを入力してください。"><br>
         <button type="submit">登録</button>
     </form>
 

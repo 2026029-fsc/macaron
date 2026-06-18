@@ -10,11 +10,11 @@
     <button th:if="${session.username == null && session.userEmail == null}" class="button"onclick="location.href='/ippanlogin'">一般ユーザーログイン</button>
 
     <button th:if="${session.userEmail != null}" class="button" onclick="location.href='/mypage'">マイページ</button>
-    <button th:if="${session.userEmail != null}" class="button" onclick="location.href='/logout'">ログアウト</button>
+    <button th:if="${session.userEmail != null}" class="button" onclick="location.href='/home'">ログアウト</button>
 
     <button th:if="${session.storeEmail != null}" class="button" onclick="location.href='/toppatu'">突発セール編集</button>
     <button th:if="${session.storeEmail != null}" class="button"onclick="location.href='/mypage_coupon'">マイページ・クーポン編集</button>
-    <button th:if="${session.storeEmail != null}" class="button" onclick="location.href='/logout'">ログアウト</button>
+    <button th:if="${session.storeEmail != null}" class="button" onclick="location.href='/home'">ログアウト</button>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>

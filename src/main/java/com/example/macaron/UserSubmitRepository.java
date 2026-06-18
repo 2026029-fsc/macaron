@@ -12,7 +12,8 @@ public class UserSubmitRepository {
     public UserSubmitRepository(JdbcClient jdbcClient){
         this.jdbcClient = jdbcClient;
     }
-
+    
+    // ユーザー登録
     public void insertUser(String name, String mail, String passwordhash) {
 
         jdbcClient.sql("INSERT INTO User (mail,name,password,reviewed) VALUES (:mail,:name,:password,:reviewed)")
@@ -23,8 +24,8 @@ public class UserSubmitRepository {
         .update();
     }
     // Userのidを選択してそのメールアドレスとユーザーネームとパスワードを表示したい
-    public Optional<User> findById(Long id) {
-        return jdbcClient.sql("SELECT id,mail,name,password FROM User WHERE id=:id")
+    public Optional<User> findById(Long id) { // DBのINTに合わせてIntegerに変更
+        return jdbcClient.sql("SELECT id, mail, name, password, reviewed FROM User WHERE id = :id")
                 .param("id", id)
                 .query(User.class)
                 .optional();
@@ -58,15 +59,6 @@ public class UserSubmitRepository {
             .single();
         return count != null && count > 0;
     }
-
-    // // ログイン認証用：パスワード（ハッシュ）を含むユーザー情報を取得
-    // public Optional<User> findPasswordHash(String mail){
-    //     // User.classに正しくマッピングさせるため、必要なカラム（または全カラム）を取得します
-    //     return jdbcClient.sql("SELECT id, mail, name, password, reviewed FROM User WHERE mail = :mail")
-    //         .param("mail", mail)
-    //         .query(User.class)
-    //         .optional();
-    // }
 
     // メールアドレスからユーザー情報を取得
     public Optional<User> findByMail(String mail){

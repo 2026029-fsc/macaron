@@ -23,27 +23,28 @@ public class StoreSubmitController {
     public String showmystorePage() {
         return "dotachan/mystore";
     }
+
     @GetMapping("/Suddensale")
     public String showsuddensalePage() {
-        return "dotachan/Suddensale";
+        return "dotachan/saleedit";
     }
-    
+
     @PostMapping("/store/{id}")
     public String updateStore(@PathVariable Long id, @ModelAttribute StoreForm form) {
         storeSubmitService.updateStore(id, form);
-        return "redirect:/store";
+        return "redirect:/mystore";
     }
 
     @PostMapping("/sale/{id}")
     public String updateSale(@PathVariable Long id, @ModelAttribute SaleForm form) {
         storeSubmitService.updateSale(id, form);
-        return "redirect:/store";
+        return "redirect:/mystore";
     }
 
     @PostMapping("/suddensale/{id}")
     public String updateSuddenSale(@PathVariable Long id, @ModelAttribute SuddenSaleForm form) {
         storeSubmitService.updateSuddenSale(id, form);
-        return "redirect:/store";
+        return "redirect:/saleedit";
     }
 
     @Autowired

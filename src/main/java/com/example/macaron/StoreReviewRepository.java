@@ -24,4 +24,13 @@ public class StoreReviewRepository {
         .list();
   }
 
+  public void post(Long id, String comments, String evaluation, Integer user_id){
+    jdbcClient.sql("INSERT INTO StoreReview (store_id, comments, evaluation, user_id) VALUES (:store_id, :comments, :evaluation, :user_id)")
+        .param("store_id", id)
+        .param("comments", comments)
+        .param("evaluation", Boolean.parseBoolean(evaluation))
+        .param("user_id", user_id)
+        .update();
+  }
+
 }

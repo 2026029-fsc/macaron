@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -17,44 +18,44 @@ public class ViewController {
         this.viewService = viewService;
     }
 
-    @GetMapping("/home")
-    public String home() {
-    return "dotachan/home";
-    }
+    // @GetMapping("/home")
+    // public String home() {
+    // return "dotachan/home";
+    // }
 
-    @GetMapping("/home")
-    public String saleDetail(@PathVariable Long id, Model model) {
-    Optional<Sale> blogOpt = viewService.findById(id);
-    if (blogOpt.isEmpty()) {
-    return "redirect:/blog";
-    }
-    model.addAttribute("store", StoreOpt.get());
-    return "store/detail";// 戻るHTML
-    }
+    // @GetMapping("/home")
+    // public String saleDetail(@PathVariable Long id, Model model) {
+    // Optional<Sale> blogOpt = viewService.findById(id);
+    // if (blogOpt.isEmpty()) {
+    // return "redirect:/blog";
+    // }
+    // model.addAttribute("store", StoreOpt.get());
+    // return "store/detail";// 戻るHTML
+    // }
 
 
-    //全体サーチ
-    @GetMapping("/home")
-    public String saleDetail(Model model) {
-        model.addAttribute("Sale", viewService.previewSale().getSale());
-        model.addAttribute("SuddenSale", viewService.previewSale().getSsale());
-        return "dotachan/home";
-    }
+    // //全体サーチ
+    // @GetMapping("/home")
+    // public String saleDetail(Model model) {
+    //     model.addAttribute("Sale", viewService.previewSale().getSale());
+    //     model.addAttribute("SuddenSale", viewService.previewSale().getSsale());
+    //     return "dotachan/home";
+    // }
 
-    @GetMapping("/keywordSerch")
-    public String storeSerch(@RequestParam String keyword, Model model) {
-        model.addAttribute("Sale", viewService.saleserchByKeyword(keyword).getSale());
-        model.addAttribute("SuddenSale", viewService.previewSale().getSsale());
-        return "dotachan/home";
-    }
+    // @GetMapping("/keywordSerch")
+    // public String storeSerch(@RequestParam String keyword, Model model) {
+    //     model.addAttribute("Sale", viewService.saleserchByKeyword(keyword).getSale());
+    //     model.addAttribute("SuddenSale", viewService.previewSale().getSsale());
+    //     return "dotachan/home";
+    // }
 
-    //ジャンルサーチ
-    @GetMapping("/genreSerch")
-    public String genreSerch(@RequestParam String genreSerch, Model model) {
-        model.addAttribute("Sale", viewService.serchByGenre(genreSerch).getSale());
-        model.addAttribute("SuddenSale", viewService.previewSale().getSsale());
-        return "dotachan/home";
-    }
+    // //ジャンルサーチ
+    // @GetMapping("/genreSerch")
+    // public String genreSerch(@RequestParam String genreSerch, Model model) {
+    //     model.addAttribute("Sale", viewService.serchByGenre(genreSerch).getSale());
+    //     model.addAttribute("SuddenSale", viewService.previewSale().getSsale());
+    //     return "dotachan/home";
+    // }
 
     
     //西山 店舗の詳細表示
@@ -78,7 +79,6 @@ public class ViewController {
         return "dotachan/StoreDetail";
     }
 
-    @PostMapping("/store_detail/{id}")
-    public String detailpost()
+    
 
 }

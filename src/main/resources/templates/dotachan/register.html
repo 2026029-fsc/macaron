@@ -1,24 +1,42 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <!-- <head th:place="~{fragments/layout1::head('無料会員登録')}"> -->
-    <head>
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>無料会員登録(個人)</title>
 </head>
+
 <body>
     <p>利用者の登録</p>
-    <!-- <p th:if="${errorMessage}" th:text="${errorMessage}"></p> -->
 
-    <form action="/correct"  method="post" >
-        <p>ユーザーネームを入力してください。</p>
-        <input type="text" id="name" name="name" required placeholder="ユーザーネーム" pattern=".*\S.*" title="ユーザーネームを入力してください。">
+    <form th:action="@{/register}" method="post" th:object="${userform}">
+        <!-- ユーザーネーム -->
+        <p>ユーザーネームを入力してください。(30文字以内)</p>
+        <input type="text" id="name" name="name" placeholder="ユーザーネーム" th:field="*{name}">
+        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+        
+        <!-- メールアドレス -->
         <p>メールアドレスを入力してください。</p>
-        <input type="text" id="mail" name="mail" required placeholder="メールアドレス" pattern=".*\S.*" title="メールアドレスを入力してください。">
-         <p>パスワードを入力してください。</p>
-        <input type="password" id="password" name="password" required placeholder="パスワード" pattern=".*\S.*" title="パスワードを入力してください。">
+        <input type="email" id="mail" name="mail" pattern="^[a-zA-Z0-9!-~]+$" title="半角英数字と記号（.@_-）のみで入力してください" required
+            placeholder="メールアドレス" th:field="*{mail}">
+        <span th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}"></span>
+        
+        <!-- パスワード -->
+        <p>パスワードを入力してください。(8文字以上)</p>
+        <input type="password" id="password" name="password" pattern="^[0-9a-zA-Z]+$" placeholder="パスワード"
+            th:field="*{password}">
+        <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+        <!-- ↓パスワードとパスワード確認用が一致するため -->
+        <p th:if="${#fields.hasErrors('passwordValid')}" th:errors="*{passwordValid}"></p>
+
+        <!-- パスワード確認用 -->
         <p>パスワードを入力してください。(確認用)</p>
-        <input type="password" id="password2" name="password2" required placeholder="パスワード" pattern=".*\S.*" title="パスワードを入力してください。"><br>
+        <input type="password" id="password2" name="password2" pattern="^[0-9A-Za-z]+$" placeholder="パスワード"
+            th:field="*{password2}"><br>
+        <span th:if="${#fields.hasErrors('password2')}" th:errors="*{password2}"></span>
+
         <button type="submit">登録</button>
     </form>
 
@@ -26,5 +44,7 @@
     <a href="/subscribe">店舗サブスクの詳細はこちら</a>
     <p>店舗管理の登録</p>
     <p>0120-xxxx-xxxxまで</p>
+
 </body>
+
 </html>

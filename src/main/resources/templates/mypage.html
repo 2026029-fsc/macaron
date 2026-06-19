@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <p>こんにちは。<span th:text="${user.name}"></span>さん</p>
+    <p>こんにちは。<span th:text="${user?.name}?: 'ゲスト'">名前</span>さん</p>
     <p>メールアドレス:<span th:text="${user.mail}"></span></p>
     <p th:if="${user.reviewed==true}">クーポン一覧
     <!-- <table>
@@ -24,3 +24,4 @@
 </body>
 
 </html>
+

@@ -32,19 +32,19 @@ public class StoreSubmitController {
     @PostMapping("/store/{id}")
     public String updateStore(@PathVariable Long id, @ModelAttribute StoreForm form) {
         storeSubmitService.updateStore(id, form);
-        return "redirect:/mystore";
+        return "redirect:/store";
     }
 
     @PostMapping("/sale/{id}")
     public String updateSale(@PathVariable Long id, @ModelAttribute SaleForm form) {
         storeSubmitService.updateSale(id, form);
-        return "redirect:/mystore";
+        return "redirect:/store";
     }
 
     @PostMapping("/suddensale/{id}")
     public String updateSuddenSale(@PathVariable Long id, @ModelAttribute SuddenSaleForm form) {
         storeSubmitService.updateSuddenSale(id, form);
-        return "redirect:/saleedit";
+        return "redirect:/suddensale";
     }
 
     @Autowired

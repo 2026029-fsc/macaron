@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import ch.qos.logback.core.model.Model;
+
 
 // @Controller
 // public class LoginController {
@@ -38,16 +40,30 @@ public class LoginController {
   public String userLogin(@ModelAttribute LoginForm form, HttpSession session, RedirectAttributes redirectAttributes) {
     // ユーザー情報の取得
     if (userSubmitService.authenticate(form.getMail(), form.getPassword())) {
-      User user = userSubmitService.findByMail(form.getMail()).orElse(null);   //メアドから取得
-      
-        session.setAttribute("userId", user.getId());
-        session.setAttribute("userEmail", form.getMail());
-
-        return "redirect:/mypage/" + user.getId();    // 各ユーザーのマイページへリダイレクト
+      User user = userSubmitService.findByMail(form.getMail()).orElse(null);   //メアドで取得
+      session.setAttribute("userId", user.getId());
+      session.setAttribute("userEmail", form.getMail());
+      return "redirect:/mypage"; //+ user.getId();// + user.getId();    // 各ユーザーのマイページへリダイレクト
     }
     redirectAttributes.addFlashAttribute("errorMessage", "ユーザー名かパスワードが違います");
     return "redirect:/userLogin";
 }
+
+
+  @GetMapping("/mypage")
+  public String showMyPage(HttpSession session, Model model) {
+      // セッションからユーザーIDを取得
+      Long userId = (Long) session.getAttribute("userId");
+      
+      if (userId == null) {
+          return "redirect:/userLogin";
+      }
+      
+      return "mypage"; 
+  }
+
+
+
 
   //店舗ログイン
   @GetMapping("/storeLogin")
@@ -73,5 +89,15 @@ public class LoginController {
     session.invalidate();
     return "redirect:/";
   }
-}
 
+
+  @GetMapping("/privacy-policy")
+    public String privacypolicy() {
+        return "/privacy-policy";
+    }
+
+  @GetMapping("/agreement")
+    public String agreement() {
+        return "/agreement";
+  }
+}

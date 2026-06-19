@@ -57,12 +57,7 @@ public class UserSubmitController {
         model.addAttribute("user", userOpt.get());//"user"という箱に詰める
         return "/mypage/{id}";//表示させるhtml
     }
-    // @GetMapping("/mypage/{id}")    //今岡追加
-    // public String showAccountPage(@PathVariable("id") Long userId, Model model) {
-    //     Optional<User> userOpt = userSubmitService.findById(userId);
-    //     model.addAttribute("user", userOpt.get());
-    //     return "redirect:/mypage"+ userOpt.get().getId();
-    // }
+
        @PostMapping("/register")
         public String register(
             @RequestParam String name,

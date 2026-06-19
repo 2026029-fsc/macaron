@@ -7,12 +7,17 @@
 </head>
 
 <body>
+<<<<<<< HEAD
     <!-- <div th:replace="~{header :: common-header}"></div> -->//一時的に消してます
+=======
+    <!-- <div th:replace="~{header :: common-header}"></div> -->//一時的に消してるだけ
+>>>>>>> c7c8c6b59f9dd4999925a0bb2522691a8a74bb3a
     <h3>アカウント情報</h3>
     <div th:each="store : ${Store}">
         <p th:text="${Store.email}">メールアドレス</p>
         <!-- <input type="text" name="title" required placeholder="メールアドレス"><br> -->
     </div>
+<<<<<<< HEAD
     <form th:action="@{/store/{id}(id=${store.id})}" method="post">
         <h3>店舗詳細画面</h3>
         <a>必須項目</a><br>
@@ -26,6 +31,19 @@
             title="支払い方法を入力してください"><br>
         <input type="text" maxlength="100" name="title" required placeholder="ジャンル" pattern=".*\S.*"
             title="ジャンルを入力してください"><br>
+=======
+
+
+
+    <form th:action="@{/store/{id}(id=${id})}" method="post">
+        <h3>店舗詳細画面</h3>
+        <a>必須項目</a><br>
+        <input type="text" name="title" placeholder="店舗名" pattern=".*\S.*" title="店舗名を入力してください"><br>
+        <input type="text" name="title" placeholder="店舗住所 " pattern=".*\S.*" title="店舗住所を入力してください"><br>
+        <input type="text" name="title" placeholder="店舗電話番号" pattern=".*\S.*" title="店舗電話番号を入力してください"><br>
+        <input type="text" name="title" placeholder="支払い方法" pattern=".*\S.*" title="支払い方法を入力してください"><br>
+        <input type="text" name="title" placeholder="ジャンル" pattern=".*\S.*" title="ジャンルを入力してください"><br>
+>>>>>>> c7c8c6b59f9dd4999925a0bb2522691a8a74bb3a
         <a>任意項目</a><br>
         <input type="text" name="title" placeholder="価格帯"><br>
         <input type="text" maxlength="1000" name="title" placeholder="自由記述欄"><br>
@@ -35,10 +53,21 @@
 
         <button type="submit">保存</button>
     </form>
+<<<<<<< HEAD
     <form th:action="@{/sale/{id}(id=${sale.id})}" method="post">
         <h3>恒常セール</h3>
         <input type="text" maxlength="100" name="title" required placeholder="恒常セール名"><br>
         <input type="text" maxlength="1000" name="title" required placeholder="恒常セール内容"><br>
+=======
+    <form th:action="@{/sale/{id}(id=${id})}" method="post">
+        <h3>恒常セール</h3>
+        <input type="text" name="title" required placeholder="恒常セール名">
+        <span th:errors="*{title}" style="color: #f82222;"> </span><br>
+        <input type="text" name="title" required placeholder="恒常セール内容"><br>
+        <input type="text" name="title" required placeholder="恒常セール名"><br>
+        <input type="text" name="title" required placeholder="恒常セール内容"><br>
+
+>>>>>>> c7c8c6b59f9dd4999925a0bb2522691a8a74bb3a
         <button type="submit">保存</button>
     </form>
 

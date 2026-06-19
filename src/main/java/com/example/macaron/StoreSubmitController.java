@@ -24,36 +24,11 @@ public class StoreSubmitController {
     public String showmystorePage() {
         return "dotachan/mystore";
     }
-
-    @GetMapping("/mystore/{id}")
-    public String showmystorePage(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("id", id);
-        return "dotachan/mystore";
-    }
-
-    // @GetMapping("/store/{id}/edit")
-    // public String editForm(@PathVariable Long id, Model model) {
-    //     Optional<Store> bookOpt = StoreSubmitService.findById(id);
-    //     if (storeOpt.isEmpty()) {
-    //         return "redirect:/store";
-    //     }
-    //     Store store = storeOpt.get();
-
-    //     StoreForm form = new StoreForm();
-    //     form.setTitle(store.getTitle());
-    //     form.setPrice(store.getPrice());
-    //     model.addAttribute("storeForm", form);
-    //     model.addAttribute("storeId", id);
-    //     return "store/edit";
+    // @GetMapping("/Suddensale")
+    // public String showsuddensalePage() {
+    //     return "dotachan/Suddensale";
     // }
-
-    // 突発セール編集ページ表示
-    @GetMapping("/saleedit")
-    public String showsaleeditPage() {
-        return "dotachan/saleedit";
-    }
-
-    // 店舗編集機能
+    
     @PostMapping("/store/{id}")
     public String updateStore(@PathVariable Long id, @ModelAttribute StoreForm form) {
         storeSubmitService.updateStore(id, form);
@@ -71,7 +46,7 @@ public class StoreSubmitController {
     @PostMapping("/suddensale")
     public String updateSuddenSale(@PathVariable Long id, @ModelAttribute SuddenSaleForm form) {
         storeSubmitService.updateSuddenSale(id, form);
-        return "redirect:/store" + id;
+        return "redirect:/store";
     }
 
     @Autowired

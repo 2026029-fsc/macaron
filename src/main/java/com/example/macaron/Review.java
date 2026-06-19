@@ -7,7 +7,7 @@ public class Review {
   private final String comments;
   private final boolean evaluation;
 
-  public Review(String name, int store_id, String comments, boolean evaluation) {
+  public Review(String name, Integer store_id, String comments, boolean evaluation) {
     this.name = name;
     this.store_id = store_id;
     this.comments = comments;
@@ -23,9 +23,10 @@ public class Review {
   public boolean getEvaluation(){
     return evaluation;
   }
-  public int getStore_id() {
+  public Integer getStore_id() {
     return store_id;
   }
+
 
 
 }

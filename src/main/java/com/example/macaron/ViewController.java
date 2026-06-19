@@ -20,24 +20,25 @@ public class ViewController {
     // 全体サーチ表示（ホーム）
     // @GetMapping("/home")
     // public String saleDetail(Model model) {
-    //     model.addAttribute("Sale", viewService.previewSale().getSale());
-    //     model.addAttribute("SuddenSale", viewService.previewSale().getSsale());
-    //     model.addAttribute("Store", viewService.previewSale().getStore());
-    //     return "dotachan/home";
+    // model.addAttribute("Sale", viewService.previewSale().getSale());
+    // model.addAttribute("SuddenSale", viewService.previewSale().getSsale());
+    // model.addAttribute("Store", viewService.previewSale().getStore());
+    // return "dotachan/home";
     // }
 
     // キーワードサーチ
     @GetMapping("/keywordSerch")
     // public String storeSerch(@RequestParam String keyword, Model model) {
-    //     model.addAttribute("Sale", viewService.saleserchByKeyword(keyword).getSale());
-    //     model.addAttribute("SuddenSale", viewService.previewSale().getSsale());
-    //     model.addAttribute("Store", viewService.previewSale().getStore());
-    //     return "dotachan/home";
+    // model.addAttribute("Sale",
+    // viewService.saleserchByKeyword(keyword).getSale());
+    // model.addAttribute("SuddenSale", viewService.previewSale().getSsale());
+    // model.addAttribute("Store", viewService.previewSale().getStore());
+    // return "dotachan/home";
     // }
 
     public String storeSerch(@RequestParam String keyword, Model model) {
         List<Storeview> storeOpt = viewService.previewAd();
-        model.addAttribute("Store", storeOpt);
+        model.addAttribute("Storead", storeOpt);
 
         List<Saleview> saleList = viewService.saleserchByKeyword(keyword);
         model.addAttribute("Sale", saleList);
@@ -47,42 +48,78 @@ public class ViewController {
         return "dotachan/home";
     }
 
-
-
     // ジャンルサーチ
-    @GetMapping("/genreSerch")
+    // @GetMapping("/genreSerch")
     // public String genreSerch(@RequestParam String genreSerch, Model model) {
-    //     model.addAttribute("Sale", viewService.serchByGenre(genreSerch).getSale());
-    //     model.addAttribute("SuddenSale", viewService.previewSale().getSsale());
-    //     model.addAttribute("Store", viewService.previewSale().getStore());
-    //     return "dotachan/home";
+    // model.addAttribute("Sale", viewService.serchByGenre(genreSerch).getSale());
+    // model.addAttribute("SuddenSale", viewService.previewSale().getSsale());
+    // model.addAttribute("Store", viewService.previewSale().getStore());
+    // return "dotachan/home";
     // }
 
-    public String genreSerch(@RequestParam String keyword, Model model) {
-        List<Storeview> storeOpt = viewService.previewAd();
-        model.addAttribute("Store", storeOpt);
+    @GetMapping("/genreSerch")
+    public String genreSerch(@RequestParam String genreSerch, Model model) {
+        model.addAttribute("Sale", viewService.serchByGenre(genreSerch).getSale());
+        // model.addAttribute("SuddenSale", viewService.serchByGenre(genreSerch).getSsale());
+        // model.addAttribute("Store", viewService.serchByGenre(genreSerch).getStore());
 
-        List<Saleview> saleList = viewService.saleserchByGenre(keyword);
-        model.addAttribute("Sale", saleList);
+        //広告用店舗
+        List<Storeview> storead = viewService.previewAd();
+        model.addAttribute("Storead", storead);
 
+        // IDの大きい順SuddenSale
         List<SuddenSaleview> suddensaleList = viewService.suddensale();
         model.addAttribute("SuddenSale", suddensaleList);
-        return "dotachan/home";
+
+        // IDの大きい順店舗
+        List<Storeview> sstore = viewService.previewSStorehome();
+        model.addAttribute("SStores", sstore);
+
+
+        return "dotachan/genre";
     }
 
-    // // 店舗詳細表示
-    // @GetMapping("/home/{id}")
-    // public String detail(@PathVariable Long id, Model model) {
-    //     Optional<Storeview> storeOpt = viewService.storeDetailById(id);
-    //     Optional<Saleview> saleOpt = viewService.saleDetailById(id);
-    //     Optional<SuddenSaleview> ssaleOpt = viewService.suddensalDetailById(id);
-    //     if (storeOpt.isEmpty() || saleOpt.isEmpty() || ssaleOpt.isEmpty()) {
-    //         return "redirect:/home";
-    //     }
-    //     model.addAttribute("Store", storeOpt.get());
-    //     model.addAttribute("Sale", saleOpt.get());
-    //     model.addAttribute("SuddenSale", ssaleOpt.get());
-    //     return "dotachan/storeDetail";// 戻るHTML
+    // @GetMapping("/genreSerch")
+    // public String genreSerch(@RequestParam String keyword, Model model) {
+    // List<Storeview> storeOpt = viewService.previewAd();
+    // model.addAttribute("Store", storeOpt);
+
+    // List<Saleview> saleList = viewService.saleserchByGenre(keyword);
+    // model.addAttribute("Sale", saleList);
+
+    // List<SuddenSaleview> suddensaleList = viewService.suddensale();
+    // model.addAttribute("SuddenSale", suddensaleList);
+    // return "dotachan/home";
+    // }
+
+    // @GetMapping("/genreSerch")
+    // public String genreSerch(@RequestParam String genreSerch, Model model) {
+
+    // // List<Saleview> genreSale = viewService.saleserchByGenre(genreSerch);
+    // // model.addAttribute("genreSerch", genreSale);
+
+    // Saledto genreDto = viewService.saleserchByGenre(genreSerch);
+    // model.addAttribute("genreStore", genreDto.getStore());
+    // model.addAttribute("genreSale", genreDto.getSale());
+
+    // // 店舗の広告（ランダム）
+    // List<Storeview> storead = viewService.previewAd();
+    // model.addAttribute("Storead", storead);
+
+    // // 通常のセール
+
+    // // IDの大きい順
+    // List<SuddenSaleview> suddensaleList = viewService.suddensale();
+    // model.addAttribute("SuddenSale", suddensaleList);
+
+    // // IDの小さい順
+    // List<Storeview> store = viewService.previewStorehome();
+    // model.addAttribute("Stores", store);
+
+    // // IDの大きい順
+    // List<Storeview> sstore = viewService.previewSStorehome();
+    // model.addAttribute("SStores", sstore);
+    // return "dotachan/genre";
     // }
 
     // 西山 店舗の詳細表示
@@ -106,21 +143,30 @@ public class ViewController {
         return "dotachan/StoreDetail";
     }
 
-    //迎田祐圭
+    // 迎田祐圭
     @GetMapping("/home")
     public String saleDetail(Model model) {
-        List<Storeview> storeOpt = viewService.previewAd();
-        model.addAttribute("Store", storeOpt);
+        // 店舗の広告（ランダム）
+        List<Storeview> storead = viewService.previewAd();
+        model.addAttribute("Storead", storead);
 
+        // 通常のセール
         List<Saleview> saleList = viewService.sale();
         model.addAttribute("Sale", saleList);
 
+        // IDの大きい順
         List<SuddenSaleview> suddensaleList = viewService.suddensale();
         model.addAttribute("SuddenSale", suddensaleList);
-        
+
+        // IDの小さい順
+        List<Storeview> store = viewService.previewStorehome();
+        model.addAttribute("Stores", store);
+
+        // IDの大きい順
+        List<Storeview> sstore = viewService.previewSStorehome();
+        model.addAttribute("SStores", sstore);
+
         return "dotachan/home";
     }
-
-
 
 }

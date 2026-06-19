@@ -60,12 +60,13 @@
         <tr>
             <th>Sale Name</th>
         </tr>
-        <tr th:each="Sale : ${Sale}" >
-            <td><a th:href="@{/store_detail/{id}(id=${Sale.store_id})}" th:text="${Sale.name}">現在セールは開催されていません</a></td> 
+        <tr th:each="genreSale : ${Sale}" >
+            <td><a th:href="@{/store_detail/{id}(id=${genreSale.id})}" th:text="${genreSale.name}">現在セールは開催されていません</a></td> 
+            <td><a th:href="@{/store_detail/{id}(id=${genreSale.id})}" th:text="${genreSale.contents}">noname</a></td> 
         </tr>
-        <tr th:each="Stores : ${Stores}" >
+        <!-- <tr th:each="Stores : ${Stores}" >
             <td><a th:href="@{/store_detail/{id}(id=${Stores.id})}" th:text="${Stores.name}">noname</a></td>
-        </tr>
+        </tr> -->
     </table>
 
 </body>

@@ -24,11 +24,19 @@ public class SaleRepository {
 
     //Sale情報をジャンル検索
     // public List<Saleview> serchByGenre(String keyword) {
-    //     return jdbcClient.sql("SELECT Sale.id AS id, Sale.name AS saleName, Store.name AS storeName FROM Sale JOIN Store ON Sale.store_id = Store.id WHERE Store.genre LIKE :keyword LIMIT 3")
+    //     return jdbcClient.sql("SELECT * FROM Store WHERE genre LIKE :keyword")
     //             .param("keyword", "%" + keyword + "%")
     //             .query(Saleview.class)
     //             .list();
     // }
+
+    //無理やりSaleviewClassに格納
+    public List<Saleview> dtoserchByGenre(String keyword) {
+        return jdbcClient.sql("SELECT Sale.id AS id, Sale.store_id, Sale.name AS name, Store.name AS contents FROM Store JOIN Sale ON Store.id = Sale.store_id WHERE genre LIKE :keyword")
+                .param("keyword", "%" + keyword + "%")
+                .query(Saleview.class)
+                .list();
+    }
 
     //Sale情報をキーワード検索
     // public List<Saleview> searchByKeyword(String keyword) {
@@ -70,7 +78,7 @@ public class SaleRepository {
 
     //迎田祐圭
     public List<Saleview> previewSale() {
-        return jdbcClient.sql("SELECT * FROM Sale ORDER BY id DESC LIMIT 3")
+        return jdbcClient.sql("SELECT * FROM Sale ORDER BY id LIMIT 3")
                 .query(Saleview.class)
                 .list();
     }

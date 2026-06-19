@@ -1,22 +1,22 @@
 package com.example.macaron;
 
 public class Sale {
-    private final int id;
-    private final int store_id;
+    private final Integer id;
+    private final Integer store_id;
     private final String name;
     private final String contents;
 
-    public Sale(int id, int store_id, String name, String contents) {
+    public Sale(Integer id, Integer store_id, String name, String contents) {
         this.id = id;
         this.store_id = store_id;
         this.name = name;
         this.contents = contents;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
-    public int getStore_id() {
+    public Integer getStore_id() {
         return store_id;
     }
     public String getName() {

@@ -38,9 +38,14 @@ public class StoreRepository {
     }
     
     //迎田祐圭
-    public List<Storeview> previewStorehome(Long id){
+    public List<Storeview> previewStorehome(){
         return jdbcClient.sql("SELECT * FROM Store LIMIT 3")
-            .param("id",id)
+            .query(Storeview.class)
+            .list();
+    }
+
+    public List<Storeview> previewSStorehome(){
+        return jdbcClient.sql("SELECT * FROM Store ORDER BY id DESC LIMIT 3")
             .query(Storeview.class)
             .list();
     }

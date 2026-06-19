@@ -29,27 +29,45 @@ public class ViewService {
     // };
 
     // Sale情報をジャンル検索
-    // public Saledto serchByGenre(String keyword) {
+    public Saledto serchByGenre(String keyword) {
+        if (keyword == null || keyword.isBlank()) {
+            List<Saleview> sale = saleRepository.previewSale();
+            List<SuddenSaleview> ssale = suddensaleRepository.previewSuddenSale();
+            List<Storeview> store = storeRepository.previewAd();
+            return new Saledto(sale, ssale, store);
+        } else {
+            List<Saleview> sale = saleRepository.dtoserchByGenre(keyword);
+            List<SuddenSaleview> ssale = suddensaleRepository.previewSuddenSale();
+            List<Storeview> store = storeRepository.previewAd();
+            return new Saledto(sale, ssale, store);
+        }
+    }
+
+    // public Saledto saleserchByGenre(String keyword) {
     //     if (keyword == null || keyword.isBlank()) {
+    //         List<Storeview> store = storeRepository.previewStorehome();
     //         List<Saleview> sale = saleRepository.previewSale();
-    //         List<SuddenSaleview> ssale = suddensaleRepository.previewSuddenSale();
-    //         List<Storeview> store = storeRepository.previewAd();
-    //         return new Saledto(sale, ssale, store);
+    //         return new Saledto(store, sale);
     //     } else {
+    //         List<Storeview> store = storeRepository.previewStorehome();
     //         List<Saleview> sale = saleRepository.serchByGenre(keyword);
-    //         List<SuddenSaleview> ssale = suddensaleRepository.previewSuddenSale();
-    //         List<Storeview> store = storeRepository.previewAd();
-    //         return new Saledto(sale, ssale, store);
+    //         return new Saledto(store, sale);
     //     }
     // }
 
-    public List<Saleview> saleserchByGenre(String keyword) {
-        if (keyword == null || keyword.isBlank()) {
-            return saleRepository.previewSale();
-        } else {
-            return saleRepository.searchByKeyword(keyword);
-        }
-    }
+    // public Saledto saleserchByGenre(String keyword) {
+    //     if (keyword == null || keyword.isBlank()) {
+    //         List<Storeview> store = storeRepository.previewStorehome();
+    //         List<Saleview> sale = saleRepository.previewSale();
+    //         // return saleRepository.previewSale();
+    //         return new Saledto(store, sale);
+    //     } else {
+    //         List<Storeview> store = storeRepository.previewStorehome();
+    //         // return  saleRepository.dtoserchByGenre(keyword);
+    //         List<Saleview> sale = saleRepository.dtoserchByGenre(keyword);
+    //         return new Saledto(store, sale);
+    //     }
+    // }
 
     // Sale情報をキーワード検索
     // public Saledto saleserchByKeyword(String keyword) {
@@ -136,5 +154,12 @@ public class ViewService {
     public List<Storeview> previewAd() {
         return storeRepository.previewAd();
     };
+    public List<Storeview> previewStorehome() {
+        return storeRepository.previewStorehome();
+    }
+
+    public List<Storeview> previewSStorehome() {
+        return storeRepository.previewSStorehome();
+    }
 
 }

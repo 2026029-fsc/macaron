@@ -26,7 +26,7 @@ public class UserSubmitController {
     // localhost:8080/resisterをブラウザで入力。
     @PostMapping("/correct")
     public String userRegister(@ModelAttribute UserForm form, Model model) { // 入力した値をModelにわたす。
-   // 今岡変更
+    // 今岡変更
         // // パスワードの一致チェック 
         // if (!form.getPassword().equals(form.getPassword2())) {
         //     model.addAttribute("passError", "パスワードと確認用パスワードが一致しません。");

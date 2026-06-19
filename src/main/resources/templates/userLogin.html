@@ -4,23 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/loginStyle.css">
 </head>
 <body>
+<div class = login>
+  <div th:replace="~{header/layout :: head(title)}"></div>
 
   <div class = login-form>  
-  <h2>一般会員の方</h2>
+  <h2 class = login-title>一般会員の方</h2>
 
   <form action="/userLogin" method="post">
-    <p><label for="mail">メールアドレス:</label>
+    <p><label for="mail">メールアドレス</label>
     <input type="text" id="mail" name="mail"></p>
 
-    <p><label for="password">パスワード:</label>
+    <p><label for="password">パスワード</label>
     <input type="password" id="password" name="password"></p>
 <!-- エラーメッセージ -->
     <p th:if="${errorMessage}" th:text="${errorMessage}">エラー</p> 
     
     <p>下記に記載のプライバシーポリシー・規約に同意のうえ以下の「ログイン」を押してください。</p>
-    <button type="submit">ログイン</button>
+    <button type="submit" class="login-button">ログイン</button>
   </form>
 
     <ul>
@@ -30,9 +33,9 @@
   </div>
   
   <div class = login-form>
-  <h2>まだ会員登録がお済でない方</h2>
-    <p><a href="/register" class="new-button">新規会員登録へ</a></p>
+  <h2 class = login-title>まだ会員登録がお済でない方</h2>
+    <p><a href="/register" class="login-button">新規会員登録へ</a></p>
   </div>
-
+</div>
 </body>
 </html>

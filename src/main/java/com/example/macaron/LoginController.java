@@ -60,7 +60,7 @@ public class LoginController {
   User user = userSubmitService.findByMail(email).orElse(null);
 
   model.addAttribute("user", user);//HTML側にuserという名前でデータを渡す
-    return "dotachan/mypage"; 
+    return "mypage"; 
   }
 
   

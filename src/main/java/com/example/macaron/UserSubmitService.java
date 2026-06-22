@@ -22,8 +22,8 @@ public class UserSubmitService {
   }
 
   public Optional<User> findById(Long id) {
-        return userSubmitRepository.findById(id);
-    }
+    return userSubmitRepository.findById(id);
+  }
 
 
     // ハッシュ化して登録したい。。。
@@ -47,6 +47,7 @@ public class UserSubmitService {
     public Optional<User> findByMail(String mail) {
         return userSubmitRepository.findByMail(mail); 
     }
+    
 
      //どのサービスに書くかわからんけど、、、、
     //クーポン一覧を表示する コントローラーから渡されたfindCouponを実行

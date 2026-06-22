@@ -71,6 +71,22 @@ public class ViewController {
         return "dotachan/StoreDetail";
     }
 
-    
+    // 迎田祐圭 ホーム一覧表示
+    @GetMapping("/home")
+    public String saleDetail(Model model) {
+        // 店舗の広告（ランダム）
+        List<Storeview> storead = viewService.previewAd();
+        model.addAttribute("Storead", storead);
+
+        // 通常のセール、店舗表示
+        List<Saleview> saleList = viewService.sale();
+        model.addAttribute("Sale", saleList);
+
+        // IDの大きい順に突発セール、店舗表示
+        List<SuddenSaleview> suddensaleList = viewService.suddensale();
+        model.addAttribute("SuddenSale", suddensaleList);
+
+        return "dotachan/home";
+    }
 
 }

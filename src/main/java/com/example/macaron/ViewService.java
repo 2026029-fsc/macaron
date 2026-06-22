@@ -20,14 +20,6 @@ public class ViewService {
         this.storeReviewRepository = storeReviewRepository;
     }
 
-    // Sale情報の表示
-    // public Saledto previewSale() {
-    //     List<Saleview> sale = saleRepository.previewSale();
-    //     List<SuddenSaleview> ssale = suddensaleRepository.previewSuddenSale();
-    //     List<Storeview> store = storeRepository.previewAd();
-    //     return new Saledto(sale, ssale, store);
-    // };
-
     // Sale情報をジャンル検索
     public Saledto serchByGenre(String keyword) {
         if (keyword == null || keyword.isBlank()) {
@@ -43,47 +35,7 @@ public class ViewService {
         }
     }
 
-    // public Saledto saleserchByGenre(String keyword) {
-    //     if (keyword == null || keyword.isBlank()) {
-    //         List<Storeview> store = storeRepository.previewStorehome();
-    //         List<Saleview> sale = saleRepository.previewSale();
-    //         return new Saledto(store, sale);
-    //     } else {
-    //         List<Storeview> store = storeRepository.previewStorehome();
-    //         List<Saleview> sale = saleRepository.serchByGenre(keyword);
-    //         return new Saledto(store, sale);
-    //     }
-    // }
-
-    // public Saledto saleserchByGenre(String keyword) {
-    //     if (keyword == null || keyword.isBlank()) {
-    //         List<Storeview> store = storeRepository.previewStorehome();
-    //         List<Saleview> sale = saleRepository.previewSale();
-    //         // return saleRepository.previewSale();
-    //         return new Saledto(store, sale);
-    //     } else {
-    //         List<Storeview> store = storeRepository.previewStorehome();
-    //         // return  saleRepository.dtoserchByGenre(keyword);
-    //         List<Saleview> sale = saleRepository.dtoserchByGenre(keyword);
-    //         return new Saledto(store, sale);
-    //     }
-    // }
-
-    // Sale情報をキーワード検索
-    // public Saledto saleserchByKeyword(String keyword) {
-    //     if (keyword == null || keyword.isBlank()) {
-    //         List<Saleview> sale = saleRepository.previewSale();
-    //         List<SuddenSaleview> ssale = suddensaleRepository.previewSuddenSale();
-    //         List<Storeview> store = storeRepository.previewAd();
-    //     return new Saledto(sale, ssale, store);
-    //     } else {
-    //         List<Saleview> sale = saleRepository.searchByKeyword(keyword);
-    //         List<SuddenSaleview> ssale = suddensaleRepository.previewSuddenSale();
-    //         List<Storeview> store = storeRepository.previewAd();
-    //     return new Saledto(sale, ssale, store);
-    //     }
-    // }
-
+    //Sale情報をキーワード検索
     public Saledto saleserchByKeyword(String keyword) {
         if (keyword == null || keyword.isBlank()) {
             List<Saleview> sale = saleRepository.previewSale();
@@ -97,53 +49,6 @@ public class ViewService {
             return new Saledto(sale, ssale, store);
         }
     }
-
-
-    // public List<Saleview> saleserchByKeyword(String keyword) {
-    //     if (keyword == null || keyword.isBlank()) {
-    //         return saleRepository.previewSale();
-    //     } else {
-    //         return saleRepository.searchByKeyword(keyword);
-    //     }
-    // }
-
-    // SuddenSale情報の表示
-    // public List<SuddenSaleview> previewSuddenSale() {
-    //     return suddensaleRepository.previewSuddenSale();
-    // }
-
-    // SuddenSale情報をジャンル検索
-    // public List<SuddenSaleview> storeSuddenSaleSerch(String keyword) {
-    //     if (keyword == null || keyword.isBlank()) {
-    //         return suddensaleRepository.previewSuddenSale();
-    //     } else {
-    //         return suddensaleRepository.serchByGenre(keyword);
-    //     }
-    // }
-
-    // SuddenSaleをキーワード検索
-    // public List<SuddenSaleview> suudensaleserchByKeyword(String keyword) {
-    //     if (keyword == null || keyword.isBlank()) {
-    //         return suddensaleRepository.previewSuddenSale();
-    //     } else {
-    //         return suddensaleRepository.serchByKeyword(keyword);
-    //     }
-    // }
-
-    // //店舗詳細への遷移
-    // public Optional<Storeview> storeDetailById(Long id) {
-    //     return storeRepository.storeDetailById(id);
-    // }
-
-    // //sale店舗詳細への遷移
-    // public Optional<Saleview> saleDetailById(Long id) {
-    //     return saleRepository.saleDetailById(id);
-    // }
-
-    // //suddensale店舗詳細への遷移
-    // public Optional<SuddenSaleview> suddensalDetailById(Long id) {
-    //     return suddensaleRepository.suddensaleDetailById(id);
-    // }
 
     //西山 店舗情報の詳細表示 Store、Sale、SSale、Review
     public Optional<Storeview> StoreDetailId(Long id) {
@@ -160,21 +65,17 @@ public class ViewService {
     }
 
     //迎田祐圭
+    //Sale view
     public List<Saleview> sale() {
         return saleRepository.previewSale();
     }
+    //SuddenSale view
     public List<SuddenSaleview> suddensale() {
         return suddensaleRepository.previewSuddenSale();
     }
+    //Advertisement Store
     public List<Storeview> previewAd() {
         return storeRepository.previewAd();
-    };
-    public List<Storeview> previewStorehome() {
-        return storeRepository.previewStorehome();
-    }
-
-    public List<Storeview> previewSStorehome() {
-        return storeRepository.previewSStorehome();
     }
 
 }

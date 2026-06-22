@@ -1,6 +1,7 @@
 package com.example.macaron;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.tomcat.util.log.SystemLogHandler;
 import org.springframework.jdbc.core.simple.JdbcClient;
@@ -14,16 +15,33 @@ public class StoreRepository {
         this.jdbcClient = jdbcClient;
     }
 
-    public void updateStore(Long id, String email, String name, String address, int phone_number, String payment,
-            String genre,
-            int price_range, String free_desc, String coupon) {
+    // public void updateStore(Integer id, String email, String name, String address, Long phone_number,
+    //         String payment, String genre, Integer price_range, String free_desc, String coupon) {
+    //     jdbcClient.sql(
+    //             "UPDATE Store SET  email = :email, name = :name, address = :address, phone_number = :phone_number, payment = :payment, genre = :genre, price_range = :price_range, free_desc = :free_desc,coupon = :coupon WHERE id = :id")
+    //             .param("id", id)
+    //             .param("email", email)
+    //             .param("name", name)
+    //             .param("address", address)
+    //             .param("phone_number", phone_number)
+    //             .param("payment", payment)
+    //             .param("genre", genre)
+    //             .param("price_range", price_range)
+    //             .param("free_desc", free_desc)
+    //             .param("coupon", coupon)
+    //             .update();
+    // }
+
+    //編集機能
+    public void updateStore(Integer id, String email, String name, String address, Long phone_number,
+            String payment, String genre, Integer price_range, String free_desc, String coupon) {
         jdbcClient.sql(
-                "INSERT INTO Store ( email, name, address, phone_number, payment, genre, price_range, free_desc,coupon) VALUES ( :name, :address, :phone_number, :payment, :genre, :price_range, :free_desc,:coupon)")
-                .param("email", email)
+                "UPDATE Store SET  name = :name, address = :address, phone_number = :phone_number, payment = :payment, genre = :genre, price_range = :price_range, free_desc = :free_desc,coupon = :coupon WHERE id = :id")
+                .param("id",id)
                 .param("name", name)
                 .param("address", address)
                 .param("phone_number", phone_number)
-                .param("patment", payment)
+                .param("payment", payment)
                 .param("genre", genre)
                 .param("price_range", price_range)
                 .param("free_desc", free_desc)
@@ -31,40 +49,55 @@ public class StoreRepository {
                 .update();
     }
 
-    public void updateSale(Long id, int store_id, String name, String contents) {
-        jdbcClient.sql(
-                "INSERT INTO Sale ( store_id, name, contents) VALUES ( :store_id, :name :contents)")
-                .param("store_id", store_id)
+    //Emailを表示するのみ
+    public List<Email> previewEmail(Integer id) {
+        return jdbcClient.sql("SELECT email FROM Store WHERE id = :id")
+        .param("id",id)
+        .query(Email.class)
+        .list();
+    }
+
+    
+//恒常セール
+    public void updateSale(Integer id,String name, String contents) {
+        jdbcClient.sql(" UPDATE Sale SET store_id = :id, name = :name, contents = :contents WHERE id = :id ")
+                .param("id", id)
+                // .param("store_id", store_id)
                 .param("name", name)
                 .param("contents", contents)
                 .update();
 
     }
 
-    public void updateSuddenSale(Long id, int store_id, String name, String contents) {
+    //突発セール
+    public void updateSuddenSale(Integer id, Integer store_id, String name, String contents) {
         jdbcClient.sql(
-                "INSERT INTO SuddenSale (store_id, name, contents) VALUES ( :store_id, :name :contents)")
+                "INSERT INTO SuddenSale (store_id, name, contents) VALUES ( :store_id, :name ,:contents)")
+                .param("id", id)
                 .param("store_id", store_id)
                 .param("name", name)
                 .param("contents", contents)
-                // .param("completed", completed)
                 .update();
     }
 
     public List<SuddenSale> findAll() {
-        return jdbcClient.sql("SELECT id, name ,  completed FROM Suddensale")
+        return jdbcClient.sql("SELECT id,store_id, name , contents,  completed FROM Suddensale")
                 .query(SuddenSale.class)
                 .list();
     }
 
-    public void switchSuddenSale(Long id) {
+    public void switchSuddenSale(Integer id) {
         jdbcClient.sql("UPDATE Suddensale SET completed = NOT completed WHERE id = :id")
                 .param("id", id)
                 .update();
     }
 
-
-
+    public Optional<Store> findById(Integer id) {
+        return jdbcClient.sql("SELECT * FROM Store WHERE id = :id")
+                .param("id", id)
+                .query(Store.class)
+                .optional();
+    }
     // public interface SuddensaleRepository extends JpaRepository<Suddensale, Long>
     // {
     // }

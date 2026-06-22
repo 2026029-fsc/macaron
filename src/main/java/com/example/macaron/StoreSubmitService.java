@@ -1,39 +1,57 @@
 package com.example.macaron;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StoreSubmitService {
+    private final SuddenSaleRepository suddenSaleRepository;
     private final StoreRepository storeRepository;
+    private final SaleRepository saleRepository;
 
-    public StoreSubmitService(StoreRepository storeRepository) {
+    public StoreSubmitService(StoreRepository storeRepository, SaleRepository saleRepository, SuddenSaleRepository suddenSaleRepository) {
         this.storeRepository = storeRepository;
+        this.saleRepository = saleRepository;
+        this.suddenSaleRepository = suddenSaleRepository;
     }
 
-    public void updateStore(Long id, StoreForm form) {
+    public void updateStore(Integer id, StoreForm form) {
         storeRepository.updateStore(id, form.getEmail(), form.getName(), form.getAddress(), form.getPhone_number(),
                 form.getPayment(), form.getGenre(), form.getPrice_range(), form.getCoupon(), form.getFree_desc());
     }
 
-    public void updateSale(Long id, SaleForm form) {
-        storeRepository.updateSale(id, form.getStore_id(), form.getName(), form.getContents());
+    public void updateSale(Integer id, SaleForm form) {
+        storeRepository.updateSale(id,  form.getName(), form.getContents());
     }
 
-    public void updateSuddenSale(Long id, SuddenSaleForm form) {
-        storeRepository.updateSuddenSale(id, form.getStore_id(), form.getName(), form.getContents());
+    //突発セール投稿
+    public void updateSuddenSale(Integer id, SuddenSaleForm form) {
+        suddenSaleRepository.updateSuddenSale(new SuddenSale(null, id, form.getName(), form.getContents(), false));
     }
-
-    @Autowired
-    private StoreRepository StoreRepository;
 
     public List<SuddenSale> showSuddensale() {
-        return StoreRepository.findAll();
+        return storeRepository.findAll();
     }
 
-    public void switchSuddenSale(Long id) {
-        StoreRepository.switchSuddenSale(id);
+    public void switchSuddenSale(Integer id) {
+        storeRepository.switchSuddenSale(id);
+    }
+
+    public Optional<Store> findById(Integer id) {
+        return storeRepository.findById(id);
+    }
+
+    public List<Email> previewEmail(Integer id) {
+        return storeRepository.previewEmail(id);
+    }
+
+    public Optional<IdSale> editSale(Integer id) {
+        return saleRepository.editSale(id);
+    }
+
+    public List<SuddenSaleview> previewSuddenSaleForstoreId(Integer id) {
+        return suddenSaleRepository.previewSuddenSaleForstoreId(id);
     }
     // @Autowired
     // private SuddensaleRepository repository;

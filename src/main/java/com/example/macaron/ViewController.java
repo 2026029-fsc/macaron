@@ -85,7 +85,6 @@ public class ViewController {
         // IDの大きい順に突発セール、店舗表示
         List<SuddenSaleview> suddensaleList = viewService.suddensale();
         model.addAttribute("SuddenSale", suddensaleList);
-
         return "dotachan/home";
     }
 

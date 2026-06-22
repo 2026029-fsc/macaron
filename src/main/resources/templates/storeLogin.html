@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <div th:replace="~{header/layout :: head(title)}"></div>
+
+<div class = login>
+  <div class = login-form>  
+  <h2 class = login-title>店舗会員の方</h2>
+
+  <form action="/storeLogin" method="post">
+    <p><label for="mail">メールアドレス:</label>
+    <input type="text" id="mail" name="mail" class = login-input></p>
+
+    <p><label for="password">パスワード:</label>
+    <input type="password" id="password" name="password" class = login-input></p>
+    
+<!-- エラーメッセージ -->
+    <p th:if="${errorMessage}" th:text="${errorMessage}"></p>
+   
+   <p>下記に記載のプライバシーポリシー・規約に同意のうえ以下の「ログイン」を押してください。</p>
+    <button type="submit" class="login-button">ログイン</button>
+  </form>
+
+    <ul>
+      <li><a href="/privacy-policy">プライバシーポリシー</a></li>
+      <li><a href="/agreement">規約</a></li>
+    </ul>
+  </div>
+  
+  <div class = login-form>  
+  <h2 class = login-title>まだ会員登録がお済でない方</h2>
+    <p><a href="/register" class="login-button">店舗サブスク案内へ</a></p>
+  </div>
+</div>
+</body>
+</html>

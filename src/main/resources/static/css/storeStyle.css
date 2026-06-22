@@ -1,0 +1,18 @@
+hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 32px 0;
+}
+
+.SerchBox {
+    /* justify-content: center; */
+    align-items: center;
+}
+
+h1 {
+    color: chocolate;
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}

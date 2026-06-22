@@ -1,21 +1,21 @@
 package com.example.macaron;
 
 import java.util.Optional;
+import java.util.List;
 
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class UserSubmitRepository {
+public class UserSubmitRepository extends SuperRepository {
     private final JdbcClient jdbcClient;
 
-    public UserSubmitRepository(JdbcClient jdbcClient){
+    public UserSubmitRepository(JdbcClient jdbcClient) {
         this.jdbcClient = jdbcClient;
     }
-    
-    // ユーザー登録
-    public void insertUser(String name, String mail, String passwordhash) {
 
+    //新規会員登録
+    public void insertUser(String name, String mail, String passwordhash) {
         jdbcClient.sql("INSERT INTO User (mail,name,password,reviewed) VALUES (:mail,:name,:password,:reviewed)")
         .param("mail", mail)
         .param("name", name)
@@ -30,25 +30,6 @@ public class UserSubmitRepository {
                 .query(User.class)
                 .optional();
     }
-
-
-    // //mypageに新規ユーザーの情報を追加する
-    // public void mypage(User form){
-    // jdbcClient.sql("INSERT INTO User (mail,name,password,reviewed)VALUES(:mail,:name,:password,:reviewed)")
-    //     .param("mail",form.getMail())
-    //     .param("name",form.getName())
-    //     .param("password",form.getPassword())
-    //     .param("reviewed",form.getReviewed())
-    //     .update();
-    // }
-
-    // //Userのidを選択してそのメールアドレスとユーザーネームとパスワードを表示したい
-    // public Optional <User>findById(Long id){
-    //     return jdbcClient.sql("SELECT id,mail,name,password FROM User WHERE id=:id")
-    //     .param("id",id)    
-    //     .query(User.class)
-    //     .optional();
-    // }
 
 
     // メールアドレスの重複チェック
@@ -67,5 +48,15 @@ public class UserSubmitRepository {
             .query(User.class)
             .optional();
     }
-}
 
+    //クーポン一覧の表示
+    //サービスから渡されたfindByIdCouponを実行
+    public List<Store>findByIdCoupon(){
+        return jdbcClient.sql("SELECT id,name,email,password,address,phone_number,payment,price_range,genre,coupon,free_desc FROM Store")
+        //データベースからいったん全部をとる
+        .query(Store.class)//データベースからとってきた値(クーポン)をStore.classの形にする
+        .list();//データベースからとってきた値(クーポン)をリストにする
+    }
+
+
+}

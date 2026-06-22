@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<!-- <head th:place="~{fragments/layout2::head('マイページ')}"> -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mypage</title>
+</head>
+
+<body>
+    <!-- <p>こんにちは。<span th:text="${user.name}"></span>さん</p> -->
+    <!-- <p>メールアドレス:<span th:text="${user.mail}"></span></p> -->
+
+    <!-- レビューしていたらクーポンを表示th:if -->
+    <!-- クーポン一覧表示をする -->
+    <p th:if="${isReviewed}">クーポン一覧
+    <table>
+        <tr th:each="store:${store}">
+            <td th:text="${store.name}">店の名前</td>
+            <td th:text="${store.coupon}">クーポンの名前</td>
+
+        </tr>
+    </table>
+    </p>
+</body>
+
+</html>

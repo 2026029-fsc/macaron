@@ -2,6 +2,7 @@ package com.example.macaron;
 
 import org.springframework.stereotype.Service;
 import java.util.Optional;
+import java.util.List;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Service
@@ -46,5 +47,10 @@ public class UserSubmitService {
     public Optional<User> findByMail(String mail) {
         return userSubmitRepository.findByMail(mail); 
     }
-}
 
+     //どのサービスに書くかわからんけど、、、、
+    //クーポン一覧を表示する コントローラーから渡されたfindCouponを実行
+    public List<Store>findByIdCoupon(){
+    return userSubmitRepository.findByIdCoupon();//リポジトリにfindByIdCouponをお願いする
+    }
+}

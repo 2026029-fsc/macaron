@@ -2,26 +2,28 @@ package com.example.macaron;
 
 //メール、名前、パスワード、レビューフラグが編集可能
 public class User {
-    private final Integer id;
-    private String mailid;
-    private String name;
-    private String password;
-    private boolean reviewed;
-    
-    public User(Integer id, String mailid, String name, String password, boolean reviewed) {
+    private final Long id;
+    private final String mail;
+    private final String name;
+    private final String password;
+    private final String password2;
+    private final boolean reviewed;
+
+    public User(Long id, String mail, String name, String password, String password2, boolean reviewed) {
         this.id = id;
-        this.mailid = mailid;
+        this.mail = mail;
         this.name = name;
         this.password = password;
         this.reviewed = reviewed;
-
+        this.password2 = password2;
     }
-    public Integer getId() {
+
+    public Long getId() {
         return id;
     }
 
     public String getMail() {
-        return mailid;
+        return mail;
     }
 
     public String getName() {
@@ -32,9 +34,9 @@ public class User {
         return password;
     }
 
-    // public String getPassword2() {
-    //     return password2;
-    // }
+    public String getPassword2() {
+        return password2;
+    }
 
     public boolean getReviewed() {
         return reviewed;

@@ -1,30 +1,29 @@
 package com.example.macaron;
 
+import org.springframework.stereotype.Service;
+import java.util.Optional;
 import java.util.List;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
-
-import java.util.Optional;
-
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
-
 
 @Service
 public class UserSubmitService {
-    private final UserSubmitRepository userSubmitRepository;
-    private final PasswordEncoder passwordEncoder;
+  private final UserSubmitRepository userSubmitRepository;
+  private final StoreReviewRepository storeReviewRepository;
+  private final PasswordEncoder passwordEncoder;
 
-    public UserSubmitService(UserSubmitRepository userSubmintRepository, PasswordEncoder passwordEncoder) {
-        this.userSubmitRepository = userSubmintRepository;
-        this.passwordEncoder = passwordEncoder;
-    }
+  public UserSubmitService(UserSubmitRepository userSubmitRepository,  StoreReviewRepository storeReviewRepository , PasswordEncoder passwordEncoder){
+    this.userSubmitRepository = userSubmitRepository;
+    this.storeReviewRepository = storeReviewRepository;
+    this.passwordEncoder = passwordEncoder;
+  }
 
-    public Optional<User> findById(Long id) {
+  public void post(Long id,StoreReviewForm form){
+    storeReviewRepository.post(id, form.getComments(), form.getevaluation(),2);
+  }
+
+  public Optional<User> findById(Long id) {
         return userSubmitRepository.findById(id);
     }
-
 
     // ハッシュ化して登録したい。。。
     public void register(String name, String mail, String password) {
@@ -49,10 +48,12 @@ public class UserSubmitService {
     // 入力された生パスワードと、DBのハッシュ化パスワードを比較
         return passwordEncoder.matches(rawPassword, user.getPassword());
     }
-
     public Optional<User> findByMail(String mail) {
         return userSubmitRepository.findByMail(mail); 
     }
-}
 
-
+    // マイページのクーポン一覧から、店舗詳細へ
+     public Optional<Store> viewCoupon(Long id) {
+        return userSubmitRepository.viewCoupon(id);
+    }
+    }

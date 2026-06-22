@@ -13,18 +13,20 @@
     <p>メールアドレス:<span th:text="${user.mail}"></span></p>
 
     <!-- レビューをしていたらクーポン一覧を表示する -->
-    <div th:unless="${isReviewed}">
+    <div th:unless="${user.reviewed}">
         <p>レビューを書いたら、クーポンゲット！</p>
     </div>
 
-    <div th:if="${isReviewed}">
-        <p>クーポン一覧</p>
-        <table>
-            <tr th:each="store:${store}">
-                <td th:text="${store.name}">店の名前</td>
-                <td th:text="${store.coupon}">クーポンの名前</td>
-            </tr>
-        </table>
+    <div th:if="${user.reviewed}">
+        <h2>クーポン一覧</h2>
+        <a th:each="store:${store}" th:href="@{/store_detail/{id}(id=${store.id})}">
+            <div>
+                <span th:text="${store.name}">店の名前</span>
+                <span th:text="${store.coupon}">クーポンの名前</span>
+            </div>
+        </a>
+
+
     </div>
 </body>
 

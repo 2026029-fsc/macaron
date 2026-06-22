@@ -37,7 +37,7 @@
         <input type="password" id="password2" name="password2" pattern="^[0-9A-Za-z]+$" placeholder="パスワード"
             th:field="*{password2}"><br>
         <span th:if="${#fields.hasErrors('password2')}" th:errors="*{password2}"></span>
-
+        <p>下記に記載のプライバシーポリシー・規約に同意のうえ以下の「登録」を押してください。</p>
         <button type="submit">登録</button>
     </form>
     <!-- パスワード不一致 -->
@@ -52,6 +52,14 @@
         </ul>
   </div>
 
+
+    <ul>
+        <li><a href="/privacy-policy">プライバシーポリシー</a></li>
+        <li><a href="/argreement">規約</a></li>
+    </ul>
+    </div>
+    <!--今岡追加ここまで  -->
+    
     <p>店舗会員の登録</p>
     <a href="/subscribe">店舗サブスクの詳細はこちら</a>
     <p>店舗管理の登録</p>

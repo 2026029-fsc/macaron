@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
-
 @Controller
 public class UserSubmitController {
     private final UserSubmitService userSubmitService;
@@ -23,7 +22,7 @@ public class UserSubmitController {
     public String register(Model model) {
         model.addAttribute("userform", new UserForm());
         return "dotachan/register";
-    }    
+    }
 
     @PostMapping("/register")
     // 新規会員登録するときのメソッド
@@ -33,7 +32,7 @@ public class UserSubmitController {
         if (result.hasErrors()) {
             return "dotachan/register";
         }
-    // エラーでなければcorrectに行き、入力した値をサービスに渡す↓
+        // エラーでなければcorrectに行き、入力した値をサービスに渡す↓
         userSubmitService.register(form.getName(), form.getMail(), form.getPassword());
         return "redirect:/correct";
     }
@@ -49,17 +48,6 @@ public class UserSubmitController {
     public String subscribe() {
         return "dotachan/subscribe";// 表示させるhtml
     }
-
-    //どのコントローラーに書くかわからんけど、、、、
-    //クーポン一覧を表示する
-    // @GetMapping("/mypage")
-    // public String coupon(Model model) {
-    //     List<Store>store=userSubmitService.findByIdCoupon();//couponという変数 サービスにfindByIdCouponをおねがいする
-    //     model.addAttribute("store",store);//変数couponを"coupon"という箱にいれる
-    //     return "dotachan/mypage"; //マイページを表示
-    //     }
-
-
 
 
 

@@ -9,6 +9,7 @@ SET NAMES utf8mb4;
   
 DROP DATABASE IF EXISTS dotachan;
 CREATE DATABASE dotachan DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+
 USE dotachan;
 
 
@@ -23,12 +24,12 @@ CREATE TABLE User(
 );
 
 CREATE TABLE Store(
-  id        INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id            INT             NOT NULL    AUTO_INCREMENT    PRIMARY KEY,
   name          VARCHAR(100)    NOT NULL,
-  email         VARCHAR(254)    NOT NULL  UNIQUE,
+  email         VARCHAR(254)    NOT NULL    UNIQUE,
   password      VARCHAR(255)    NOT NULL,
   address       VARCHAR(100)    NOT NULL,
-  phone_number  INT NOT NULL,
+  phone_number  BIGINT          NOT NULL,
   payment       VARCHAR(100)    NOT NULL,
   price_range   INT,
   genre         VARCHAR(100)    NOT NULL,
@@ -37,7 +38,7 @@ CREATE TABLE Store(
 );
 
 CREATE TABLE Sale(
-  id            INT             NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id            INT             NOT NULL    AUTO_INCREMENT    PRIMARY KEY,
   store_id      INT             NOT NULL,
   name          VARCHAR(100)    NOT NULL,
   contents      VARCHAR(1000)   NOT NULL,
@@ -45,7 +46,7 @@ CREATE TABLE Sale(
 );
 
 CREATE TABLE Suddensale(
-  id            INT             NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id            INT             NOT NULL    AUTO_INCREMENT    PRIMARY KEY,
   store_id      INT,
   name          VARCHAR(100)    NOT NULL,
   contents      VARCHAR(1000)   NOT NULL,
@@ -54,7 +55,7 @@ CREATE TABLE Suddensale(
 );
 
 CREATE TABLE StoreReview(
-  id            INT             NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id            INT             NOT NULL    AUTO_INCREMENT    PRIMARY KEY,
   store_id      INT,
   comments      VARCHAR(1000)   NOT NULL,
   evaluation    BOOLEAN         NOT NULL,
@@ -80,6 +81,10 @@ VALUES('komo@com', 'komo', '$2y$10$KyVGOWdiYzM20FelSjynGefbVigdTviw4ZkbGE/JotuKe
 
 INSERT INTO Store (name, email, password, address, phone_number, payment, genre)
 VALUE('こもかた', 'komo@example.com', '$2y$10$59st1xNeyQUQ3Uup5V2LT.t6/nP1CgrOevMN2MbD6RGgLpxXWjVay','福岡県', '0120444444','現金', '海鮮'),
+
+
+INSERT INTO Store (name, email, password, address, phone_number, payment, genre)
+VALUE('こもかた', 'komo@example.com', '$2y$10$59st1xNeyQUQ3Uup5V2LT.t6/nP1CgrOevMN2MbD6RGgLpxXWjVay','福岡県', '0120444444','現金', '海鮮'),
   -- takahirokomokata
   ('むかえだ', 'masa@example.com', '$2y$10$2Y3eRJuXHlXw3/aqomj1Re92Yflz89gIwaPLbvsXw1/rIZv2WlwAW','佐賀県', '0120444445','現金', '肉'),
   -- masayoshimukaeda
@@ -89,10 +94,16 @@ VALUE('こもかた', 'komo@example.com', '$2y$10$59st1xNeyQUQ3Uup5V2LT.t6/nP1Cg
 
 
 INSERT INTO Sale(store_id, name, contents)
+
+
+INSERT INTO Sale(store_id, name, contents)
   VALUE(1, 'タイムセール', '一割引き'),
   (2, 'ハッピーアワー', 'ドリンク290円'),
   (3, '夕方セール', '対象商品20%off');
 
+
+
+INSERT INTO Suddensale(store_id, name, contents, completed)
 
 
 INSERT INTO Suddensale(store_id, name, contents, completed)

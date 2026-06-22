@@ -9,7 +9,7 @@ public class User {
     // private final String password2;
     private final boolean reviewed;
 
-    public User(Long id, String mail, String name, String password, boolean reviewed) {
+    public User(Long id, String mail, String name, String password, /*String password2,*/ boolean reviewed) {
         this.id = id;
         this.mail = mail;
         this.name = name;
@@ -39,8 +39,11 @@ public class User {
     //     return password2;
     // }
 
-    public boolean getReviewed() {
+    public boolean isReviewed() {
         return reviewed;
     }
+    // public boolean getReviewed() {
+    //     return reviewed;
+    // }
 
 }

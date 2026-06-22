@@ -32,64 +32,57 @@ public class ViewService {
         if (keyword == null || keyword.isBlank()) {
             List<Saleview> sale = saleRepository.previewSale();
             List<SuddenSaleview> ssale = suddensaleRepository.previewSuddenSale();
-            return new Saledto(sale, ssale);
+            List<Storeview> store = storeRepository.previewAd();
+            return new Saledto(sale, ssale, store);
         } else {
-            List<Saleview> sale = saleRepository.serchByGenre(keyword);
+            List<Saleview> sale = saleRepository.dtoserchByGenre(keyword);
             List<SuddenSaleview> ssale = suddensaleRepository.previewSuddenSale();
-            return new Saledto(sale, ssale);
+            List<Storeview> store = storeRepository.previewAd();
+            return new Saledto(sale, ssale, store);
         }
     }
 
-    // Sale情報をキーワード検索
+    //Sale情報をキーワード検索
     public Saledto saleserchByKeyword(String keyword) {
         if (keyword == null || keyword.isBlank()) {
             List<Saleview> sale = saleRepository.previewSale();
             List<SuddenSaleview> ssale = suddensaleRepository.previewSuddenSale();
-            return new Saledto(sale, ssale);
+            List<Storeview> store = storeRepository.previewAd();
+            return new Saledto(sale, ssale, store);
         } else {
-            List<Saleview> sale = saleRepository.searchByKeyword(keyword);
+            List<Saleview> sale = saleRepository.dtosearchByKeyword(keyword);
             List<SuddenSaleview> ssale = suddensaleRepository.previewSuddenSale();
-            return new Saledto(sale, ssale);
+            List<Storeview> store = storeRepository.previewAd();
+            return new Saledto(sale, ssale, store);
         }
     }
-
-    // SuddenSale情報の表示
-    public List<SuddenSaleview> previewSuddenSale() {
-        return suddensaleRepository.previewSuddenSale();
-    }
-
-    // SuddenSale情報をジャンル検索
-    public List<SuddenSaleview> storeSuddenSaleSerch(String keyword) {
-        if (keyword == null || keyword.isBlank()) {
-            return suddensaleRepository.previewSuddenSale();
-        } else {
-            return suddensaleRepository.serchByGenre(keyword);
-        }
-    }
-
-    // SuddenSaleをキーワード検索
-    public List<SuddenSaleview> suudensaleserchByKeyword(String keyword) {
-        if (keyword == null || keyword.isBlank()) {
-            return suddensaleRepository.previewSuddenSale();
-        } else {
-            return suddensaleRepository.serchByKeyword(keyword);
-        }
-    }
-
 
     //西山 店舗情報の詳細表示 Store、Sale、SSale、Review
-    public Optional<Store> StoreDetailId(Long id) {
+    public Optional<Storeview> StoreDetailId(Long id) {
         return storeRepository.previewStore(id);
     };
-    public List<Sale> SaleDetailId(Long id) {
+    public List<Saleview> SaleDetailId(Long id) {
         return saleRepository.previewSaleForId(id);
     };
-    public List<SuddenSale> SSaleDetailId(Long id) {
+    public List<SuddenSaleview> SSaleDetailId(Long id) {
         return suddensaleRepository.previewSuddenSaleForId(id);
     };
     public List<Review> reviews(Long id){
         return storeReviewRepository.previewSaleForId(id);
     }
 
+    //迎田祐圭
+    //Sale view
+    public List<Saleview> sale() {
+        return saleRepository.previewSale();
+    }
+    //SuddenSale view
+    public List<SuddenSaleview> suddensale() {
+        return suddensaleRepository.previewSuddenSale();
+    }
+    //Advertisement Store
+    public List<Storeview> previewAd() {
+        return storeRepository.previewAd();
+    }
 
 }

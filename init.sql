@@ -81,6 +81,10 @@ VALUES('komo@com', 'komo', '$2y$10$KyVGOWdiYzM20FelSjynGefbVigdTviw4ZkbGE/JotuKe
 
 INSERT INTO Store (name, email, password, address, phone_number, payment, genre)
 VALUE('こもかた', 'komo@example.com', '$2y$10$59st1xNeyQUQ3Uup5V2LT.t6/nP1CgrOevMN2MbD6RGgLpxXWjVay','福岡県', '0120444444','現金', '海鮮'),
+
+
+INSERT INTO Store (name, email, password, address, phone_number, payment, genre)
+VALUE('こもかた', 'komo@example.com', '$2y$10$59st1xNeyQUQ3Uup5V2LT.t6/nP1CgrOevMN2MbD6RGgLpxXWjVay','福岡県', '0120444444','現金', '海鮮'),
   -- takahirokomokata
   ('むかえだ', 'masa@example.com', '$2y$10$2Y3eRJuXHlXw3/aqomj1Re92Yflz89gIwaPLbvsXw1/rIZv2WlwAW','佐賀県', '0120444445','現金', '肉'),
   -- masayoshimukaeda
@@ -90,10 +94,16 @@ VALUE('こもかた', 'komo@example.com', '$2y$10$59st1xNeyQUQ3Uup5V2LT.t6/nP1Cg
 
 
 INSERT INTO Sale(store_id, name, contents)
+
+
+INSERT INTO Sale(store_id, name, contents)
   VALUE(1, 'タイムセール', '一割引き'),
   (2, 'ハッピーアワー', 'ドリンク290円'),
   (3, '夕方セール', '対象商品20%off');
 
+
+
+INSERT INTO Suddensale(store_id, name, contents, completed)
 
 
 INSERT INTO Suddensale(store_id, name, contents, completed)
@@ -108,4 +118,11 @@ INSERT INTO StoreReview(store_id, comments,  evaluation, user_id)
   (2, 'いいね', TRUE, 2),
   (3, 'うま', TRUE, 1);
 
+
+INSERT INTO StoreReview(store_id, comments,  evaluation, user_id)
+  VALUE(1, 'まず', FALSE, 3),
+  (2, 'いいね', TRUE, 2),
+  (3, 'うま', TRUE, 1);
+
+-- =============================================================================
 -- =============================================================================

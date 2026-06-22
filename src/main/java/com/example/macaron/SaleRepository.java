@@ -15,33 +15,41 @@ public class SaleRepository {
         this.jdbcClient = jdbcClient;
     }
 
-    //Sale情報の表示
-    public List<Saleview> previewSale() {
-        return jdbcClient.sql("SELECT Sale.id, Sale.name AS saleName, Store.name AS storeName FROM Sale JOIN Store ON Sale.store_id = Store.id LIMIT 3")
-                .query(Saleview.class)
-                .list();
-    }
-
-    //西山 idで絞り込んでのSale情報の表示(Storeテーブルとの結合なし)
-    public List<Sale> previewSaleForId(Long id) {
-        return jdbcClient.sql("SELECT * FROM Sale WHERE id = :id ")
-                .param("id",id)
-                .query(Sale.class)
-                .list();
-    }
-
-    //Sale情報をジャンル検索
-    public List<Saleview> serchByGenre(String keyword) {
-        return jdbcClient.sql("SELECT Sale.id, Sale.name AS saleName, Store.name AS storeName FROM Sale JOIN Store ON Sale.store_id = Store.id WHERE Store.genre LIKE :keyword LIMIT 3")
+    //無理やりSaleviewClassに格納
+    public List<Saleview> dtoserchByGenre(String keyword) {
+        return jdbcClient.sql("SELECT Sale.id AS id, Sale.store_id, Sale.name AS name, Store.name AS contents FROM Store JOIN Sale ON Store.id = Sale.store_id WHERE genre LIKE :keyword")
                 .param("keyword", "%" + keyword + "%")
                 .query(Saleview.class)
                 .list();
     }
 
     //Sale情報をキーワード検索
-    public List<Saleview> searchByKeyword(String keyword) {
-        return jdbcClient.sql("SELECT Sale.id, Sale.name AS saleName, Store.name AS storeName FROM Sale JOIN Store ON Sale.store_id = Store.id WHERE Sale.name LIKE :keyword")
+
+    public List<Saleview> dtosearchByKeyword(String keyword) {
+        return jdbcClient.sql("SELECT Sale.id AS id, Sale.store_id, Sale.name AS name, Store.name AS contents FROM Sale JOIN Store ON Store.id = Sale.store_id WHERE Sale.name LIKE :keyword")
                 .param("keyword", "%" + keyword + "%")
+                .query(Saleview.class)
+                .list();
+    }
+
+    public Optional<Saleview> saleDetailById(Long id) {
+        return jdbcClient.sql("SELECT * FROM Store WHERE id = :id")
+                .param("id", id)
+                .query(Saleview.class)
+                .optional();
+    }
+
+    //西山 idで絞り込んでのSale情報の表示(Storeテーブルとの結合なし)
+    public List<Saleview> previewSaleForId(Long id) {
+        return jdbcClient.sql("SELECT * FROM Sale WHERE id = :id ")
+                .param("id",id)
+                .query(Saleview.class)
+                .list();
+    }
+
+    //迎田祐圭
+    public List<Saleview> previewSale() {
+        return jdbcClient.sql("SELECT Sale.id AS id, Sale.store_id, Sale.name AS name, Store.name AS contents FROM Store JOIN Sale ON Store.id = Sale.store_id ")
                 .query(Saleview.class)
                 .list();
     }

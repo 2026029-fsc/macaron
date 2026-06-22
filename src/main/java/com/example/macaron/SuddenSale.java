@@ -2,13 +2,13 @@ package com.example.macaron;
 
 //completedのみ編集可能
 public class SuddenSale {
-    private final Long id;
-    private final int store_id;
+    private final Integer id;
+    private final Integer store_id;
     private final String name;
     private final String contents;
     private boolean completed;
 
-    public SuddenSale(Long id, int store_id, String name, String contents, boolean completed) {
+    public SuddenSale(Integer id, Integer store_id, String name, String contents, boolean completed) {
         this.id = id;
         this.store_id = store_id;
         this.name = name;
@@ -16,10 +16,10 @@ public class SuddenSale {
         this.completed = completed;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
-    public int getStore_id() {
+    public Integer getStore_id() {
         return store_id;
     }
     public String getName() {

@@ -7,7 +7,7 @@ public class StoreForm {
     private String email;
     // private String password;
     private String address;
-    private Integer phone_number;
+    private Long phone_number;
     private String payment;
     private Integer price_range;
     private String genre;
@@ -50,7 +50,7 @@ public class StoreForm {
         return address;
     }
 
-    public Integer getPhone_number() {
+    public Long getPhone_number() {
         return phone_number;
     }
 

@@ -33,8 +33,6 @@ public class UserSubmitRepository extends SuperRepository {
         .list();//データベースからとってきた値(クーポン)をリストにする
     }
 
-
-
     // Userのidを選択してそのメールアドレスとユーザーネームとパスワードを表示したい
     public Optional<User> findById(Long id) { // DBのINTに合わせてIntegerに変更
         return jdbcClient.sql("SELECT id, mail, name, password,password2, reviewed FROM User WHERE id = :id")
@@ -42,8 +40,6 @@ public class UserSubmitRepository extends SuperRepository {
                 .query(User.class)
                 .optional();
     }
-
-
 
     // メールアドレスの重複チェック
     public boolean existsByMail(String mail) {

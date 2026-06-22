@@ -12,8 +12,7 @@
     <p>こんにちは。<span th:text="${user?.name}?: 'ゲスト'">名前</span>さん</p>
     <p>メールアドレス:<span th:text="${user.mail}"></span></p>
 
-    <!-- レビューしていたらクーポンを表示th:if -->
-    <!-- クーポン一覧表示をする -->
+    <!-- レビューをしていたらクーポン一覧を表示する -->
     <div th:unless="${isReviewed}">
         <p>レビューを書いたら、クーポンゲット！</p>
     </div>
@@ -24,7 +23,6 @@
             <tr th:each="store:${store}">
                 <td th:text="${store.name}">店の名前</td>
                 <td th:text="${store.coupon}">クーポンの名前</td>
-
             </tr>
         </table>
     </div>

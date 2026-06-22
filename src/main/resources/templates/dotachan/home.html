@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<!-- <head th:replace="~{header/layout :: head('土壇場でキャンセルが来ても安心！ドタチャン！')}"> -->
+
+</head>
+
+<body>
+    <link rel="stylesheet" href="css/home.css">
+
+    <div class="content">
+        <div class="left">
+            <div class="scroll-area">
+                <h2>突発セール情報</h2>
+                <p th:if="${#lists.isEmpty(SuddenSale)}"> 現在突発的なセールは開催されていません</p>
+                <table>
+                    <tr>
+                        <th>SuddenSale Name</th>
+                    </tr>
+                    <!-- <tr th:each="SuddenSale : ${SuddenSale}" >
+            <td><a th:href="@{/store_detail/{id}(id=${SuddenSale.store_id})}" th:text="${SuddenSale.name}">現在セールは開催されていません</a></td> 
+        </tr>
+        <tr th:each="SStores : ${SStores}" >
+            <td><a th:href="@{/store_detail/{id}(id=${SStores.id})}" th:text="${SStores.name}">noname</a></td>
+        </tr> -->
+                    <tr th:each="SuddenSale : ${SuddenSale}" class="store-index">
+                        <td>
+                            <a class="salename" th:href="@{/store_detail/{id}(id=${SuddenSale.id})}"th:text="${SuddenSale.name}">現在セールは開催されていません</a>
+                            <br>
+                            <a class="saletext" th:href="@{/store_detail/{id}(id=${SuddenSale.id})}"th:text="${SuddenSale.contents}">noname</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- キーワード検索 -->
+            <div class="search">
+                <form action="/keywordSerch" method="get">
+                    <input type="text" id="keyword" name="keyword" placeholder="キーワード検索">
+                    <button class="button" type="submit">検索</button>
+                </form>
+
+                <!-- ジャンル検索 -->
+                <form action="/genreSerch" method="get">
+                    <select name="genreSerch" id="genreSerch">
+                        <option value="">選択してください</option>
+                        <option value="焼き鳥">焼き鳥</option>
+                        <option value="肉">肉</option>
+                        <option value="海鮮">海鮮</option>
+                        <option value="イタリアン">イタリアン</option>
+                        <option value="ハンバーガー">ハンバーガー</option>
+                        <option value="野菜">野菜</option>
+                    </select>
+                    <button class="button" type="submit">検索</button>
+                </form>
+            </div>
+
+            <div class="scroll-area">
+                <h2>恒常セール情報</h2>
+                <p th:if="${#lists.isEmpty(Sale)}"> 現在セールは開催されていません</p>
+                <table>
+                    <tr>
+                        <th>Sale Name</th>
+                    </tr>
+                    <tr th:each="Sale : ${Sale}" class="store-index">
+                        <td>
+                            <a class="salename" th:href="@{/store_detail/{id}(id=${Sale.id})}" th:text="${Sale.name}">現在セールは開催されていません</a>
+                            <br>
+                            <a class="saletext" th:href="@{/store_detail/{id}(id=${Sale.id})}" th:text="${Sale.contents}">noname</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- 広告 -->
+        <div class="right">
+            <div th:each="Storead : ${Storead}">
+                <p>↓広告</p>
+                <a th:href="@{/store_detail/{id}(id=${Storead.id})}" th:text="${Storead.name}"></a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

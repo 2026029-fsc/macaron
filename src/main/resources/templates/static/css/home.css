@@ -1,0 +1,115 @@
+.content {
+    display: flex; /*横幅いっぱい*/
+    height: 100%;
+    overflow: hidden;
+}
+
+.right {
+    width: 200px;
+    float: right;
+    border-left: 0.5px solid #ccc; /*横線*/
+    padding-left: 10px;
+}
+
+.left {
+    flex: 1;
+    float: left;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;/* ページ全体のスクロールバーを消す */
+    display: flex;
+    flex-direction: column;/* 縦並びにする */
+    height: 100vh;
+}
+
+/* 上と下のスクロールエリア */
+.scroll-area {
+    height: 40%;
+    overflow-y: auto; /* 特定の部分だけスクロールする */
+    padding: 20px;
+    background-color: #f9f9f9;
+
+    th{
+        text-align: left;
+    }
+
+    a {
+        color: black;
+        text-decoration: none; /*リンクの下線なし*/
+        height: 40px;
+    }
+
+    h2 {
+        margin: 0;
+        margin-left: 40px;
+        margin-bottom: 20px;
+        font-size: 30px;
+        height: 30px;
+    }
+
+    table{
+        width: 100%;
+        border-spacing: 0 10px; /*左右の余白0,上下の余白15px*/
+        margin-bottom: 20px;
+    }
+}
+
+/* 検索バー */
+.search {
+    flex-shrink: 0;
+    background-color: #fff;
+    padding: 15px 20px;
+    border-top: 2px solid #e0e0e0;
+    border-bottom: 2px solid #e0e0e0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    z-index: 10;
+}
+
+/* 検索バーのアイテムのデザイン */
+.search-input {
+    width: 60%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/*共通のボタン*/
+.button {
+    background-color: #ffffff;
+    color: #111111;
+    border: 1px solid #111111;
+    padding: 9px 30px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    border-radius: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.button:hover {
+    background-color: #7dadeb;
+}
+
+.store-index {
+    background-color: rgb(240, 250, 255);
+    padding: 32px 40px;
+
+    td{
+        border: 1px solid #111111;
+    }
+}
+
+.salename{
+    font-size: 20px;
+    font-weight: bold;
+}

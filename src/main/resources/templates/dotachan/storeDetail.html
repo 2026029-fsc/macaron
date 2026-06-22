@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>店舗詳細画面</title>
-</head>
+<header th:replace="~{header/layout :: head('店舗詳細画面')}"></header>
 
 <body>
   <!-- 店舗名 -->
@@ -49,11 +45,14 @@
     </tr>
     <tr>
       <td>ジャンル：</td>
-      <td><p th:text="${Store.genre}"></p></td>
+      <td>
+        <p th:text="${Store.genre}"></p>
+      </td>
     </tr>
     <tr>
       <td>お店からのコメント：</td>
       <td>
+        <p th:if="${#strings.isEmpty(Store.free_desc)}">このお店はコメントを登録していません</p>
         <p th:text="${Store.free_desc}"></p>
       </td>
     </tr>
@@ -61,6 +60,7 @@
 
   <div class="coupon">
     <h3>お得なクーポン</h3>
+    <p th:if="${#strings.isEmpty(Store.coupon)}">このお店は使用可能なクーポンを掲載していません</p>
     <p th:text="${Store.coupon}"></p>
   </div>
 
@@ -68,31 +68,33 @@
   <!-- 口コミ情報が必要 -->
   <div class="review_box">
     <h3>口コミ</h3>
+
     <div class="review_post">
       <fieldset>
         <legend>あなたの評価：</legend>
-        <div>
-          <input type="radio" id="huey" name="drone" value="true" checked />
+        <form th:action="@{/store_detail/{id}(id=${Store.id})}" method="post">
+          <input type="radio" id="post" name="evaluation" value="true" checked />
           <label for="huey">👍</label>
-        </div>
-        <div>
-          <input type="radio" id="louie" name="drone" value="false" />
+
+          <input type="radio" id="post" name="evaluation" value="false" />
           <label for="louie">👎</label>
-        </div>
-        <p><textarea placeholder="このお店はいかがでしたか？" id="post" name="post" class="postbox"></textarea></p>
-        <button type="submit" class="blogbutton">投稿!</button>
+
+          <p><textarea placeholder="このお店はいかがでしたか？" id="post" name="comments" class="postbox"></textarea></p>
+          <button type="submit" class="blogbutton">投稿!</button>
+        </form>
       </fieldset>
-
-      <div th:each="review : ${Review}">
-        <fieldset>
-          <p th:text="${review.name}">投稿者名</p>
-          <p th:if="${review.evaluation==true}">👍</p>
-          <p th:if="${review.evaluation==false}">👎</p>
-          <p th:text="${review.comments}">コメント</p>
-        </fieldset>
-      </div>
-
     </div>
+
+    <div th:each="review : ${Review}">
+      <fieldset>
+        <p th:text="${review.name}">投稿者名</p>
+        <p th:if="${review.evaluation==true}">👍</p>
+        <p th:if="${review.evaluation==false}">👎</p>
+        <p th:text="${review.comments}">コメント</p>
+      </fieldset>
+    </div>
+
+
   </div>
 
 </body>

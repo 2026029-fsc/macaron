@@ -1,6 +1,7 @@
 package com.example.macaron;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
@@ -23,23 +24,6 @@ public class UserSubmitRepository extends SuperRepository {
         .update();
     }
 
-    // Userのidを選択してそのメールアドレスとユーザーネームを表示したい
-    // public Optional<User> findById(Long id) {
-    //     return jdbcClient.sql("SELECT id,mail,name FROM User WHERE id=:id")
-    //             .param("id", id)
-    //             .query(User.class)
-    //             .optional();
-    // }
-
-    // パスワードを取り出す
-    // public Optional<String> findPasswordHash(String mail) {// <String>にする！
-    // return jdbcClient.sql("SELECT password FROM User WHERE mail= :mail")
-    // .param("mail", mail)
-    // // .query(User.class)
-    // .query(String.class)// ここもString!!!
-    // .optional();
-    // }
-
     //クーポン一覧の表示
     //サービスから渡されたfindByIdCouponを実行
     public List<Store>findByIdCoupon(){
@@ -50,4 +34,32 @@ public class UserSubmitRepository extends SuperRepository {
     }
 
 
+
+    // Userのidを選択してそのメールアドレスとユーザーネームとパスワードを表示したい
+    public Optional<User> findById(Long id) { // DBのINTに合わせてIntegerに変更
+        return jdbcClient.sql("SELECT id, mail, name, password,password2, reviewed FROM User WHERE id = :id")
+                .param("id", id)
+                .query(User.class)
+                .optional();
+    }
+
+
+
+    // メールアドレスの重複チェック
+    public boolean existsByMail(String mail) {
+        Integer count = jdbcClient.sql("SELECT COUNT(*) FROM User WHERE mail = :mail")
+            .param("mail", mail)
+            .query(Integer.class)
+            .single();
+        return count != null && count > 0;
+    }
+
+    // メールアドレスからユーザー情報を取得
+    public Optional<User> findByMail(String mail){
+        return jdbcClient.sql("SELECT id, mail, name, password, reviewed FROM User WHERE mail = :mail")
+            .param("mail", mail)    
+            .query(User.class)
+            .optional();
+    }
 }
+

@@ -24,7 +24,7 @@ public class UserForm {
     private String password;
 
     //確認用パスワード
-    @NotBlank(message = "パスワードは必須項目です")
+    @NotBlank(message = "パスワード(確認)は必須項目です")
     private String password2;
 
     //パスワードとパスワード確認用を同じにする

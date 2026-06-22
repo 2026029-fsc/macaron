@@ -1,5 +1,4 @@
 package com.example.macaron;
-import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,12 +52,12 @@ public class UserSubmitController {
 
     //どのコントローラーに書くかわからんけど、、、、
     //クーポン一覧を表示する
-    @GetMapping("/mypage")
-    public String coupon(Model model) {
-        List<Store>store=userSubmitService.findByIdCoupon();//couponという変数 サービスにfindByIdCouponをおねがいする
-        model.addAttribute("store",store);//変数couponを"coupon"という箱にいれる
-        return "dotachan/mypage"; //マイページを表示
-        }
+    // @GetMapping("/mypage")
+    // public String coupon(Model model) {
+    //     List<Store>store=userSubmitService.findByIdCoupon();//couponという変数 サービスにfindByIdCouponをおねがいする
+    //     model.addAttribute("store",store);//変数couponを"coupon"という箱にいれる
+    //     return "dotachan/mypage"; //マイページを表示
+    //     }
 
 
 

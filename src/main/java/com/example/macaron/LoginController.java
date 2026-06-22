@@ -1,6 +1,9 @@
 package com.example.macaron;
 
 import jakarta.servlet.http.HttpSession;
+
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -45,7 +48,10 @@ public class LoginController {
   public String showMyPage(HttpSession session, Model model) {
     // セッションからユーザーIDを取得
     Long userId = (Long) session.getAttribute("userId");
-      
+
+    List<Store> store = userSubmitService.findByIdCoupon();// couponという変数 サービスにfindByIdCouponをおねがいする
+    model.addAttribute("store", store);// 変数couponを"coupon"という箱にいれる  
+
     if (userId == null) {
       return "redirect:/userLogin";
     }
@@ -54,8 +60,10 @@ public class LoginController {
   User user = userSubmitService.findByMail(email).orElse(null);
 
   model.addAttribute("user", user);//HTML側にuserという名前でデータを渡す
-    return "mypage"; 
+    return "dotachan/mypage"; 
   }
+
+  
 
 
   // //店舗ログイン

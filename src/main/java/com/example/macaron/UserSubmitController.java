@@ -17,8 +17,6 @@ public class UserSubmitController {
   // 西山 店舗に対する口コミの送信
   @PostMapping("/store_detail/{id}")
   public String detailpost(@PathVariable Long id, @ModelAttribute StoreReviewForm form) {
-    System.out.println(form.getComments());
-    System.out.println(form.getevaluation());
     userSubmitService.post(id,form);
     return "redirect:/store_detail/{id}";   
   }

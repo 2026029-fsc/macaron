@@ -20,12 +20,12 @@ public class ViewService {
         this.storeReviewRepository = storeReviewRepository;
     }
 
-    // Sale情報の表示
-    public Saledto previewSale() {
-        List<Saleview> sale = saleRepository.previewSale();
-        List<SuddenSaleview> ssale = suddensaleRepository.previewSuddenSale();
-        return new Saledto(sale, ssale);
-    };
+    // // Sale情報の表示
+    // public Saledto previewSale() {
+    //     List<Saleview> sale = saleRepository.previewSale();
+    //     List<SuddenSaleview> ssale = suddensaleRepository.previewSuddenSale();
+    //     return new Saledto(sale, ssale);
+    // };
 
     // Sale情報をジャンル検索
     public Saledto serchByGenre(String keyword) {

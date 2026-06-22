@@ -46,8 +46,15 @@ public class SaleRepository {
     //             .list();
     // }
 
-    public List<Saleview> searchByKeyword(String keyword) {
-        return jdbcClient.sql("SELECT * FROM Sale  WHERE name LIKE :keyword")
+    // public List<Saleview> dtosearchByKeyword(String keyword) {
+    //     return jdbcClient.sql("SELECT * FROM Sale  WHERE name LIKE :keyword")
+    //             .param("keyword", "%" + keyword + "%")
+    //             .query(Saleview.class)
+    //             .list();
+    // }
+
+    public List<Saleview> dtosearchByKeyword(String keyword) {
+        return jdbcClient.sql("SELECT Sale.id AS id, Sale.store_id, Sale.name AS name, Store.name AS contents FROM Sale JOIN Store ON Store.id = Sale.store_id WHERE Sale.name LIKE :keyword")
                 .param("keyword", "%" + keyword + "%")
                 .query(Saleview.class)
                 .list();
@@ -77,8 +84,13 @@ public class SaleRepository {
     }
 
     //迎田祐圭
+    // public List<Saleview> previewSale() {
+    //     return jdbcClient.sql("SELECT * FROM Sale ORDER BY id LIMIT 3")
+    //             .query(Saleview.class)
+    //             .list();
+    // }
     public List<Saleview> previewSale() {
-        return jdbcClient.sql("SELECT * FROM Sale ORDER BY id LIMIT 3")
+        return jdbcClient.sql("SELECT Sale.id AS id, Sale.store_id, Sale.name AS name, Store.name AS contents FROM Store JOIN Sale ON Store.id = Sale.store_id ")
                 .query(Saleview.class)
                 .list();
     }

@@ -84,13 +84,28 @@ public class ViewService {
     //     }
     // }
 
-    public List<Saleview> saleserchByKeyword(String keyword) {
+    public Saledto saleserchByKeyword(String keyword) {
         if (keyword == null || keyword.isBlank()) {
-            return saleRepository.previewSale();
+            List<Saleview> sale = saleRepository.previewSale();
+            List<SuddenSaleview> ssale = suddensaleRepository.previewSuddenSale();
+            List<Storeview> store = storeRepository.previewAd();
+            return new Saledto(sale, ssale, store);
         } else {
-            return saleRepository.searchByKeyword(keyword);
+            List<Saleview> sale = saleRepository.dtosearchByKeyword(keyword);
+            List<SuddenSaleview> ssale = suddensaleRepository.previewSuddenSale();
+            List<Storeview> store = storeRepository.previewAd();
+            return new Saledto(sale, ssale, store);
         }
     }
+
+
+    // public List<Saleview> saleserchByKeyword(String keyword) {
+    //     if (keyword == null || keyword.isBlank()) {
+    //         return saleRepository.previewSale();
+    //     } else {
+    //         return saleRepository.searchByKeyword(keyword);
+    //     }
+    // }
 
     // SuddenSale情報の表示
     // public List<SuddenSaleview> previewSuddenSale() {

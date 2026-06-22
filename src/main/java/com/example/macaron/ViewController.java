@@ -27,7 +27,7 @@ public class ViewController {
     // }
 
     // キーワードサーチ
-    @GetMapping("/keywordSerch")
+    // @GetMapping("/keywordSerch")
     // public String storeSerch(@RequestParam String keyword, Model model) {
     // model.addAttribute("Sale",
     // viewService.saleserchByKeyword(keyword).getSale());
@@ -35,16 +35,25 @@ public class ViewController {
     // model.addAttribute("Store", viewService.previewSale().getStore());
     // return "dotachan/home";
     // }
-
+    @GetMapping("/keywordSerch")
     public String storeSerch(@RequestParam String keyword, Model model) {
-        List<Storeview> storeOpt = viewService.previewAd();
-        model.addAttribute("Storead", storeOpt);
+        model.addAttribute("Sale", viewService.saleserchByKeyword(keyword).getSale());
+        // model.addAttribute("SuddenSale",
+        // viewService.serchByGenre(genreSerch).getSsale());
+        // model.addAttribute("Store", viewService.serchByGenre(genreSerch).getStore());
 
-        List<Saleview> saleList = viewService.saleserchByKeyword(keyword);
-        model.addAttribute("Sale", saleList);
+        // 広告用店舗
+        List<Storeview> storead = viewService.previewAd();
+        model.addAttribute("Storead", storead);
 
+        // IDの大きい順SuddenSale
         List<SuddenSaleview> suddensaleList = viewService.suddensale();
         model.addAttribute("SuddenSale", suddensaleList);
+
+        // IDの大きい順店舗
+        List<Storeview> sstore = viewService.previewSStorehome();
+        model.addAttribute("SStores", sstore);
+
         return "dotachan/home";
     }
 
@@ -60,10 +69,11 @@ public class ViewController {
     @GetMapping("/genreSerch")
     public String genreSerch(@RequestParam String genreSerch, Model model) {
         model.addAttribute("Sale", viewService.serchByGenre(genreSerch).getSale());
-        // model.addAttribute("SuddenSale", viewService.serchByGenre(genreSerch).getSsale());
+        // model.addAttribute("SuddenSale",
+        // viewService.serchByGenre(genreSerch).getSsale());
         // model.addAttribute("Store", viewService.serchByGenre(genreSerch).getStore());
 
-        //広告用店舗
+        // 広告用店舗
         List<Storeview> storead = viewService.previewAd();
         model.addAttribute("Storead", storead);
 
@@ -75,8 +85,7 @@ public class ViewController {
         List<Storeview> sstore = viewService.previewSStorehome();
         model.addAttribute("SStores", sstore);
 
-
-        return "dotachan/genre";
+        return "dotachan/home";
     }
 
     // @GetMapping("/genreSerch")

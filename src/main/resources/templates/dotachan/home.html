@@ -20,11 +20,15 @@
         <tr>
             <th>SuddenSale Name</th>
         </tr>
-        <tr th:each="SuddenSale : ${SuddenSale}" >
+        <!-- <tr th:each="SuddenSale : ${SuddenSale}" >
             <td><a th:href="@{/store_detail/{id}(id=${SuddenSale.store_id})}" th:text="${SuddenSale.name}">現在セールは開催されていません</a></td> 
         </tr>
         <tr th:each="SStores : ${SStores}" >
             <td><a th:href="@{/store_detail/{id}(id=${SStores.id})}" th:text="${SStores.name}">noname</a></td>
+        </tr> -->
+        <tr th:each="SuddenSale : ${SuddenSale}" >
+            <td><a th:href="@{/store_detail/{id}(id=${SuddenSale.id})}" th:text="${SuddenSale.name}">現在セールは開催されていません</a></td> 
+            <td><a th:href="@{/store_detail/{id}(id=${SuddenSale.id})}" th:text="${SuddenSale.contents}">noname</a></td> 
         </tr>
     </table>
 
@@ -61,10 +65,8 @@
             <th>Sale Name</th>
         </tr>
         <tr th:each="Sale : ${Sale}" >
-            <td><a th:href="@{/store_detail/{id}(id=${Sale.store_id})}" th:text="${Sale.name}">現在セールは開催されていません</a></td> 
-        </tr>
-        <tr th:each="Stores : ${Stores}" >
-            <td><a th:href="@{/store_detail/{id}(id=${Stores.id})}" th:text="${Stores.name}">noname</a></td>
+            <td><a th:href="@{/store_detail/{id}(id=${Sale.id})}" th:text="${Sale.name}">現在セールは開催されていません</a></td> 
+            <td><a th:href="@{/store_detail/{id}(id=${Sale.id})}" th:text="${Sale.contents}">noname</a></td> 
         </tr>
     </table>
 

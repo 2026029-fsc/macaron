@@ -1,61 +1,43 @@
-body {
-    color:#34302d;
-    background-color: #fffcf9;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
-}
-
-/* ヘッダー全体のレイアウト */
+/* ヘッダー全体の枠組み */
 .site-header {
-    display: flex;/*display: flex :display:横並びになる */
-    justify-content: space-between; /*space-between: 両端に寄せて、残りの間隔を均等に分配。*/
-    align-items: center; /* 横並びの縦方向の真ん中揃え */
-}
+    width: 100%;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 15px 20px;
+    box-sizing: border-box;
 
-/* サイト名 */
-.site-name {
-    color: #4905aa; 
-    font-size: 1.6rem;
-    font-weight: bold;
-
-    border-left: 8px solid #433fb3;/*border-left で左辺に線*/
-    padding-left: 16px;
-    text-decoration: none; /* リンクの下線を消す */
-}
-.site-name h1 {
-    margin: 0;
-    font-size: 1.6rem;
-}
-
-.header-button {
-    display: flex;/*display: flex :display:横並びになる */
-    gap: 16pt;     /*gap: 16px:各項目の間に16pxの間隔を入れる*/  
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.header-button button {
-    color: #34302d;
-    text-decoration: none; /* リンクの下線をなくす */
-    transition: color 0.3s;
-}
-.header-link button:hover{
-    color: cadetblue;
-}
-hr{
-    border: none;
-    border-top: 1px solid #ddd;
-    margin: 32px 0;
-}
-.nav-list {
     display: flex;
     align-items: center;
-    gap: 16px;
-    list-style: none;
+    justify-content: space-between;
 }
 
-.right-search {
-    margin-left: auto;
+.site-name {
+    text-decoration: none;
+    color: #333333;
 }
 
+.site-name h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+/* 右側のボタン */
+.header-button {
+    display: flex;
+    gap: 10px; 
+    margin-right: 10px;
+}
+
+.button {
+    background-color: #ffffff;
+    color: #111111;
+    border: 1px solid #111111;
+    padding: 12px 35px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    border-radius: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+}

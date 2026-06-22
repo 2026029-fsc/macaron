@@ -8,11 +8,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Service
 public class UserSubmitService {
-
+  private final UserSubmitRepository userSubmitRepository;
   private final StoreReviewRepository storeReviewRepository;
   private final PasswordEncoder passwordEncoder;
 
-  public UserSubmitService(StoreReviewRepository storeReviewRepository , PasswordEncoder passwordEncoder){
+  public UserSubmitService(UserSubmitRepository userSubmitRepository,  StoreReviewRepository storeReviewRepository , PasswordEncoder passwordEncoder){
+    this.userSubmitRepository = userSubmitRepository;
     this.storeReviewRepository = storeReviewRepository;
     this.passwordEncoder = passwordEncoder;
   }

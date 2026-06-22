@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 
-<head th:replace="~{fragments/layout :: head('土壇場でキャンセルが来ても安心！ドタチャン！')}">
+<head th:replace="~{header/layout :: head('土壇場でキャンセルが来ても安心！ドタチャン！')}">
 </head>
 
 <body>
@@ -53,13 +53,8 @@
     </form>
 
     <!-- 広告 -->
-<<<<<<< HEAD
-    <div th:each="Store : ${Store}">
-        <a th:href="@{/store_detail/{id}(id=${Store.id})}" th:text="${Store.name}"></a>
-=======
     <div th:each="Storead : ${Storead}">
         <a th:href="@{/store_detail/{id}(id=${Storead.id})}" th:text="${Storead.name}"></a>
->>>>>>> feature/masayoshi
     </div>
 
 
@@ -70,15 +65,8 @@
             <th>Sale Name</th>
         </tr>
         <tr th:each="Sale : ${Sale}" >
-<<<<<<< HEAD
-            <td><a th:href="@{/store_detail/{id}(id=${Sale.store_id})}" th:text="${Sale.name}">現在セールは開催されていません</a></td>
-        </tr>
-        <tr th:each="Store : ${Store}" ></tr>
-            <td><a th:href="@{/store_detail/{id}(id=${Sale.id})}" th:text="${Store.name}"></a></td>
-=======
             <td><a th:href="@{/store_detail/{id}(id=${Sale.id})}" th:text="${Sale.name}">現在セールは開催されていません</a></td> 
             <td><a th:href="@{/store_detail/{id}(id=${Sale.id})}" th:text="${Sale.contents}">noname</a></td> 
->>>>>>> feature/masayoshi
         </tr>
     </table>
 

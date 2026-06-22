@@ -1,6 +1,9 @@
 package com.example.macaron;
 
 import jakarta.servlet.http.HttpSession;
+
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,7 +24,7 @@ public class LoginController {
   //一般ユーザログイン画面表示
   @GetMapping("/userLogin")
   public String userLoginForm() {
-    return "userLogin";
+    return "dotachan/userLogin";
   }
 
   // ユーザーログイン処理
@@ -43,9 +46,12 @@ public class LoginController {
   // ユーザーマイページの表示
   @GetMapping("/mypage")
   public String showMyPage(HttpSession session, Model model) {
-    // セッションからユーザーIDを取得
+
+     List<Store>store=userSubmitService.findByIdCoupon();//couponという変数 サービスにfindByIdCouponをおねがいする
+        model.addAttribute("store",store);//変数couponを"coupon"という箱にいれる
+          // セッションからユーザーIDを取得
     Long userId = (Long) session.getAttribute("userId");
-      
+
     if (userId == null) {
       return "redirect:/userLogin";
     }
@@ -54,7 +60,7 @@ public class LoginController {
   User user = userSubmitService.findByMail(email).orElse(null);
 
   model.addAttribute("user", user);//HTML側にuserという名前でデータを渡す
-    return "mypage"; 
+    return "dotachan/mypage"; 
   }
 
 
@@ -107,11 +113,11 @@ public class LoginController {
 
   @GetMapping("/privacy-policy")
   public String privacypolicy() {
-      return "/privacy-policy";
+      return "dotachan/privacy-policy";
   }
 
   @GetMapping("/agreement")
   public String agreement() {
-      return "/agreement";
+      return "dotachan/agreement";
   }
 }

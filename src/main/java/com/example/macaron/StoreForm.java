@@ -7,9 +7,9 @@ public class StoreForm {
     private String email;
     // private String password;
     private String address;
-    private int phone_number;
+    private Integer phone_number;
     private String payment;
-    private int price_range;
+    private Integer price_range;
     private String genre;
     private String coupon;
     private String free_desc;
@@ -50,7 +50,7 @@ public class StoreForm {
         return address;
     }
 
-    public int getPhone_number() {
+    public Integer getPhone_number() {
         return phone_number;
     }
 
@@ -58,7 +58,7 @@ public class StoreForm {
         return payment;
     }
 
-    public int getPrice_range() {
+    public Integer getPrice_range() {
         return price_range;
     }
 

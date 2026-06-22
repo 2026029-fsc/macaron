@@ -1,4 +1,5 @@
 package com.example.macaron;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -6,9 +7,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
-
 import org.springframework.web.bind.annotation.GetMapping;
+
 
 @Controller
 public class UserSubmitController {
@@ -24,7 +24,7 @@ public class UserSubmitController {
     public String register(Model model) {
         model.addAttribute("userform", new UserForm());
         return "dotachan/register";
-    }
+    }    
 
     @PostMapping("/register")
     // 新規会員登録するときのメソッド
@@ -50,5 +50,18 @@ public class UserSubmitController {
     public String subscribe() {
         return "dotachan/subscribe";// 表示させるhtml
     }
+
+    //どのコントローラーに書くかわからんけど、、、、
+    //クーポン一覧を表示する
+    @GetMapping("/mypage")
+    public String coupon(Model model) {
+        List<Store>store=userSubmitService.findByIdCoupon();//couponという変数 サービスにfindByIdCouponをおねがいする
+        model.addAttribute("store",store);//変数couponを"coupon"という箱にいれる
+        return "dotachan/mypage"; //マイページを表示
+        }
+
+
+
+
 
 }

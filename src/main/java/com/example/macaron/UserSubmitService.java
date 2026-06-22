@@ -1,6 +1,6 @@
 package com.example.macaron;
 
-import java.util.Optional;
+import java.util.List;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -14,13 +14,19 @@ public class UserSubmitService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public Optional<User> findById(Long id) {
-        return userSubmitRepository.findById(id);
-    }
+    // public Optional<User> findById(Long id) {
+    //     return userSubmitRepository.findById(id);
+    // }
 
     // パスワードをハッシュ化して登録
     public void register(String name, String mail, String password) {
         String passwordhash = passwordEncoder.encode(password);
         userSubmitRepository.insertUser(name, mail, passwordhash);
+    }
+
+     //どのサービスに書くかわからんけど、、、、
+    //クーポン一覧を表示する コントローラーから渡されたfindCouponを実行
+    public List<Store>findByIdCoupon(){
+    return userSubmitRepository.findByIdCoupon();//リポジトリにfindByIdCouponをお願いする
     }
 }

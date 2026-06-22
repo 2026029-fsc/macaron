@@ -16,13 +16,14 @@
         <p>ユーザーネームを入力してください。(30文字以内)</p>
         <input type="text" id="name" name="name" placeholder="ユーザーネーム" th:field="*{name}">
         <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
-        
+
         <!-- メールアドレス -->
         <p>メールアドレスを入力してください。</p>
-        <input type="email" id="mail" name="mail" pattern="^[a-zA-Z0-9!-~]+$" title="半角英数字と記号（.@_-）のみで入力してください" required
+        <input type="email" id="mail" name="mail"
+            pattern="^[a-zA-Z0-9.!#$&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$"
             placeholder="メールアドレス" th:field="*{mail}">
         <span th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}"></span>
-        
+
         <!-- パスワード -->
         <p>パスワードを入力してください。(8文字以上)</p>
         <input type="password" id="password" name="password" pattern="^[0-9a-zA-Z]+$" placeholder="パスワード"

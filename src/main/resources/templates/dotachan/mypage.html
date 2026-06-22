@@ -9,18 +9,20 @@
 </head>
 
 <body>
-    <p>こんにちは。<span th:text="${user.name}"></span>さん</p>
-    <p>メールアドレス:<span th:text="${user.mail}"></span></p>
-    <p th:if="${user.reviewed==true}">クーポン一覧
+    <!-- <p>こんにちは。<span th:text="${user.name}"></span>さん</p> -->
+    <!-- <p>メールアドレス:<span th:text="${user.mail}"></span></p> -->
+
+    <!-- レビューしていたらクーポンを表示th:if -->
+    <!-- クーポン一覧表示をする -->
+    <p th:if="${isReviewed}">クーポン一覧
     <table>
-        <tr th:each="coupon:${coupon}">
-            <td>
-                <a href="@{/mypage/{id}}(id=${mypage.id})" th:text="${mypage.title}">クーポン</a>
-            </td>
+        <tr th:each="store:${store}">
+            <td th:text="${store.name}">店の名前</td>
+            <td th:text="${store.coupon}">クーポンの名前</td>
+
         </tr>
     </table>
     </p>
-    <!-- レビューしていたらクーポンを表示th:if -->
 </body>
 
 </html>

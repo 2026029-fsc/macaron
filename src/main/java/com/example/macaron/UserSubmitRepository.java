@@ -1,6 +1,6 @@
 package com.example.macaron;
 
-import java.util.Optional;
+import java.util.List;
 
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
@@ -13,24 +13,23 @@ public class UserSubmitRepository extends SuperRepository {
         this.jdbcClient = jdbcClient;
     }
 
+    //新規会員登録
     public void insertUser(String name, String mail, String passwordhash) {
-
         jdbcClient.sql("INSERT INTO User (mail,name,password,reviewed) VALUES (:mail,:name,:password,:reviewed)")
         .param("mail", mail)
         .param("name", name)
         .param("password", passwordhash)
         .param("reviewed", false)
         .update();
-        
     }
 
-    // Userのidを選択してそのメールアドレスとユーザーネームとパスワードを表示したい
-    public Optional<User> findById(Long id) {
-        return jdbcClient.sql("SELECT id,mail,name,password FROM User WHERE id=:id")
-                .param("id", id)
-                .query(User.class)
-                .optional();
-    }
+    // Userのidを選択してそのメールアドレスとユーザーネームを表示したい
+    // public Optional<User> findById(Long id) {
+    //     return jdbcClient.sql("SELECT id,mail,name FROM User WHERE id=:id")
+    //             .param("id", id)
+    //             .query(User.class)
+    //             .optional();
+    // }
 
     // パスワードを取り出す
     // public Optional<String> findPasswordHash(String mail) {// <String>にする！
@@ -40,5 +39,15 @@ public class UserSubmitRepository extends SuperRepository {
     // .query(String.class)// ここもString!!!
     // .optional();
     // }
+
+    //クーポン一覧の表示
+    //サービスから渡されたfindByIdCouponを実行
+    public List<Store>findByIdCoupon(){
+        return jdbcClient.sql("SELECT id,name,email,password,address,phone_number,payment,price_range,genre,coupon,free_desc FROM Store")
+        //データベースからいったん全部をとる
+        .query(Store.class)//データベースからとってきた値(クーポン)をStore.classの形にする
+        .list();//データベースからとってきた値(クーポン)をリストにする
+    }
+
 
 }

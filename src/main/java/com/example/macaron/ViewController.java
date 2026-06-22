@@ -2,7 +2,7 @@ package com.example.macaron;
 
 import java.util.List;
 import java.util.Optional;
-import jakarta.servlet.http.HttpSession;
+// import jakarta.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class ViewController {
     private ViewService viewService;
-    private UserSubmitService userSubmitService;
+    // private UserSubmitService userSubmitService;
 
-    public ViewController(ViewService viewService, UserSubmitService userSubmitService) {
+    public ViewController(ViewService viewService/* ,  UserSubmitService userSubmitService */) {
         this.viewService = viewService;
-        this.userSubmitService = userSubmitService;
+        // this.userSubmitService = userSubmitService;
     }
 
     //キーワードサーチ

@@ -18,7 +18,7 @@
         <nav class="header-button">
             <!-- 未ログインの場合 -->
             <button th:if="${session.username == null && session.userEmail == null}" class="button"
-                onclick="location.href='/dotachan/register'">会員登録</button>
+                onclick="location.href='/register'">会員登録</button>
             <button th:if="${session.username == null && session.userEmail == null}" class="button"
                 onclick="location.href='/storeLogin'">店舗ログイン</button>
             <button th:if="${session.username == null && session.userEmail == null}" class="button"

@@ -66,11 +66,11 @@ public class LoginController {
   
 
 
-  // //店舗ログイン
-  // @GetMapping("/storeLogin")
-  // public String storeLoginForm() {
-  //   return "storeLogin";
-  // }
+  //店舗ログイン
+  @GetMapping("/storeLogin")
+  public String storeLoginForm() {
+    return "storeLogin";
+  }
   // // 店舗ログイン処理
   // @PostMapping("/storeLogin")
   // public String storeLogin(@ModelAttribute LoginForm form, HttpSession session, RedirectAttributes redirectAttributes) {

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="static/css/register.css">
+</head>
+
+<body>
+
+    <div th:replace="~{header/layout :: head(title)}"></div>
+    <div class="layout">
+        <div class="left flex">
+            <div class=form>
+                <h2 class=title>一般会員の方</h2>
+
+                <form action="/userLogin" method="post">
+                    <p><label for="mail">メールアドレス</label>
+                        <input type="text" id="mail" name="mail">
+                    </p>
+
+                    <p><label for="password">パスワード</label>
+                        <input type="password" id="password" name="password">
+                    </p>
+                    <!-- エラーメッセージ -->
+                    <p th:if="${errorMessage}" th:text="${errorMessage}">エラー</p>
+
+                    <p>下記に記載のプライバシーポリシー・規約に同意のうえ以下の「ログイン」を押してください。</p>
+                    <button type="submit" class="button">ログイン</button>
+                </form>
+
+                <ul>
+                    <li><a href="/privacy-policy">プライバシーポリシー</a></li>
+                    <li><a href="/agreement">規約</a></li>
+                </ul>
+            </div>
+
+            <div class=form>
+                <h2 class=login-title>まだ会員登録がお済でない方</h2>
+                <p><a href="/register" class="login-button">新規会員登録へ</a></p>
+            </div>
+        </div>
+
+        <!-- 広告 -->
+        <div class="right">
+            <div th:each="Storead : ${Storead}">
+                <p>↓広告</p>
+                <a th:href="@{/store_detail/{id}(id=${Storead.id})}" th:text="${Storead.name}"></a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

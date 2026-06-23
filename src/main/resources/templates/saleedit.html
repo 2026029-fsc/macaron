@@ -5,7 +5,7 @@
 </head>
 
 <body>
-    <form th:action="@{/suddensalereg/{id}(id=${id})}" method="post">
+    <form th:action="@{/suddensalereg/{id}(id=${suddensale[0].store_id})}" method="post">
         <h3>突発セール登録</h3>
         <input type="text" id="name" name="name" required placeholder="突発セール名"><br>
         <input type="text" id="contents" name="contents" required placeholder="内容"><br>
@@ -21,8 +21,8 @@
         </tr>
         <tr th:each="suddensale : ${suddensale}">
             <td th:text="${suddensale.name}">こころ</td>
-            <form th:action="@{/saleedit/switch/{id}(id=${suddensale.id})}" method="post" style="display:inline;">
-                <input type="hidden" id ="id" name="id" th:value="${suddensale.id}" />
+            <form th:action="@{/saleedit/switch/{id}(id=${suddensale.store_id})}" method="post" style="display:inline;">
+                <input type="hidden" id ="id" name="id" th:value="${suddensale.store_id}" />
                 <button type="submit">完了</button>
             </form>
         </tr>

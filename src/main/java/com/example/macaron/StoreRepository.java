@@ -87,7 +87,7 @@ public class StoreRepository {
     }
 
     public void switchSuddenSale(Integer id) {
-        jdbcClient.sql("UPDATE Suddensale SET completed = NOT completed WHERE id = :id")
+        jdbcClient.sql("UPDATE Suddensale SET completed = NOT completed WHERE store_id = :id")
                 .param("id", id)
                 .update();
     }

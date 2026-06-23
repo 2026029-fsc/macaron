@@ -49,7 +49,7 @@ public class SuddenSaleRepository {
     }
 
     public List<SuddenSaleview> previewSuddenSaleForstoreId(Integer id) {
-        return jdbcClient.sql("SELECT * FROM Suddensale WHERE store_id = :id ")
+        return jdbcClient.sql("SELECT * FROM Suddensale WHERE store_id = :id AND completed = false ORDER BY Suddensale.id DESC")
                 .param("id", id)
                 .query(SuddenSaleview.class)
                 .list();

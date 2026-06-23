@@ -125,7 +125,8 @@ public class StoreSubmitController {
         return "redirect:/saleedit/" + id;
     }
 
-    @PostMapping("/suddensale/switch/{store_id}")
+    //突発セール完了切り替え
+    @PostMapping("/saleedit/switch/{store_id}")
     public String switchSuddenSale(@RequestParam Integer id) {
         storeSubmitService.switchSuddenSale(id);
         return "redirect:/saleedit/" + id;

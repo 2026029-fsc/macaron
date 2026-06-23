@@ -5,6 +5,9 @@
 </head>
 
 <body>
+    <header>
+        <a th:href="@{/saleedit/{id}(id=${id})}">突発セール編集</a>
+    </header>
     <h3>アカウント情報</h3>
     <div th:each="email : ${email}">
         <p th:text="${email.email}">メールアドレス</p>

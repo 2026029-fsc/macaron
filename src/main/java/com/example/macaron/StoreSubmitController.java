@@ -116,14 +116,19 @@ public class StoreSubmitController {
 
     // 突発セール表示
     @GetMapping("/saleedit/{id}")
-    public String showSuddensale(@PathVariable Integer id, Model model) {
+    public String showSuddensale(@PathVariable Integer id, Model model, HttpSession session) {
+        Integer storeId = (Integer) session.getAttribute("storeId");
+        if (storeId == null) {
+            return "redirect:/storeLogin";
+        }
         List<SuddenSaleview> suddensale = storeSubmitService.previewSuddenSaleForstoreIdfalse(id);
         List<SuddenSaleview> ssuddensale = storeSubmitService.previewSuddenSaleForstoreId(id);
+        model.addAttribute("Storeid", id);
         model.addAttribute("suddensale", suddensale);
         model.addAttribute("ssuddensale", ssuddensale);// store_idがすべてあてはまるもの
         // model.addAttribute("storeId", id);
         // model.addAttribute("suddensaleList", storeSubmitService.showSuddensale());
-        return "/saleedit/"+id;
+        return "/saleedit";
     }
 
     // 突発セール登録

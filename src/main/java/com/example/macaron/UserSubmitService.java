@@ -53,6 +53,7 @@ public class UserSubmitService {
     // 入力された生パスワードと、DBのハッシュ化パスワードを比較
         return passwordEncoder.matches(rawPassword, user.getPassword());
     }
+    
     public Optional<User> findByMail(String mail) {
         return userSubmitRepository.findByMail(mail); 
     }

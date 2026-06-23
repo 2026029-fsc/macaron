@@ -59,15 +59,22 @@
   </table>
 
   <!-- レビューをしていたらクーポン一覧を表示する -->
-  <div th:unless="${user?.reviewed}">
+  <div th:if="${user == null}">
     <h3>お得なクーポン</h3>
     <p>ログインしてレビューを書いたら、クーポンゲット！</p>
   </div>
 
-  <div th:if="${user?.reviewed}" class="coupon">
-    <h3>お得なクーポン</h3>
-    <p th:if="${#strings.isEmpty(Store.coupon)}">このお店は使用可能なクーポンを掲載していません</p>
-    <p th:text="${Store.coupon}"></p>
+  <div th:if="${user != null}">
+    <div th:unless="${user.reviewed}">
+      <h3>お得なクーポン</h3>
+      <p>レビューを書いたら、クーポンゲット！</p>
+    </div>
+
+    <div th:if="${user.reviewed}" class="coupon">
+      <h3>お得なクーポン</h3>
+      <p th:if="${#strings.isEmpty(Store.coupon)}">このお店は使用可能なクーポンを掲載していません</p>
+      <p th:unless="${#strings.isEmpty(Store.coupon)}" th:text="${Store.coupon}"></p>
+    </div>
   </div>
 
 
@@ -75,7 +82,11 @@
   <div class="review_box">
     <h3>口コミ</h3>
 
-    <div class="review_post">
+    <div th:if="${user == null}">
+      <p>ログインするとレビューが書けるようになります！</p>
+    </div>
+
+    <div th:if="${user != null}" class="review_post">
       <fieldset>
         <legend>あなたの評価：</legend>
         <form th:action="@{/store_detail/{id}(id=${Store.id})}" method="post">
@@ -99,7 +110,6 @@
         <p th:text="${review.comments}">コメント</p>
       </fieldset>
     </div>
-
 
   </div>
 

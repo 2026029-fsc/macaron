@@ -1,5 +1,7 @@
 package com.example.macaron;
 
+import java.util.Optional;
+
 //import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -33,7 +36,7 @@ public class UserSubmitController {
   @PostMapping("/register")
   // 新規会員登録するときのメソッド
   // 入力内容でエラーになるとregisterに戻す
-  public String register(@Validated @ModelAttribute("userform") UserForm form, BindingResult result, Model model) {
+  public String register(@Validated @ModelAttribute("userform") UserForm form, BindingResult result, Model model, RedirectAttributes redirectAttributes) {
     // model.addAttribute("UserForm", user);
     if (result.hasErrors()) {
       return "dotachan/register";
@@ -44,12 +47,18 @@ public class UserSubmitController {
     }
     // エラーでなければcorrectに行き、入力した値をサービスに渡す↓
     userSubmitService.register(form.getName(), form.getMail(), form.getPassword());
+    Optional<User> registeredUser = userSubmitService.findByMail(form.getMail()); 
+    redirectAttributes.addFlashAttribute("user", registeredUser);
     return "redirect:/correct";
   }
 
   // localhost:8080/correctをブラウザで入力
+  // @postmapping /register のaddFlashAttribute によりModelには既にuserを格納済み
   @GetMapping("/correct")
-  public String correct() {
+  public String correct(Model model) {
+    if (!model.containsAttribute("user")) {
+        return "redirect:/register"; 
+    }
     return "dotachan/correct";// 表示させるhtml
   }
 

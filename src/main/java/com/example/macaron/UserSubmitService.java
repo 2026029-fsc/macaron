@@ -57,24 +57,8 @@ public class UserSubmitService {
         return userSubmitRepository.viewCoupon(id);
     }
 
-    //すでに登録済みのユーザーをはじく！
-    // public Optional<User> existByMail(String mail) {
-    //     // Optional<User> userOpt = userSubmitRepository.existByMail(mail);
-    //     // if (userOpt.isPresent()) {
-    //     if (userSubmitRepository.existByMail(mail)) {
-    //         return 
-    //         ("このメールアドレスは既に登録されています。");
-    //     }
-    //     return userSubmitRepository.existByMail(mail); 
-    // }
-
     public boolean existsByMail(String mail) {
-        // Optional<User> userOpt = userSubmitRepository.existByMail(mail);
-        // if (userOpt.isPresent()) {
-        // if (userSubmitRepository.existByMail(mail)) {
-        //     return false;
-        //     // ("このメールアドレスは既に登録されています。");
-        // }
+        
         return userSubmitRepository.existsByMail(mail); 
     }
 

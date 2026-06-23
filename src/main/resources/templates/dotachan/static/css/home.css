@@ -14,7 +14,7 @@
 }
 
 .left {
-    
+    margin-right: 220px;
     flex: 1;
     float: left;
 }

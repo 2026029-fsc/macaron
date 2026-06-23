@@ -15,6 +15,14 @@ public class SaleRepository {
         this.jdbcClient = jdbcClient;
     }
 
+    //こも(迎田) セールの編集
+    public Optional<IdSale> editSale(Integer id) {
+        return jdbcClient.sql("SELECT name, contents FROM Sale WHERE store_id = :id")
+        .param("id",id)
+        .query(IdSale.class)
+        .optional();
+    }
+
     //無理やりSaleviewClassに格納
     public List<Saleview> dtoserchByGenre(String keyword) {
         return jdbcClient.sql("SELECT Sale.id AS id, Sale.store_id, Sale.name AS name, Store.name AS contents FROM Store JOIN Sale ON Store.id = Sale.store_id WHERE genre LIKE :keyword")

@@ -15,7 +15,6 @@ public class User {
         this.name = name;
         this.password = password;
         this.reviewed = reviewed;
-        // this.password2 = password2;
     }
 
     public Integer getId() {
@@ -33,11 +32,6 @@ public class User {
     public String getPassword() {
         return password;
     }
-
-    // public String getPassword2() {
-    //     return password2;
-    // }
-
     public boolean getReviewed() {
         return reviewed;
     }

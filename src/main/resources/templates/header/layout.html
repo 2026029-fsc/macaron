@@ -1,39 +1,45 @@
 <!DOCTYPE html>
-<html smlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
+
 
 <header th:fragment="head(title)">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/headerStyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=LINE+Seed+JP&family=Oswald:wght@200..700&family=Playwrite+DE+SAS:wght@100..400&family=Zen+Kaku+Gothic+Antique&family=Zen+Kurenaido&family=Zen+Maru+Gothic&display=swap"
+        rel="stylesheet">
 
 
     <div class="site-header">
         <!-- 共通部分 -->
-         <div class="title">
-        <a class="site-name" href="/"><img th:src="@{/img/ドタチャンロゴ.jpg}" alt="ロゴ"></a>
+        <div class="title">
+            <a class="site-name" href="/home"><img th:src="@{/img/ドタチャンロゴ.jpg}" alt="ロゴ"></a>
         </div>
 
 
         <p>博多の飲食店・小売店・店舗・セール情報</p>
         <nav class="header-button">
             <!-- 未ログインの場合 -->
-            <button th:if="${session.username == null && session.userEmail == null}" class="button"
+            <button th:if="${session.storeEmail == null && session.userEmail == null}" class="button"
                 onclick="location.href='/register'">会員登録</button>
-            <button th:if="${session.username == null && session.userEmail == null}" class="button"
+            <button th:if="${session.storeEmail == null && session.userEmail == null}" class="button"
                 onclick="location.href='/storeLogin'">店舗ログイン</button>
-            <button th:if="${session.username == null && session.userEmail == null}" class="button"
+            <button th:if="${session.storeEmail == null && session.userEmail == null}" class="button"
                 onclick="location.href='/userLogin'">一般ユーザーログイン</button>
 
             <!-- 一般ユーザーでログインしている場合 -->
             <button th:if="${session.userEmail != null}" class="button" onclick="location.href='/mypage'">マイページ</button>
-            <button th:if="${session.userEmail != null}" class="button" onclick="location.href='/home'">ログアウト</button>
+            <button th:if="${session.userEmail != null}" class="button" onclick="location.href='/logout'">ログアウト</button>
 
             <!-- 店舗ユーザーでログインしている場合 -->
             <button th:if="${session.storeEmail != null}" class="button"
-                onclick="location.href='/saleEdit'">突発セール編集</button>
+                onclick="location.href='/saleedit/'">突発セール編集</button>
             <button th:if="${session.storeEmail != null}" class="button"
                 onclick="location.href='/mystore'">マイページ・クーポン編集</button>
-            <button th:if="${session.storeEmail != null}" class="button" onclick="location.href='/home'">ログアウト</button>
+            <button th:if="${session.storeEmail != null}" class="button" onclick="location.href='/logout'">ログアウト</button>
         </nav>
     </div>
 </header>

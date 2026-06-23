@@ -5,7 +5,6 @@
 <link rel="stylesheet" href="/css/home.css">
 
 <body>
-    <h1><a href="/home">ドタチャン</a></h1>
 
     <h2>突発セール情報</h2>
     <p th:if="${#lists.isEmpty(SuddenSale)}"> 現在突発的なセールは開催されていません</p>
@@ -20,8 +19,8 @@
             <td><a th:href="@{/store_detail/{id}(id=${SStores.id})}" th:text="${SStores.name}">noname</a></td>
         </tr> -->
         <tr th:each="SuddenSale : ${SuddenSale}" >
-            <td><a th:href="@{/store_detail/{id}(id=${SuddenSale.id})}" th:text="${SuddenSale.name}">現在セールは開催されていません</a></td> 
-            <td><a th:href="@{/store_detail/{id}(id=${SuddenSale.id})}" th:text="${SuddenSale.contents}">noname</a></td> 
+            <td><a th:href="@{/store_detail/{id}(id=${SuddenSale.store_id})}" th:text="${SuddenSale.name}">現在セールは開催されていません</a></td> 
+            <td><a th:href="@{/store_detail/{id}(id=${SuddenSale.store_id})}" th:text="${SuddenSale.contents}">noname</a></td> 
         </tr>
     </table>
 

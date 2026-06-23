@@ -1,23 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/register.css">
-</head>
+<header th:replace="~{header/layout :: head('ログイン')}"></header>
+<link rel="stylesheet" href="/css/register.css">
 <body>
 <div class = login>
-  <div th:replace="~{header/layout :: head(title)}"></div>
 
   <div class = login-form>  
   <h2 class = login-title>一般会員の方</h2>
 
   <form action="/userLogin" method="post">
-    <p><label for="mail">メールアドレス</label>
+    <p><label for="mail">メールアドレス：</label>
     <input type="text" id="mail" name="mail"></p>
 
-    <p><label for="password">パスワード</label>
+    <p><label for="password">パスワード：</label>
     <input type="password" id="password" name="password"></p>
 <!-- エラーメッセージ -->
     <p th:if="${errorMessage}" th:text="${errorMessage}">エラー</p> 

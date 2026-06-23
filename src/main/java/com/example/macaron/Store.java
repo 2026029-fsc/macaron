@@ -10,9 +10,9 @@ public class Store {
     private final String payment;
     private final Integer price_range;
     private final String genre;
-    private final String coupon;
-    private final String free_desc;
-
+    private String coupon;
+    private String free_desc;
+    
     public Store(Integer id, String name, String email, String password, String address, Long phone_number, String payment,
             Integer price_range, String genre, String coupon, String free_desc) {
         this.id = id;
@@ -27,6 +27,7 @@ public class Store {
         this.coupon = coupon;
         this.free_desc = free_desc;
     }
+   
 
     public Integer getId() {
         return id;

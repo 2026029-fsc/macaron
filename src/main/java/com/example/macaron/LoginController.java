@@ -14,11 +14,11 @@ import org.springframework.ui.Model;
 @Controller
 public class LoginController {
   private final UserSubmitService userSubmitService;
-  // private final StoreSubmitService storeSubmitService;
+  private final StoreSubmitService storeSubmitService;
 
-  public LoginController(UserSubmitService userSubmitService) {// , StoreSubmitService storeSubmitService){
+  public LoginController(UserSubmitService userSubmitService, StoreSubmitService storeSubmitService) {
     this.userSubmitService = userSubmitService;
-    // this.storeSubmitService = storeSubmitService;
+    this.storeSubmitService = storeSubmitService;
   }
 
   // 一般ユーザログイン画面表示
@@ -63,52 +63,54 @@ public class LoginController {
     return "dotachan/mypage";
   }
 
-  // //店舗ログイン
-  // @GetMapping("/storeLogin")
-  // public String storeLoginForm() {
-  // return "storeLogin";
-  // }
-  // // 店舗ログイン処理
-  // @PostMapping("/storeLogin")
-  // public String storeLogin(@ModelAttribute LoginForm form, HttpSession session,
-  // RedirectAttributes redirectAttributes) {
-  // // 店舗情報の取得
-  // if (storeSubmitService != null &&
-  // storeSubmitService.authenticate(form.getMail(), form.getPassword())) {
-  // Store store = storeSubmitService.findByMail(form.getMail()).orElse(null);
-  // //メアドで取得
-  // if(store != null){
-  // session.setAttribute("storeId", store.getId());
-  // session.setAttribute("storeEmail", form.getMail());
-  // return "redirect:/storemypage"; // 各店舗のマイページへリダイレクト
-  // }
-  // }
-  // redirectAttributes.addFlashAttribute("errorMessage", "メールアドレスかパスワードが違います");
-  // return "redirect:/storeLogin";
-  // }
+  // 店舗ログイン
+  @GetMapping("/storeLogin")
+  public String storeLoginForm() {
+    return "/storeLogin";
+  }
 
-  // // 店舗マイページの表示
-  // @GetMapping("/storemypage")
+  // 店舗ログイン処理
+  @PostMapping("/storeLogin")
+  public String storeLogin(@ModelAttribute LoginForm form, HttpSession session,
+      RedirectAttributes redirectAttributes) {
+    // 店舗情報の取得
+    if (storeSubmitService != null &&
+        storeSubmitService.authenticate(form.getMail(), form.getPassword())) {
+      Store store = storeSubmitService.findByMail(form.getMail()).orElse(null);
+      // メアドで取得
+      if (store != null) {
+        session.setAttribute("storeId", store.getId());
+        session.setAttribute("storeEmail", form.getMail());
+        return "redirect:/mystore/" + store.getId(); // 各店舗のマイページへリダイレクト
+      }
+    }
+    redirectAttributes.addFlashAttribute("errorMessage", "メールアドレスかパスワードが違います");
+    return "redirect:/storeLogin";
+  }
+
+  // 店舗マイページの表示 storesubmitcontrollerに店舗ページあり
+  // @GetMapping("/mystore")
   // public String showStoreMyPage(HttpSession session, Model model) {
-  // // セッションからユーザーIDを取得
-  // Integer storeId = (Integer) session.getAttribute("storeId");
+  //   // セッションからユーザーIDを取得
+  //   Integer storeId = (Integer) session.getAttribute("storeId");
 
-  // if (storeId == null) {
-  // return "redirect:/userLogin";
-  // }
-  // // セッションのメールアドレスからユーザー情報を取得する
-  // String email = (String) session.getAttribute("storeEmail");
-  // User user = storeSubmitService.findByMail(email).orElse(null);
+  //   if (storeId == null) {
+  //     return "redirect:/storeLogin";
+  //   }
+  //   // セッションのメールアドレスからユーザー情報を取得する
+  //   String email = (String) session.getAttribute("storeEmail");
+  //   Store store = storeSubmitService.findByMail(email).orElse(null);
 
-  // model.addAttribute("store", store);//HTML側に「store」という名前でデータを渡す
-  // return "mypage";
+  //   model.addAttribute("email", new Email(session.getAttribute("storeEmail")))
+  //   model.addAttribute("store", store);// HTML側に「store」という名前でデータを渡す
+  //   return "/mystore";
   // }
 
   // ログアウト処理
-  @PostMapping("/logout")
+  @GetMapping("/logout")
   public String logout(HttpSession session) {
     session.invalidate();
-    return "redirect:/";
+    return "redirect:/home";
   }
 
   @GetMapping("/privacy-policy")

@@ -74,9 +74,6 @@ public class StoreForm {
         return free_desc;
     }
 
-    // public void setPassword(String password) {
-    // this.password = password;
-    // }
     public void setCoupon(String coupon) {
         this.coupon = coupon;
     }
@@ -84,5 +81,28 @@ public class StoreForm {
     public void setFree_desc(String free_desc) {
         this.free_desc = free_desc;
     }
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setPayment(String payment) {
+        this.payment = payment;
+    }
+    public void setPhone_number(Long phone_number) {
+        this.phone_number = phone_number;
+    }
+    public void setPrice_range(int price_range) {
+        this.price_range = price_range;
+    }
+
+    
 
 }

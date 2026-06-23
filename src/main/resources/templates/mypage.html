@@ -2,11 +2,7 @@
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <!-- <head th:place="~{fragments/layout2::head('マイページ')}"> -->
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mypage</title>
-</head>
+<header th:replace="~{header/layout :: head('マイページ')}"></header>
 
 <body>
     <p>こんにちは。<span th:text="${user?.name}?: 'ゲスト'">名前</span>さん</p>

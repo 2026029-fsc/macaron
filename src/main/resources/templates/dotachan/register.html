@@ -2,12 +2,8 @@
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <!-- <head th:place="~{fragments/layout1::head('無料会員登録')}"> -->
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>無料会員登録(個人)</title>
-</head>
-
+<header th:replace="~{header/layout :: head('店舗詳細画面')}"></header>
+<link rel="stylesheet" href="/css/register.css">
 <body>
 
     <p>利用者の登録</p>

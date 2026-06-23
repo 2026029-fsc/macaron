@@ -27,7 +27,8 @@
             <table>
                 <li th:each="suddensale : ${suddensale}">
                     <!-- <td th:text="${suddensale.name}">こころ</td> -->
-                    <span th:text="${suddensale.name}">こここ</span>
+                    <span class="suddensale" 
+                    th:text="${suddensale.name}">こここ</span>
                     <form th:action="@{/saleedit/{id}(id=${suddensale.id})}" method="post" style="display:inline;">
                         <!-- <input type="hidden" id="id" name="id" th:value="${suddensale.store_id}"> -->
                         <input type="hidden" id="store_id" name="store_id" th:value="${suddensale.store_id}">

@@ -28,7 +28,11 @@ CREATE TABLE Store(
   email         VARCHAR(254)    NOT NULL  UNIQUE,
   password      VARCHAR(255)    NOT NULL,
   address       VARCHAR(100)    NOT NULL,
+<<<<<<< HEAD
+  phone_number  BIGINT NOT NULL,
+=======
   phone_number  INT NOT NULL,
+>>>>>>> 6d42eca59d8277042b953febd1852f963ed1177d
   payment       VARCHAR(100)    NOT NULL,
   price_range   INT,
   genre         VARCHAR(100)    NOT NULL,

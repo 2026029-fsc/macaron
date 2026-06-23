@@ -15,7 +15,7 @@ public class StoreRepository {
     }
 
     //西山
-    public Optional<Storeview> previewStore(Long id){
+    public Optional<Storeview> previewStore(Integer id){
         return jdbcClient.sql("SELECT * FROM Store WHERE id = :id")
             .param("id",id)
             .query(Storeview.class)

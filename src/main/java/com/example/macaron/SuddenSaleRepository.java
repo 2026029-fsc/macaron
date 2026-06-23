@@ -15,7 +15,7 @@ public class SuddenSaleRepository {
     }
 
     // idで1店舗のみに絞り込んで SuddenSale情報の表示(Storeテーブルとの結合なし)
-    public List<SuddenSaleview> previewSuddenSaleForId(Long id) {
+    public List<SuddenSaleview> previewSuddenSaleForId(Integer id) {
         return jdbcClient.sql("SELECT * FROM Suddensale WHERE id = :id ")
                 .param("id",id)
                 .query(SuddenSaleview.class)

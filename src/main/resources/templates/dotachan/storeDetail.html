@@ -58,7 +58,13 @@
     </tr>
   </table>
 
-  <div class="coupon">
+  <!-- レビューをしていたらクーポン一覧を表示する -->
+  <div th:unless="${user?.reviewed}">
+    <h3>お得なクーポン</h3>
+    <p>ログインしてレビューを書いたら、クーポンゲット！</p>
+  </div>
+
+  <div th:if="${user?.reviewed}" class="coupon">
     <h3>お得なクーポン</h3>
     <p th:if="${#strings.isEmpty(Store.coupon)}">このお店は使用可能なクーポンを掲載していません</p>
     <p th:text="${Store.coupon}"></p>

@@ -58,16 +58,16 @@ public class ViewService {
     }
 
     //西山 店舗情報の詳細表示 Store、Sale、SSale、Review
-    public Optional<Storeview> StoreDetailId(Long id) {
+    public Optional<Storeview> StoreDetailId(Integer id) {
         return storeRepository.previewStore(id);
     };
-    public List<Saleview> SaleDetailId(Long id) {
+    public List<Saleview> SaleDetailId(Integer id) {
         return saleRepository.previewSaleForId(id);
     };
-    public List<SuddenSaleview> SSaleDetailId(Long id) {
+    public List<SuddenSaleview> SSaleDetailId(Integer id) {
         return suddensaleRepository.previewSuddenSaleForId(id);
     };
-    public List<Review> reviews(Long id){
+    public List<Review> reviews(Integer id){
         return storeReviewRepository.previewSaleForId(id);
     }
 

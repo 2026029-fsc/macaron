@@ -17,11 +17,11 @@ public class UserSubmitService {
     this.passwordEncoder = passwordEncoder;
   }
 
-  public void post(Long id,StoreReviewForm form){
-    storeReviewRepository.post(id, form.getComments(), form.getevaluation(),2);
+  public void post(Integer id,StoreReviewForm form, Integer user_id){
+    storeReviewRepository.post(id, form.getComments(), form.getevaluation(), user_id);
   }
 
-  public Optional<User> findById(Long id) {
+  public Optional<User> findById(Integer id) {
     return userSubmitRepository.findById(id);
   }
 

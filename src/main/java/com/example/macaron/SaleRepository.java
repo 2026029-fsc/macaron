@@ -32,7 +32,7 @@ public class SaleRepository {
                 .list();
     }
 
-    public Optional<Saleview> saleDetailById(Long id) {
+    public Optional<Saleview> saleDetailById(Integer id) {
         return jdbcClient.sql("SELECT * FROM Store WHERE id = :id")
                 .param("id", id)
                 .query(Saleview.class)
@@ -40,7 +40,7 @@ public class SaleRepository {
     }
 
     //西山 idで絞り込んでのSale情報の表示(Storeテーブルとの結合なし)
-    public List<Saleview> previewSaleForId(Long id) {
+    public List<Saleview> previewSaleForId(Integer id) {
         return jdbcClient.sql("SELECT * FROM Sale WHERE id = :id ")
                 .param("id",id)
                 .query(Saleview.class)

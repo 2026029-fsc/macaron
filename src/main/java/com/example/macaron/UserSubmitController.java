@@ -9,6 +9,9 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import jakarta.servlet.http.HttpSession;
+
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -53,8 +56,9 @@ public class UserSubmitController {
   }
 
   @PostMapping("/store_detail/{id}")
-  public String detailpost(@PathVariable Long id, @ModelAttribute StoreReviewForm form) {
-    userSubmitService.post(id,form);
+  public String detailpost(@PathVariable Integer id, @ModelAttribute StoreReviewForm form, HttpSession session) {
+    Integer user_id = (int)session.getAttribute("userId");
+    userSubmitService.post(id,form, user_id);
     return "redirect:/store_detail/{id}";   
   }
 

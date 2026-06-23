@@ -24,7 +24,7 @@ public class UserSubmitRepository extends SuperRepository {
         .update();
     }
     // Userのidを選択してそのメールアドレスとユーザーネームとパスワードを表示したい
-    public Optional<User> findById(Long id) { // DBのINTに合わせてIntegerに変更
+    public Optional<User> findById(Integer id) { // DBのINTに合わせてIntegerに変更
         return jdbcClient.sql("SELECT id, mail, name, password, reviewed FROM User WHERE id = :id")
                 .param("id", id)
                 .query(User.class)

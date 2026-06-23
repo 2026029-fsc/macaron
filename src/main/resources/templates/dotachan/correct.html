@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <!-- <head th:place="~{fragments/layout2::head('登録完了')}"> -->
-<header th:replace="~{header/layout :: head('土壇場でキャンセルが来ても安心！ドタチャン！')}"></header>
-<link rel="stylesheet" href="/css/style.css">
+<head th:replace="~{header/layout :: head('土壇場でキャンセルが来ても安心！ドタチャン！')}"></head>
+<!-- <link rel="stylesheet" href="/css/style.css"> -->
 
-<body>
+<body class="page-correct">
     <p>正常に登録されました。</p>
     <a th:href="@{/mypage}">ログインページへ</a>
 </body>

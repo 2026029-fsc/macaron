@@ -2,7 +2,7 @@
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <!-- <head th:place="~{fragments/layout2::head('マイページ')}"> -->
 
-<header th:replace="~{header/layout :: head('マイページ')}"></header>
+<head th:replace="~{header/layout :: head('マイページ')}"></head>
 
 <body>
     <p>こんにちは。<span th:text="${user?.name}?: 'ゲスト'">名前</span>さん</p>

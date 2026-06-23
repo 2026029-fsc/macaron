@@ -5,7 +5,6 @@
     border-bottom: 1px solid #e0e0e0;
     padding: 15px 20px;
     box-sizing: border-box;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -15,38 +14,18 @@
     text-decoration: none;
     color: #333333;
 }
-
 .site-name h1 {
     margin: 0;
     font-size: 24px;
 }
-
 .site-name img {
     height: 100px;
     width: 280px;
 }
 
-/* 右側のボタン */
+/* 右側のボタンエリア */
 .header-button {
     display: flex;
     gap: 10px; 
     margin-right: 5px;
-}
-
-.button {
-    background-color: #ffffff;
-    color: #111111;
-    border: 1px solid #111111;
-    padding: 12px 35px;
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    border-radius: 0;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    outline: none;
-}
-
-.button:hover {
-    background-color: #7dadeb;
 }

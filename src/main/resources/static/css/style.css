@@ -1,12 +1,16 @@
+/* 共通部分 */
+body {
+    font-family: sans-serif;
+    color: #202124;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa; 
+}
+
 hr {
     border: none;
     border-top: 1px solid #ddd;
     margin: 32px 0;
-}
-
-.SerchBox {
-    /* justify-content: center; */
-    align-items: center;
 }
 
 h1 {
@@ -16,3 +20,212 @@ h1 {
     text-align: center;
     justify-content: center;
 }
+
+/* サイト共通の標準ボタン (青背景・白文字・指定サイズ) */
+.button {
+    background-color: #1a73e8;
+    color: #ffffff;
+    border: none;
+    padding: 12px 35px;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+}
+.button:hover {
+    background-color: #7dadeb;
+}
+
+/* 各ページのレイアウト */
+
+/* ホーム画面 */
+.page-home {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+/* ホーム画面内のボタン文字サイズ */
+.page-home main .button {
+    font-size: 12px;
+}
+
+.content {
+    display: flex;
+    height: 100%;
+    overflow: hidden;
+}
+.scroll-area {
+    height: 40%;
+    overflow-y: auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+.scroll-area th { text-align: left; }
+.scroll-area a {
+    color: black;
+    text-decoration: none;
+    height: 40px;
+}
+.scroll-area h2 {
+    margin: 0 0 20px 40px;
+    font-size: 30px;
+    height: 30px;
+}
+.scroll-area table {
+    width: 100%;
+    border-spacing: 0 10px;
+    margin-bottom: 20px;
+}
+
+.search {
+    flex-shrink: 0;
+    background-color: #fff;
+    padding: 15px 20px;
+    border-top: 2px solid #e0e0e0;
+    border-bottom: 2px solid #e0e0e0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    z-index: 10;
+}
+.search-input {
+    width: 60%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.SerchBox {
+    align-items: center;
+}
+
+.store-index {
+    background-color: rgb(240, 250, 255);
+    padding: 32px 40px;
+}
+.store-index td {
+    border: 1px solid #111111;
+}
+.salename {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* ログイン画面 */
+.login {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.login-form {
+    flex: 1 1 200px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgb(95, 88, 118);
+    transition: transform 0.2s;
+}
+.login-input {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 1rem;
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.task-input:focus {
+    outline: none;
+    border-color: #1a73e8;
+}
+/* ログイン用ボタン */
+.login-button {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 8px 24px;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.login-button:hover {
+    background-color: #1557b0;
+}
+
+/* 登録完了画面 */
+.page-correct {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+.page-correct main .button {
+    font-size: 12px;
+}
+
+/* 会員登録画面 */
+.page-register {
+    text-align: center;
+}
+.page-register .title {
+    font-size: 32px;
+}
+
+.form {
+    padding: 30px 16px;
+    width: 100%;
+    max-width: 500px;
+    flex: 1;
+    background-color: #f0f2f5;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+.form input {
+    text-align: center;
+    align-items: center;
+    margin: 10px;
+}
+.form li { margin: 0; }
+.form a {
+    color: black;
+    height: 40px;
+}
+
+/* サブスク画面 */
+.page-subscribe {
+    text-align: center;
+}
+
+/* 複数画面で使い回す汎用レイアウト */
+.layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0;
+}
+.flex {
+    display: flex;
+    gap: 80px;
+}
+.right {
+    width: 200px;
+    border-left: 0.5px solid #ccc;
+    padding-left: 10px;
+}
+.page-home .right { float: right; }
+.page-register .right, .page-subscribe .right { height: 100vh; }
+
+.left {
+    font-size: 20px;
+    margin: 0 auto;
+}
+.page-home .left { flex: 1; float: left; }

@@ -81,4 +81,12 @@ body {
         color: black;
         height: 40px;
     }
+   
+}
+.content{
+    padding: 20px;
+}
+.dotachan{
+    font-size: 25;
+    padding: 10px;
 }

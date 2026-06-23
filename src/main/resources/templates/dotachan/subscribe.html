@@ -6,20 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>店舗のサブスクの詳細</title>
     <link rel="stylesheet" href="static/css/register.css">
+    <div th:replace="~{header/layout :: head(title)}"></div>
 </head>
 
 <body>
-    <div th:replace="~{header/layout :: head(title)}"></div>
+
     <div class="layout">
         <div class="left">
             <h3>店舗様へ</h3>
+            <div class="content">
+                <p>急なキャンセル、雨の日の売れ残り、仕込みすぎ……
+                    諦めていた「その赤字」、今すぐその場で利益に変えませんか？
+                    突発的な空席や余剰在庫を、近隣の消費者にリアルタイムで告知・販売できる。
+                    飲食店・食品店のための“ドタキャン・売れ残り救済”システム。</p>
 
-            <p>急なキャンセル、雨の日の売れ残り、仕込みすぎ……
-                諦めていた「その赤字」、今すぐその場で利益に変えませんか？
-                突発的な空席や余剰在庫を、近隣の消費者にリアルタイムで告知・販売できる。
-                飲食店・食品店のための“ドタキャン・売れ残り救済”システム。
-                「ドタチャン！土壇場キャンセルチャンスセール」加盟店募集中！</p>
-            <h3>ご登録はこちらから 0120-xxxx-xxxxまで</h3>
+                    <p class="dotachan">「ドタチャン！土壇場キャンセルチャンスセール」加盟店募集中！</p>
+            </div>
+            <h4>ご登録はこちらから 0120-xxxx-xxxxまで</h4>
 
         </div>
 

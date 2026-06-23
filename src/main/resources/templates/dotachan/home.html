@@ -54,7 +54,10 @@
 
     <!-- 広告 -->
     <div th:each="Storead : ${Storead}">
-        <a th:href="@{/store_detail/{id}(id=${Storead.id})}" th:text="${Storead.name}"></a>
+        <!-- <a th:href="@{/store_detail/{id}(id=${Storead.id})}" th:text="${Storead.name}"> -->
+        <a th:href="@{/store_detail/{id}(id=${Storead.id})}">
+            <img src="./images/spidermanAd.png" alt="homead">
+        </a>
     </div>
 
 

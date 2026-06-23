@@ -1,0 +1,52 @@
+.layout {
+    display: flex;
+    justify-content: space-between;
+}
+
+.right {
+    height: 100vh;
+    width: 200px;
+    border-left: 0.5px solid #ccc;
+    /*横線*/
+    padding-left: 10px;
+    position: fixed;
+    right: 0;
+}
+
+.left {
+    flex: 1;
+    font-size: 20px;
+    margin-left: 0px;
+    margin-right: 220px;
+}
+
+.flex {
+    display: flex;
+    gap: 80px;
+    /* justify-content: space-around; */
+}
+
+.text{
+    width: 100px;
+    height: 100px;
+}
+
+.button {
+    margin-top: 5px;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 8px 24px;
+    font-size: 1rem;
+    border-radius: 4px;
+}
+
+.button:hover {
+    background-color: #7dadeb;
+}
+.mystore_right{
+
+}
+.mystore_left{
+    
+}

@@ -50,6 +50,10 @@ public class StoreSubmitService {
         return saleRepository.editSale(id);
     }
 
+    public List<SuddenSaleview> previewSuddenSaleForstoreIdfalse(Integer id) {
+        return suddenSaleRepository.previewSuddenSaleForstoreIdfalse(id);
+    }
+
     public List<SuddenSaleview> previewSuddenSaleForstoreId(Integer id) {
         return suddenSaleRepository.previewSuddenSaleForstoreId(id);
     }

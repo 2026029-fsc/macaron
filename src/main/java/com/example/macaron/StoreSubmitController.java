@@ -3,7 +3,6 @@ package com.example.macaron;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 import java.util.Optional;
 
@@ -112,8 +111,10 @@ public class StoreSubmitController {
     // 突発セール表示
     @GetMapping("/saleedit/{id}")
     public String showSuddensale(@PathVariable Integer id, Model model) {
-        List<SuddenSaleview> suddensale = storeSubmitService.previewSuddenSaleForstoreId(id);
+    List<SuddenSaleview> suddensale = storeSubmitService.previewSuddenSaleForstoreIdfalse(id);
+    List<SuddenSaleview> ssuddensale = storeSubmitService.previewSuddenSaleForstoreId(id);
         model.addAttribute("suddensale", suddensale);
+        model.addAttribute("ssuddensale", ssuddensale);//store_idがすべてあてはまるもの
         // model.addAttribute("storeId", id);
         // model.addAttribute("suddensaleList", storeSubmitService.showSuddensale());
         return "saleedit";

@@ -5,23 +5,22 @@
 </head>
 
 <body>
-    <form th:action="@{/suddensalereg/{id}(id=${suddensale.get(0).store_id})}" method="post">
+    <header>
+        <a th:href="@{/mystore/{id}(id=${id})}">店舗詳細編集に戻る</a>
+    </header>
+    <form th:action="@{/suddensalereg/{id}(id=${ssuddensale.get(0).store_id})}" method="post">
         <h3>突発セール登録</h3>
         <input type="text" id="name" name="name" required placeholder="突発セール名"><br>
         <input type="text" id="contents" name="contents" required placeholder="内容"><br>
         <button type="submit">登録</button>
     </form>
     <h3>開催中の突発セール</h3>
-
-
-
     <tr>
-        <h3>セール名</h3>
-        <th>完了/未完了</th>
+        <!-- <h3>セール名</h3> -->
+        <!-- <th>完了/未完了</th> -->
     </tr>
+    <p class="none" th:if="${#lists.isEmpty(suddensale)}"> no sale</p>
     <table>
-       
-        <p class="none" th:if="${#lists.isEmpty(suddensale)}"> no sale</p>
         <li th:each="suddensale : ${suddensale}">
             <!-- <td th:text="${suddensale.name}">こころ</td> -->
             <span th:text="${suddensale.name}">こここ</span>

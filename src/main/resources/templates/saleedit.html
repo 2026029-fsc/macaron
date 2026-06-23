@@ -19,7 +19,7 @@
         <!-- <h3>セール名</h3> -->
         <!-- <th>完了/未完了</th> -->
     </tr>
-    <p class="none" th:if="${#lists.isEmpty(suddensale)}"> no sale</p>
+    <p class="none" th:if="${#lists.isEmpty(suddensale)}">現在開催中のセールはありません</p>
     <table>
         <li th:each="suddensale : ${suddensale}">
             <!-- <td th:text="${suddensale.name}">こころ</td> -->

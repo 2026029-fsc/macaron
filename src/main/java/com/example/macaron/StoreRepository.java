@@ -32,7 +32,7 @@ public class StoreRepository {
     //             .update();
     // }
 
-    //編集機能
+    //店舗編集機能
     public void updateStore(Integer id, String email, String name, String address, Long phone_number,
             String payment, String genre, Integer price_range, String free_desc, String coupon) {
         jdbcClient.sql(

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<!-- <head th:place="~{fragments/layout1::head('無料会員登録')}"> -->
+
+<head>
+    <link rel="stylesheet" href="static/css/register.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>無料会員登録(個人)</title>
+</head>
+
+<body>
+    <div class="layout">
+
+        <div class="left flex">
+            <div class="user">
+                <h3 class="title">利用者の登録</h3>
+                <form class="signup" action="/correct" method="post">
+                    <label>ユーザーネームを入力してください。</label>
+                    <br>
+                    <input type="text" id="name" name="name" placeholder="ユーザーネーム">
+                    <br>
+                    <label>メールアドレスを入力してください。</label>
+                    <br>
+                    <input type="text" id="mail" name="mail" placeholder="メールアドレス">
+                    <br>
+                    <label>パスワードを入力してください。</label>
+                    <br>
+                    <input type="password" id="password" name="password" placeholder="パスワード">
+                    <br>
+                    <label>パスワードを入力してください。(確認用)</label>
+                    <br>
+                    <input type="password" id="password2" name="password2" placeholder="パスワード">
+                    <br>
+                    <p>下記に記載のプライバシーポリシー・規約に同意のうえ以下の「登録」を押してください。</p>
+                    <button class="button" type="submit">登録</button>
+                </form>
+
+                <!--今岡追加  -->
+                <!-- パスワード不一致 -->
+                <p th:if="${passError}" th:text="${passError}"></p>
+
+                <ul>
+                    <li><a href="/privacy-policy">プライバシーポリシー</a></li>
+                    <li><a href="/argreement">規約</a></li>
+                </ul>
+            </div>
+
+            <div class="store">
+                <!--今岡追加ここまで  -->
+                <h3 class="title">店舗会員の登録</h3>
+                <br>
+                <a href="/subscribe">店舗サブスクの詳細はこちら</a>
+                <br>
+                <label>店舗管理の登録</label>
+                <br>
+                <h3>0120-xxxx-xxxxまで</h3>
+            </div>
+        </div>
+
+        <!-- 広告 -->
+        <div class="right">
+            <div th:each="Storead : ${Storead}">
+                <p>↓広告</p>
+                <a th:href="@{/store_detail/{id}(id=${Storead.id})}" th:text="${Storead.name}"></a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

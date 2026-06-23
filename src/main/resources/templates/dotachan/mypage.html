@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="static/css/mypage.css">
+
+<head th:place="~{layout/header::head('マイページ')}">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>mypage</title>
+    </head>
+
+<body>
+    <div class="layout">
+        <div class="left">
+            <p>こんにちは。<span th:text="${user?.name}?: 'ゲスト'">名前</span>さん</p>
+            <hr>
+            <p>メールアドレス:<span th:text="${user.mail}"></span></p>
+
+            <!-- レビューをしていたらクーポン一覧を表示する -->
+            <div th:unless="${user.reviewed}">
+                <p>レビューを書いたら、クーポンゲット！</p>
+            </div>
+
+            <div th:if="${user.reviewed}">
+                <h2>クーポン一覧</h2>
+                <hr>
+                <div th:each="store:${store}" class="coupon">
+                    <a th:href="@{/store_detail/{id}(id=${store.id})}">
+                        <span th:text="${store.name}">店の名前</span><br><hr>
+                        <span th:text="${store.coupon}">クーポンの名前</span>
+                </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- 広告 -->
+        <div class="right">
+            <div th:each="Storead : ${Storead}">
+                <p>↓広告</p>
+                <a th:href="@{/store_detail/{id}(id=${Storead.id})}" th:text="${Storead.name}"></a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

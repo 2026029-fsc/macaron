@@ -35,7 +35,7 @@ public class StoreSubmitService {
     }
 
     public void switchSuddenSale(Integer id) {
-        storeRepository.switchSuddenSale(id);
+        suddenSaleRepository.switchSuddenSale(id);
     }
 
     public Optional<Store> findById(Integer id) {

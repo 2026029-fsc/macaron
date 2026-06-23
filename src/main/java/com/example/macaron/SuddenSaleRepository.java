@@ -55,4 +55,17 @@ public class SuddenSaleRepository {
                 .list();
     }
 
+    // public void switchSuddenSale(Integer id) {
+    //     jdbcClient.sql("UPDATE Suddensale SET completed = NOT completed WHERE id = :id")
+    //             .param("id", id)
+    //             .update();
+    // }
+
+    public void switchSuddenSale(Integer id) {
+        jdbcClient.sql("UPDATE Suddensale SET completed = true WHERE id = :id")
+        // jdbcClient.sql("DELETE FROM Suddensale WHERE id = :id")
+                .param("id", id)
+                .update();
+    }
+
 }

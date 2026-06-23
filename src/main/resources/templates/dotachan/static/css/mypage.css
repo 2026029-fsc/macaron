@@ -1,0 +1,27 @@
+.layout {
+    display: flex;
+    justify-content: space-between;
+}
+
+.right {
+    height: 100vh;
+    width: 200px;
+    border-left: 0.5px solid #ccc;
+    /*横線*/
+    padding-left: 10px;
+    position: fixed;
+    right: 0;
+}
+
+.left {
+    flex: 1;
+    font-size: 20px;
+    margin-left: 0px;
+    margin-right: 220px;
+}
+
+.coupon{
+    background-color: rgb(240, 250, 255);
+    padding: 32px 40px;
+    border:double 10px #ccc;
+}

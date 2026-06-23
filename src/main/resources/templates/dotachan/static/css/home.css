@@ -1,13 +1,18 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Playwrite+DE+SAS:wght@100..400&family=Zen+Kurenaido&family=Zen+Maru+Gothic&display=swap');
+
 .content {
-    display: flex; /*横幅いっぱい*/
+    display: flex;
+    /*横幅いっぱい*/
     height: 100%;
     overflow: hidden;
 }
 
 .right {
-    height:100vh;
+    height: 100vh;
     width: 200px;
-    border-left: 0.5px solid #ccc; /*横線*/
+    border-left: 0.5px solid #ccc;
+    /*横線*/
     padding-left: 10px;
     position: fixed;
     right: 0;
@@ -24,26 +29,40 @@ body {
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow: hidden;/* ページ全体のスクロールバーを消す */
+    overflow: hidden;
+    /* ページ全体のスクロールバーを消す */
     display: flex;
-    flex-direction: column;/* 縦並びにする */
+    flex-direction: column;
+    /* 縦並びにする */
     height: 100vh;
+
+
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+
+
 }
+
+
 
 /* 上と下のスクロールエリア */
 .scroll-area {
     height: 40%;
-    overflow-y: auto; /* 特定の部分だけスクロールする */
+    overflow-y: auto;
+    /* 特定の部分だけスクロールする */
     padding: 20px;
     background-color: #f9f9f9;
 
-    th{
+    th {
         text-align: left;
     }
 
     a {
         color: black;
-        text-decoration: none; /*リンクの下線なし*/
+        text-decoration: none;
+        /*リンクの下線なし*/
         height: 40px;
     }
 
@@ -55,9 +74,10 @@ body {
         height: 30px;
     }
 
-    table{
+    table {
         width: 100%;
-        border-spacing: 0 10px; /*左右の余白0,上下の余白15px*/
+        border-spacing: 0 10px;
+        /*左右の余白0,上下の余白15px*/
         margin-bottom: 20px;
     }
 }
@@ -107,12 +127,13 @@ body {
     background-color: rgb(240, 250, 255);
     padding: 32px 40px;
 
-    td{
+    td {
         border: 1px solid #111111;
     }
 }
 
-.salename{
+.salename {
     font-size: 20px;
     font-weight: bold;
 }
+

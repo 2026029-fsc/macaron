@@ -2,6 +2,49 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head th:fragment="layout">
+
+<header th:fragment="head(title)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/headerStyle.css">
+
+
+    <div class="site-header">
+        <!-- 共通部分 -->
+         <div class="title">
+        <a class="site-name" href="/"><img th:src="@{/img/ドタチャンロゴ.jpg}" alt="ロゴ"></a>
+        </div>
+
+
+        <p>博多の飲食店・小売店・店舗・セール情報</p>
+        <nav class="header-button">
+            <!-- 未ログインの場合 -->
+            <button th:if="${session.username == null && session.userEmail == null}" class="button"
+                onclick="location.href='/register'">会員登録</button>
+            <button th:if="${session.username == null && session.userEmail == null}" class="button"
+                onclick="location.href='/storeLogin'">店舗ログイン</button>
+            <button th:if="${session.username == null && session.userEmail == null}" class="button"
+                onclick="location.href='/userLogin'">一般ユーザーログイン</button>
+
+            <!-- 一般ユーザーでログインしている場合 -->
+            <button th:if="${session.userEmail != null}" class="button" onclick="location.href='/mypage'">マイページ</button>
+            <button th:if="${session.userEmail != null}" class="button" onclick="location.href='/home'">ログアウト</button>
+
+            <!-- 店舗ユーザーでログインしている場合 -->
+            <button th:if="${session.storeEmail != null}" class="button"
+                onclick="location.href='/saleEdit'">突発セール編集</button>
+            <button th:if="${session.storeEmail != null}" class="button"
+                onclick="location.href='/mystore'">マイページ・クーポン編集</button>
+            <button th:if="${session.storeEmail != null}" class="button" onclick="location.href='/home'">ログアウト</button>
+        </nav>
+    </div>
+</header>
+
+<body>
+
+</body>
+
+</html>
     <p>土壇場チャンスセール</p>
     <h2>ドタチャン</h2>
     <p>博多の飲食店・小売店・店舗・セール情報</p>

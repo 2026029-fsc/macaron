@@ -31,7 +31,7 @@ public class SuddenSaleRepository {
     }
 
     public List<SuddenSaleview> previewSuddenSale() {
-        return jdbcClient.sql("SELECT Suddensale.id AS id, Suddensale.store_id, Suddensale.name AS name, Store.name AS contents, completed FROM Store JOIN Suddensale ON Store.id = Suddensale.store_id ORDER BY id DESC LIMIT 3")
+        return jdbcClient.sql("SELECT Suddensale.id AS id, Suddensale.store_id, Suddensale.name AS name, Store.name AS contents, completed FROM Store JOIN Suddensale ON Store.id = Suddensale.store_id WHERE completed  = false ORDER BY id DESC LIMIT 3")
                 .query(SuddenSaleview.class)
                 .list();
     }

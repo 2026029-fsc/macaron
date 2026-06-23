@@ -15,6 +15,8 @@ public class SaleRepository {
         this.jdbcClient = jdbcClient;
     }
 
+    
+
     //無理やりSaleviewClassに格納
     public List<Saleview> dtoserchByGenre(String keyword) {
         return jdbcClient.sql("SELECT Sale.id AS id, Sale.store_id, Sale.name AS name, Store.name AS contents FROM Store JOIN Sale ON Store.id = Sale.store_id WHERE genre LIKE :keyword")

@@ -31,6 +31,10 @@ public class UserSubmitController {
         // model.addAttribute("UserForm", user);
         if (result.hasErrors()) {
             return "dotachan/register";
+        //メールアドレスがすでに登録されていたらエラー表示
+        }else if(userSubmitService.existsByMail(form.getMail())){
+            model.addAttribute("error", "このメールアドレスは既に登録されています。");
+            return "dotachan/register";
         }
         // エラーでなければcorrectに行き、入力した値をサービスに渡す↓
         userSubmitService.register(form.getName(), form.getMail(), form.getPassword());
@@ -48,7 +52,5 @@ public class UserSubmitController {
     public String subscribe() {
         return "dotachan/subscribe";// 表示させるhtml
     }
-
-
 
 }

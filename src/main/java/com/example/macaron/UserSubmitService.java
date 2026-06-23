@@ -25,7 +25,7 @@ public class UserSubmitService {
         return userSubmitRepository.findById(id);
     }
 
-    // ハッシュ化して登録したい。。。
+    // ハッシュ化して登録したい。
     public void register(String name, String mail, String password) {
         String passwordhash = passwordEncoder.encode(password);
         userSubmitRepository.insertUser(name, mail, passwordhash);
@@ -56,4 +56,28 @@ public class UserSubmitService {
      public Optional<Store> viewCoupon(Long id) {
         return userSubmitRepository.viewCoupon(id);
     }
+
+    //すでに登録済みのユーザーをはじく！
+    // public Optional<User> existByMail(String mail) {
+    //     // Optional<User> userOpt = userSubmitRepository.existByMail(mail);
+    //     // if (userOpt.isPresent()) {
+    //     if (userSubmitRepository.existByMail(mail)) {
+    //         return 
+    //         ("このメールアドレスは既に登録されています。");
+    //     }
+    //     return userSubmitRepository.existByMail(mail); 
+    // }
+
+    public boolean existsByMail(String mail) {
+        // Optional<User> userOpt = userSubmitRepository.existByMail(mail);
+        // if (userOpt.isPresent()) {
+        // if (userSubmitRepository.existByMail(mail)) {
+        //     return false;
+        //     // ("このメールアドレスは既に登録されています。");
+        // }
+        return userSubmitRepository.existsByMail(mail); 
     }
+
+}
+
+    

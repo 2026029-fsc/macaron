@@ -8,23 +8,23 @@ import jakarta.validation.constraints.Size;//文字列の長さを制限
 //編集するためにfinalなし
 public class UserForm {
     //ユーザーネーム
-    @NotBlank(message = "ユーザーネームは必須項目です")
-    @Size(max=30,message = "ユーザーネームは30文字以内で入力してください")//ユーザーネームは30文字まで
+    @NotBlank(message = "ユーザーネームは必須項目です。")
+    @Size(max=30,message = "ユーザーネームは30文字以内で入力してください。")//ユーザーネームは30文字まで
     private String name;
        
     //メールアドレス
-    @NotBlank(message = "メールアドレスは必須項目です")
-    @Size(max = 100, message = "メールアドレスは100文字以内で入力してください")//メールアドレス100文字まで
-    @Email(message = "メールアドレスの形式が正しくありません")
+    @NotBlank(message = "メールアドレスは必須項目です。")
+    @Size(max = 100, message = "メールアドレスは100文字以内で入力してください。")//メールアドレス100文字まで
+    @Email(message = "メールアドレスの形式が正しくありません。")
     private String mail;
     
     //パスワード
-    @NotBlank(message = "パスワードは必須項目です")
-    @Size(min = 8, message = "パスワードは8文字以上で入力してください")//パスワードは最低8文字
+    @NotBlank(message = "パスワードは必須項目です。")
+    @Size(min = 8, message = "パスワードは8文字以上で入力してください。")//パスワードは最低8文字
     private String password;
 
     //確認用パスワード
-    @NotBlank(message = "パスワード(確認)は必須項目です")
+    @NotBlank(message = "パスワード(確認)は必須項目です。")
     private String password2;
 
     //パスワードとパスワード確認用を同じにする
@@ -33,13 +33,10 @@ public class UserForm {
 		if (password == null || password.isEmpty()) {
 			return true;
 		}
-		
 		return password.equals(password2);
 	} 
-
     private boolean reviewed;
 
-    
     //ゲッター
     public String getMail() {
         return mail;

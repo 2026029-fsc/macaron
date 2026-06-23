@@ -42,14 +42,7 @@ public class UserSubmitRepository extends SuperRepository {
                 .optional();
     }
 
-    // メールアドレスの重複チェック
-    public boolean existsByMail(String mail) {
-        Integer count = jdbcClient.sql("SELECT COUNT(*) FROM User WHERE mail = :mail")
-                .param("mail", mail)
-                .query(Integer.class)
-                .single();
-        return count != null && count > 0;
-    }
+  
 
     // メールアドレスからユーザー情報を取得
     public Optional<User> findByMail(String mail) {
@@ -67,4 +60,14 @@ public class UserSubmitRepository extends SuperRepository {
                 .query(Store.class)
                 .optional();
     }
+
+  // メールアドレスの重複チェック
+    public boolean existsByMail(String mail) {
+        Integer count = jdbcClient.sql("SELECT COUNT(*) FROM User WHERE mail = :mail")
+                .param("mail", mail)
+                .query(Integer.class)
+                .single();
+        return count != null && count > 0;
+    }
+    
 }

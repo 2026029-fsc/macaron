@@ -53,9 +53,9 @@ public class UserForm {
         return password;
     }
 
-    // public String getPassword2() {
-    //     return password2;
-    // }
+    public String getPassword2() {
+        return password2;
+    }
 
     public boolean getReviewed() {
         return reviewed;
@@ -74,9 +74,9 @@ public class UserForm {
         this.password = password;
     }
 
-    // public void setPassword2(String password2) {
-    //     this.password2 = password2;
-    // }
+    public void setPassword2(String password2) {
+        this.password2 = password2;
+    }
 
     public void setReviewd(boolean reviewed) {
         this.reviewed = reviewed;

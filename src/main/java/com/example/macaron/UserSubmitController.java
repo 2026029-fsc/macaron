@@ -37,6 +37,10 @@ public class UserSubmitController {
     // model.addAttribute("UserForm", user);
     if (result.hasErrors()) {
       return "dotachan/register";
+      // メールアドレスがすでに登録されていたらエラー表示
+    } else if (userSubmitService.existsByMail(form.getMail())) {
+      model.addAttribute("error", "このメールアドレスは既に登録されています。");
+      return "dotachan/register";
     }
     // エラーでなければcorrectに行き、入力した値をサービスに渡す↓
     userSubmitService.register(form.getName(), form.getMail(), form.getPassword());
@@ -57,18 +61,9 @@ public class UserSubmitController {
 
   @PostMapping("/store_detail/{id}")
   public String detailpost(@PathVariable Integer id, @ModelAttribute StoreReviewForm form, HttpSession session) {
-    Integer user_id = (int)session.getAttribute("userId");
-    userSubmitService.post(id,form, user_id);
-    return "redirect:/store_detail/{id}";   
+    Integer user_id = (int) session.getAttribute("userId");
+    userSubmitService.post(id, form, user_id);
+    return "redirect:/store_detail/{id}";
   }
-
-  // どのコントローラーに書くかわからんけど、、、、
-  // クーポン一覧を表示する
-  // @GetMapping("/mypage")
-  // public String coupon(Model model) {
-    
-    
-  //   return ""; // マイページを表示
-  // }
 
 }

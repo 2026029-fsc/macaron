@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<!-- <head th:place="~{fragments/layout1::head('店舗サブスク登録')}"> -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>店舗のサブスクの詳細</title>
+    <link rel="stylesheet" href="static/css/register.css">
+</head>
+
+<body>
+    <div th:replace="~{fragments/layout :: header}"></div>
+    <div class="layout">
+        <div class="left">
+            <h3>店舗管理の方の登録</h3>
+            <h3>0120-xxxx-xxxxまで</h3>
+            <p>サブスクの詳細</p>
+        </div>
+
+        <!-- 広告 -->
+        <div class="right">
+            <div th:each="Storead : ${Storead}">
+                <p>↓広告</p>
+                <a th:href="@{/store_detail/{id}(id=${Storead.id})}" th:text="${Storead.name}"></a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

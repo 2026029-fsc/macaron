@@ -39,12 +39,12 @@ body {
 }
 
 .right {
-    height: 100vh;
+    height:100vh;
     width: 200px;
-    /* float: right; */
-    border-left: 0.5px solid #ccc;
-    /*横線*/
+    border-left: 0.5px solid #ccc; /*横線*/
     padding-left: 10px;
+    position: fixed;
+    right: 0;
 }
 
 .left {

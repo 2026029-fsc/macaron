@@ -1,0 +1,70 @@
+.layout {
+    display: flex;
+    justify-content: space-between;
+}
+
+.right {
+    height: 100vh;
+    width: 200px;
+    border-left: 0.5px solid #ccc;
+    /*横線*/
+    padding-left: 10px;
+    position: fixed;
+    right: 0;
+}
+
+.left {
+    flex: 1;
+    font-size: 20px;
+    margin-left: 0px;
+    margin-right: 220px;
+}
+
+.button {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 8px 24px;
+    font-size: 1rem;
+    border-radius: 4px;
+}
+
+.storeName {
+    font-size: 30px;
+}
+
+.Suddensale {
+    background-color: rgb(240, 250, 255);
+    padding: 32px 40px;
+    border: 1px solid #111111;
+}
+
+.sale {
+    background-color: rgb(234, 255, 239);
+    padding: 32px 40px;
+    border: 1px solid #111111;
+}
+
+.store_info {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.store_info_left {
+    font-size: 20px;
+}
+
+.store_info_right {
+    width: auto;
+    margin-right: 20px;
+    background-color: rgb(255, 255, 255);
+    padding: 32px 40px;
+    border: 1px solid #111111;
+}
+
+.postbox{
+    width:400px ;
+    height: 30px;
+}

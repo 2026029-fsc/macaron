@@ -37,7 +37,7 @@
 
     <tr>
       <td>電話番号：</td>
-      <td><a href="@{'tel:'+${Store.phone_number}}" th:text="${Store.phone_number}"></a></td>
+      <td><a th:href="@{|tel:0${Store.phone_number}|}" th:text="|0${Store.phone_number}|"></a></td>
     </tr>
     <tr>
       <td>決済方法：</td>

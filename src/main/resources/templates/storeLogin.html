@@ -6,9 +6,9 @@
 
 <body>
 
-  <div class=login>
-    <div class=login-form>
-      <h2 class=login-title>店舗会員の方</h2>
+  <div class="layout login">
+    <div class="login-form">
+      <h2 class="login-title">店舗会員の方</h2>
 
       <form action="/storeLogin" method="post">
         <p><label for="mail">メールアドレス：</label>
@@ -23,7 +23,7 @@
         <p th:if="${errorMessage}" th:text="${errorMessage}"></p>
 
         <p>下記に記載のプライバシーポリシー・規約に同意のうえ以下の「ログイン」を押してください。</p>
-        <button type="submit" class="login-button">ログイン</button>
+        <button type="submit" class="button">ログイン</button>
       </form>
 
       <br><div><a href="/privacy-policy">プライバシーポリシー</a></div>
@@ -31,9 +31,9 @@
 
     </div>
 
-    <div class=login-form>
-      <h2 class=login-title>まだ会員登録がお済でない方</h2>
-      <p><a href="/subscribe" class="login-button">店舗サブスク案内へ</a></p>
+    <div class="login-form">
+      <h2 class="login-title">まだ会員登録がお済でない方</h2>
+      <p><a href="/subscribe" class="button">店舗サブスク案内へ</a></p>
     </div>
   </div>
 </body>

@@ -1,4 +1,3 @@
-/*とりあえず張り付けただけ クラスの名前を編集する必要がある*/
 /*全体*/
 body {
     background-color: #fffdd6;
@@ -49,6 +48,7 @@ body {
 .sale {
     background-color: rgb(255, 255, 255);
     border: 2px solid #ff831d;
+
     td {
         border: 2px solid #ff8d1c;
     }
@@ -56,7 +56,6 @@ body {
 
 /*home.css*/
 .scroll-area {
-    background-color: #fffdd6;
     height: 45vh;
     overflow-y: auto;
     padding: 20 0px;
@@ -83,7 +82,6 @@ body {
         margin-bottom: 20px;
     }
 }
-
 .search {
     flex-shrink: 0;
     background-color: #fff;
@@ -117,28 +115,24 @@ body {
     background-color: #fff;
     border: 1px solid #06316d;
 }
-.search_form{
+.search_form {
     margin-top: 5px;
 }
 
-/*storeDetal*/
 
+/*storeDetal*/
 .storeName {
-    margin-left: 40px;
     font-size: 30px;
 }
-
 .store_info {
     margin-top: 10px;
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
-
 .store_info_left {
     font-size: 20px;
 }
-
 .store_info_right {
     width: auto;
     margin-right: 20px;
@@ -146,10 +140,9 @@ body {
     padding: 32px 40px;
     border: 1px solid #111111;
 }
-
 .postbox {
     width: 400px;
-    height: 50px;
+    height: 30px;
 }
 .review_post form {
     display: flex;
@@ -181,84 +174,7 @@ h1 {
     justify-content: center;
 }
 
-/* 各ページのレイアウト */
-
-/* ホーム画面 */
-.page-home {
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-}
-/* ホーム画面内のボタン文字サイズ */
-.page-home main .button {
-    font-size: 12px;
-}
-.content {
-    display: flex;
-    height: 100%;
-    overflow: hidden;
-}
-.scroll-area {
-    height: 40%;
-    overflow-y: auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-}
-.scroll-area th {
-    text-align: left;
-}
-.scroll-area a {
-    color: black;
-    text-decoration: none;
-    height: 40px;
-}
-.scroll-area h2 {
-    margin: 0 0 20px 40px;
-    font-size: 30px;
-    height: 30px;
-}
-.scroll-area table {
-    width: 100%;
-    border-spacing: 0 10px;
-    margin-bottom: 20px;
-}
-
-.search {
-    flex-shrink: 0;
-    background-color: #fff;
-    padding: 15px 20px;
-    border-top: 2px solid #e0e0e0;
-    border-bottom: 2px solid #e0e0e0;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    z-index: 10;
-}
-.search-input {
-    width: 60%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-.SerchBox {
-    align-items: center;
-}
-
-.store-index {
-    background-color: rgb(240, 250, 255);
-    padding: 32px 40px;
-}
-.store-index td {
-    border: 1px solid #111111;
-}
-.salename {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-/* ログイン画面 */
+/* register.css userLogin storeLogin */
 .login {
     display: flex;
     flex-wrap: wrap;
@@ -268,35 +184,42 @@ h1 {
     flex: 1 1 200px;
     background-color: white;
     padding: 20px;
-    border-radius: 16px;
-    box-shadow: 0 2px 8px rgb(95, 88, 118);
     transition: transform 0.2s;
+    border: 5px solid #ff831d;
+
 }
 .login-input {
     width: 100%;
     padding: 8px 12px;
     font-size: 1rem;
     border: 1px solid #dadce0;
-    border-radius: 4px;
     box-sizing: border-box;
 }
 .task-input:focus {
     outline: none;
     border-color: #1a73e8;
 }
-/* ログイン用ボタン */
-.login-button {
-    background-color: #1a73e8;
-    color: white;
-    border: none;
-    padding: 8px 24px;
-    font-size: 1rem;
-    border-radius: 4px;
-    cursor: pointer;
+
+
+
+/* サブスク画面 */
+.page-subscribe {
+    text-align: center;
 }
-.login-button:hover {
-    background-color: #1557b0;
+
+
+
+/*  マイページ */
+.hello {
+    color: black;
+    border-bottom: 2px dotted #2c3e50;
 }
+
+.coupon {
+    color: #6d3b0c;
+}
+
+
 
 /* 登録完了画面 */
 .page-correct {
@@ -304,52 +227,5 @@ h1 {
     font-size: 20px;
     font-weight: bold;
 }
-.page-correct main .button {
-    font-size: 12px;
-}
 
-/* 会員登録画面 */
-.page-register {
-    text-align: center;
-}
-.page-register .title {
-    font-size: 32px;
-}
 
-.form {
-    padding: 30px 16px;
-    width: 100%;
-    max-width: 500px;
-    flex: 1;
-    background-color: #f0f2f5;
-    border: 1px solid #ccc;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-}
-.form input {
-    text-align: center;
-    align-items: center;
-    margin: 10px;
-}
-.form li { margin: 0; }
-.form a {
-    color: black;
-    height: 40px;
-}
-
-/* サブスク画面 */
-.page-subscribe {
-    text-align: center;
-}
-
-/*  マイページ */
-.hello{
-    color: black;
-    border-bottom: 2px dotted #2c3e50;
-}
-.coupon{
-    color: #6d3b0c;
-}

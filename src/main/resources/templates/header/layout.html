@@ -37,9 +37,9 @@
 
             <!-- 店舗ユーザーでログインしている場合 -->
             <button th:if="${session.storeEmail != null}" class="button"
-                th:onclick="|location.href='@{/saleedit/{id}(id=${Storeid})}'|">突発セール編集</button>
+                th:onclick="|location.href='@{/saleedit/{id}(id=${session.storeId})}'|">突発セール編集</button>
             <button th:if="${session.storeEmail != null}" class="button"
-                th:onclick="|location.href='@{/mystore/{id}(id=${Storeid})}'|">マイページ・クーポン編集</button>
+                th:onclick="|location.href='@{/mystore/{id}(id=${session.storeId})}'|">マイページ・クーポン編集</button>
             <button th:if="${session.storeEmail != null}" class="button"
                 onclick="location.href='/logout'">ログアウト</button>
         </nav>

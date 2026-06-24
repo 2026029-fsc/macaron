@@ -12,16 +12,16 @@
     </div>
 
     <!-- レビューをしていたらクーポン一覧を表示する -->
-    <div th:unless="${user.reviewed}" class="coupon">
+    <div th:unless="${user.reviewed}" class="couponGet">
         <p>レビューを書いたら、クーポンゲット！</p>
     </div>
 
     <div th:if="${user.reviewed}">
         <h2>クーポン一覧</h2>
-        <a th:each="store:${store}" th:href="@{/store_detail/{id}(id=${store.id})}">
-            <div>
-                <span th:text="${store.name}">店の名前</span>
-                <span th:text="${store.coupon}">クーポンの名前</span>
+        <a  th:each="store:${store}" th:href="@{/store_detail/{id}(id=${store.id})}">
+            <div class="coupon">
+                <span  th:text="${store.name}">店の名前</span>
+                <span  th:text="${store.coupon}">クーポンの名前</span>
             </div>
         </a>
 

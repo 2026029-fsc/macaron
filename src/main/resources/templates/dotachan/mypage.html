@@ -5,7 +5,7 @@
 
 <head th:replace="~{header/layout :: head('土壇場でキャンセルが来ても安心！ドタチャン！')}"></head>
 
-<body>
+<body class="mypage">
     <div class="hello">
         <p>こんにちは。<span th:text="${user?.name}?: 'ゲスト'">名前</span>さん</p>
         <p>メールアドレス:<span th:text="${user.mail}"></span></p>
@@ -16,8 +16,8 @@
         <p>レビューを書いたら、クーポンゲット！</p>
     </div>
 
-    <div th:if="${user.reviewed}">
-        <h2>クーポン一覧</h2>
+    <div th:if="${user.reviewed}" class="couponIchiran">
+        <h3>クーポン一覧</h3>
         <a  th:each="store:${store}" th:href="@{/store_detail/{id}(id=${store.id})}">
             <div class="coupon">
                 <span  th:text="${store.name}">店の名前</span>

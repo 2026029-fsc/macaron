@@ -2,40 +2,43 @@
 <html lang="ja" xmlns:th="https://www.thymeleaf.org">
 
 <head th:replace="~{header/layout :: head('セール編集画面')}">
-<link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/style.css">
 </head>
 
 <body>
-    <header>
-        <a th:href="@{/mystore/{id}(id=${id})}">店舗詳細編集に戻る</a>
-    </header>
-    <form th:action="@{/suddensalereg/{id}(id=${ssuddensale.get(0).store_id})}" method="post">
-        <h3>突発セール登録</h3>
-        <input type="text" id="name" name="name" required placeholder="突発セール名"><br>
-        <input type="text" id="contents" name="contents" required placeholder="内容"><br>
-        <button type="submit">登録</button>
-    </form>
-    <h3>開催中の突発セール</h3>
-    <tr>
-        <!-- <h3>セール名</h3> -->
-        <!-- <th>完了/未完了</th> -->
-    </tr>
-    <p class="none" th:if="${#lists.isEmpty(suddensale)}"> no sale</p>
-    <table>
-        <li th:each="suddensale : ${suddensale}">
-            <!-- <td th:text="${suddensale.name}">こころ</td> -->
-            <span th:text="${suddensale.name}">こここ</span>
-            <form th:action="@{/saleedit/{id}(id=${suddensale.id})}" method="post" style="display:inline;">
-                <!-- <input type="hidden" id="id" name="id" th:value="${suddensale.store_id}"> -->
-                <input type="hidden" id="store_id" name="store_id" th:value="${suddensale.store_id}">
-                <button type="submit">完了</button>
-            </form>
-        
-        </li>
+    <div class="saleEdit">
+        <div class="layout">
+            <div class="left">
+                <header>
+                    <a th:href="@{/mystore/{id}(id=${id})}">店舗詳細編集に戻る</a>
+                </header>
+                <form th:action="@{/suddensalereg/{id}(id=${ssuddensale.get(0).store_id})}" method="post">
+                    <h3>突発セール登録</h3>
+                    <input type="text" id="name" name="name" required placeholder="突発セール名"><br>
+                    <input type="text" id="contents" name="contents" required placeholder="内容"><br>
+                    <button type="submit">登録</button>
+                </form>
+                <h3>開催中の突発セール</h3>
+                <tr>
+                    <!-- <h3>セール名</h3> -->
+                    <!-- <th>完了/未完了</th> -->
+                </tr>
+                <p class="none" th:if="${#lists.isEmpty(suddensale)}"> no sale</p>
+                <table>
+                    <li th:each="suddensale : ${suddensale}">
+                        <!-- <td th:text="${suddensale.name}">こころ</td> -->
+                        <span th:text="${suddensale.name}">こここ</span>
+                        <form th:action="@{/saleedit/{id}(id=${suddensale.id})}" method="post" style="display:inline;">
+                            <!-- <input type="hidden" id="id" name="id" th:value="${suddensale.store_id}"> -->
+                            <input type="hidden" id="store_id" name="store_id" th:value="${suddensale.store_id}">
+                            <button type="submit">完了</button>
+                        </form>
+
+                    </li>
 
 
 
-        <!-- <tr th:each="suddensale : ${suddensale}">
+                    <!-- <tr th:each="suddensale : ${suddensale}">
             <td th:text="${suddensale.name}">こころ</td>
             <form th:action="@{/saleedit/switch/{id}(id=${suddensale.store_id})}" method="post" style="display:inline;">
                 <br>
@@ -43,8 +46,11 @@
                 <button type="submit">完了</button>
             </form>
         </tr> -->
-    </table>
-     <!-- <div th:if="${suddensale == null or suddensale.isEmpty()}">
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- <div th:if="${suddensale == null or suddensale.isEmpty()}">
                 <p>現在、この店舗に登録されている突発セールはありません。</p>
             </div> -->
     <!-- <div th:each="suddensale: ${suddensale}">

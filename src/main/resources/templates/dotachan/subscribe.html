@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>店舗のサブスクの詳細</title>
-    <link rel="stylesheet" href="../../static/css/style.css">
-    <!-- リンク先はあっているのかわかりませんが、これで反映はできます。 -->
-    <div th:replace="~{header/layout :: head(title)}"></div>
+<head th:replace="~{header/layout :: head('店舗サブスク詳細')}">
+  <link rel="stylesheet" href="../../static/css/style.css">
 </head>
 
 <body class="page-subscribe">
@@ -25,13 +20,7 @@
             <h4>ご登録はこちらから 0120-xxxx-xxxxまで</h4>
         </div>
 
-        <!-- 広告 -->
-        <div class="right">
-            <div th:each="Storead : ${Storead}">
-                <p>↓広告</p>
-                <a th:href="@{/store_detail/{id}(id=${Storead.id})}" th:text="${Storead.name}"></a>
-            </div>
-        </div>
+
     </div>
 </body>
 

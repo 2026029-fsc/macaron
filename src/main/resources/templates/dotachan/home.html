@@ -2,33 +2,26 @@
 <html lang="ja">
 
 <head th:replace="~{header/layout :: head('土壇場でキャンセルが来ても安心！ドタチャン！')}">
-<link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="stylesheet" href="../../static/css/style.css">
 
 </head>
 
-<body>
+<!-- homeクラスを追加 -->
 
+<body class="home">
     <div class="layout">
         <div class="left">
             <div class="scroll-area">
-                <h2>突発セール情報</h2><hr>
+                <h2>突発セール情報</h2>
+                <hr>
                 <p th:if="${#lists.isEmpty(SuddenSale)}"> 現在突発的なセールは開催されていません</p>
                 <table>
                     <tr>
                         <th>SuddenSale Name</th>
                     </tr>
-                    <!-- <tr th:each="SuddenSale : ${SuddenSale}" >
-            <td><a th:href="@{/store_detail/{id}(id=${SuddenSale.store_id})}" th:text="${SuddenSale.name}">現在セールは開催されていません</a></td> 
-        </tr>
-        <tr th:each="SStores : ${SStores}" >
-            <td><a th:href="@{/store_detail/{id}(id=${SStores.id})}" th:text="${SStores.name}">noname</a></td>
-        </tr> -->
                     <tr th:each="SuddenSale : ${SuddenSale}" class="sale">
-                        <td>
-                            <a class="salename" th:href="@{/store_detail/{id}(id=${SuddenSale.id})}"th:text="${SuddenSale.name}">現在セールは開催されていません</a>
-                            <br>
-                            <a class="saletext" th:href="@{/store_detail/{id}(id=${SuddenSale.id})}"th:text="${SuddenSale.contents}">noname</a>
-                        </td>
+                        <td><a class="salename" th:href="@{/store_detail/{id}(id=${SuddenSale.id})}" th:text="${SuddenSale.name}">現在セールは開催されていません</a></td>
+                        <td><a class="saletext" th:href="@{/store_detail/{id}(id=${SuddenSale.id})}" th:text="${SuddenSale.contents}">noname</a></td>
                     </tr>
                 </table>
             </div>
@@ -56,26 +49,22 @@
             </div>
 
             <div class="scroll-area">
-                <h2>恒常セール情報</h2><hr>
+                <h2>恒常セール情報</h2>
+                <hr>
                 <p th:if="${#lists.isEmpty(Sale)}"> 現在セールは開催されていません</p>
                 <table>
                     <tr>
                         <th>Sale Name</th>
                     </tr>
                     <tr th:each="Sale : ${Sale}" class="sale">
-                        <td>
-                            <a class="salename" th:href="@{/store_detail/{id}(id=${Sale.id})}" th:text="${Sale.name}">現在セールは開催されていません</a>
-                            <br>
-                            <a class="saletext" th:href="@{/store_detail/{id}(id=${Sale.id})}" th:text="${Sale.contents}">noname</a>
-                        </td>
+                        <td><a class="salename" th:href="@{/store_detail/{id}(id=${Sale.id})}" th:text="${Sale.name}">現在セールは開催されていません</a></td>
+                        <td><a class="saletext" th:href="@{/store_detail/{id}(id=${Sale.id})}" th:text="${Sale.contents}">noname</a></td>
                     </tr>
                 </table>
             </div>
         </div>
 
-        
     </div>
-
 </body>
 
 </html>

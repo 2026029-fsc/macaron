@@ -34,7 +34,7 @@ public class SaleRepository {
     //Sale情報をキーワード検索
 
     public List<Saleview> dtosearchByKeyword(String keyword) {
-        return jdbcClient.sql("SELECT Sale.id AS id, Sale.store_id, Sale.name AS name, Store.name AS contents FROM Sale JOIN Store ON Store.id = Sale.store_id WHERE Sale.name LIKE :keyword")
+        return jdbcClient.sql("SELECT Sale.id AS id, Sale.store_id, Sale.name AS name, Store.name AS contents FROM Sale JOIN Store ON Store.id = Sale.store_id WHERE Sale.name LIKE :keyword OR Store.name LIKE :keyword")
                 .param("keyword", "%" + keyword + "%")
                 .query(Saleview.class)
                 .list();

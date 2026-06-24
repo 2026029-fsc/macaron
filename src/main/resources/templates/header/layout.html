@@ -47,6 +47,27 @@
 </head>
 
 <body>
+    <div th:fragment="koukoku">
+        <a th:if="${session.username == null && session.userEmail == null}" href="/register">
+            <img th:src="@{/images/会員登録　広告.jpg}" alt="UserLogin">
+        </a>
+
+        <a th:if="${session.username == null && session.userEmail == null}" href="/subscribe">
+            <img th:src="@{images/店舗の皆様へ.png}" alt="StoreLogin">
+        </a>
+
+
+        <div><img th:src="@{images/spidermanAd.png}" alt="Koukoku" class="koukoku"></div>
+        
+
+        <!-- Controllerをまだ書いてないのでViewControllerにかく -->
+        <!-- <td>今月のお店
+            <a th:href="@{/store/{id}(id=${store.id})}">
+                <img src="./store_image.png" alt="今月のお店">
+            </a>
+        </td> -->
+
+    </div>
 </body>
 
 </html>

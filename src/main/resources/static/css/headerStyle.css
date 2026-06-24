@@ -1,0 +1,31 @@
+/* ヘッダー全体の枠組み */
+.site-header {
+    width: 100%;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 15px 20px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.site-name {
+    text-decoration: none;
+    color: #333333;
+}
+.site-name h1 {
+    margin: 0;
+    font-size: 24px;
+}
+.site-name img {
+    height: 100px;
+    width: 280px;
+}
+
+/* 右側のボタンエリア */
+.header-button {
+    display: flex;
+    gap: 10px; 
+    margin-right: 5px;
+}

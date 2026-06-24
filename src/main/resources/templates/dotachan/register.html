@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<!-- <head th:place="~{fragments/layout1::head('無料会員登録')}"> -->
+
+<head th:replace="~{header/layout :: head('店舗詳細画面')}"></head>
+<body class="page-register">
+
+    <p>利用者の登録</p>
+    <form th:action="@{/register}" method="post" th:object="${userform}">
+        <!-- ユーザーネーム -->
+        <p>ユーザーネームを入力してください。(30文字以内)</p>
+        <input type="text" id="name" name="name" placeholder="ユーザーネーム" th:field="*{name}">
+        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red;"></span>
+
+        <!-- メールアドレス -->
+        <p>メールアドレスを入力してください。</p>
+        <input type="text" id="mail" name="mail" pattern="^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
+         placeholder="メールアドレス" th:field="*{mail}">
+        <!-- メールアドレスが重複しているときのエラー表示↓ -->
+        <p th:text="${error}" style="color: red;"></p>
+        <span th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}" style="color: red;"></span>
+
+        <!-- パスワード -->
+        <p>パスワードを入力してください。(8文字以上)</p>
+        <input type="password" id="password" name="password" pattern="^[0-9a-zA-Z]+$" placeholder="パスワード"
+            th:field="*{password}">
+        <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" style="color: red;"></span>
+        <!-- ↓パスワードとパスワード確認用が一致するため -->
+        <p th:if="${#fields.hasErrors('passwordValid')}" th:errors="*{passwordValid}" style="color: red;"></p>
+
+        <!-- パスワード確認用 -->
+        <p>パスワードを入力してください。(確認用)</p>
+        <input type="password" id="password2" name="password2" pattern="^[0-9A-Za-z]+$" placeholder="パスワード"
+            th:field="*{password2}">
+        <!-- <span th:if="${#fields.hasErrors('password2')}" th:errors="*{password2}"></span> -->
+        <p>下記に記載のプライバシーポリシー・規約に同意のうえ以下の「登録」を押してください。</p>
+        <button type="submit">登録</button>
+    </form>
+
+    <br><div><a href="/privacy-policy">プライバシーポリシー</a></div>
+    <div><a href="/argreement">規約</a></div>
+    
+    <!--今岡追加ここまで  -->
+
+    <fieldset>
+        <label>店舗会員の登録</label>
+        <div><a href="/subscribe">店舗サブスクの詳細はこちら</a></div>
+        <p>0120-xxxx-xxxxまで</p>
+    </fieldset>
+
+    
+
+
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{header/layout :: head('店舗詳細画面')}"></head>
+
+<body>
+  <!-- 店舗名 -->
+  <div>
+    <h2><span th:text="${Store.name}" class="storeName">店舗名</span></h2>
+    <p>ジャンル：<span th:text="${Store.genre}"></span></p>
+    <p>住所：<span th:text="${Store.address}"></p>
+  </div>
+
+  <!-- SuddenSale情報が必要 -->
+  <div>
+    <h2>突発セール</h2>
+    <div th:each="SuddenSale : ${SuddenSales}" class="Suddensale">
+      <h3 th:text="${SuddenSale.name}">セール名</h3>
+      <p th:text="${SuddenSale.contents}">セール内容</p>
+    </div>
+  </div>
+
+  <!-- Sale情報が必要 -->
+  <div>
+    <h2>恒常セール</h2>
+    <div th:each="Sale : ${Sales}" class="sale">
+      <h3 th:text="${Sale.name}">セール名</h3>
+      <p th:text="${Sale.contents}">セール内容</p>
+    </div>
+  </div>
+
+  <!-- 店舗情報が必要 -->
+  <table class="store_info">
+    <h3>店舗情報</h3>
+
+    <tr>
+      <td>電話番号：</td>
+      <td><a href="@{'tel:'+${Store.phone_number}}" th:text="${Store.phone_number}"></a></td>
+    </tr>
+    <tr>
+      <td>決済方法：</td>
+      <td>
+        <p th:text="${Store.payment}"></p>
+      </td>
+    </tr>
+    <tr>
+      <td>ジャンル：</td>
+      <td>
+        <p th:text="${Store.genre}"></p>
+      </td>
+    </tr>
+    <tr>
+      <td>お店からのコメント：</td>
+      <td>
+        <p th:if="${#strings.isEmpty(Store.free_desc)}">このお店はコメントを登録していません</p>
+        <p th:text="${Store.free_desc}"></p>
+      </td>
+    </tr>
+  </table>
+
+  <!-- レビューをしていたらクーポン一覧を表示する -->
+  <div th:if="${user == null}">
+    <h3>お得なクーポン</h3>
+    <p>ログインしてレビューを書いたら、クーポンゲット！</p>
+  </div>
+
+  <div th:if="${user != null}">
+    <div th:unless="${user.reviewed}">
+      <h3>お得なクーポン</h3>
+      <p>レビューを書いたら、クーポンゲット！</p>
+    </div>
+
+    <div th:if="${user.reviewed}" class="coupon">
+      <h3>お得なクーポン</h3>
+      <p th:if="${#strings.isEmpty(Store.coupon)}">このお店は使用可能なクーポンを掲載していません</p>
+      <p th:unless="${#strings.isEmpty(Store.coupon)}" th:text="${Store.coupon}"></p>
+    </div>
+  </div>
+
+
+  <!-- 口コミ情報が必要 -->
+  <div class="review_box">
+    <h3>口コミ</h3>
+
+    <div th:if="${user == null}">
+      <p>ログインするとレビューが書けるようになります！</p>
+    </div>
+
+    <div th:if="${user != null}" class="review_post">
+      <fieldset>
+        <legend>あなたの評価：</legend>
+        <form th:action="@{/store_detail/{id}(id=${Store.id})}" method="post">
+          <input type="radio" id="post" name="evaluation" value="true" checked />
+          <label for="huey">👍</label>
+
+          <input type="radio" id="post" name="evaluation" value="false" />
+          <label for="louie">👎</label>
+
+          <p><textarea placeholder="このお店はいかがでしたか？" id="post" name="comments" class="postbox"></textarea></p>
+          <button type="submit" class="blogbutton">投稿!</button>
+        </form>
+      </fieldset>
+    </div>
+
+    <div th:each="review : ${Review}">
+      <fieldset>
+        <p th:text="${review.name}">投稿者名</p>
+        <p th:if="${review.evaluation==true}">👍</p>
+        <p th:if="${review.evaluation==false}">👎</p>
+        <p th:text="${review.comments}">コメント</p>
+      </fieldset>
+    </div>
+
+  </div>
+
+</body>
+
+</html>

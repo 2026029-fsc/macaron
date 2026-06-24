@@ -1,7 +1,7 @@
 /*とりあえず張り付けただけ クラスの名前を編集する必要がある*/
 /*全体*/
 body {
-    background-color: #fffdd6;;
+    background-color: #fffdd6;
     color: #0d3368;
 }
 
@@ -40,6 +40,7 @@ body {
     font-weight: bold;
 }
 
+/* 押したら動くのがhover */
 .button:hover {
     background-color: #467bc0;
 }
@@ -55,7 +56,8 @@ body {
 
 /*home.css*/
 .scroll-area {
-height: 45vh;
+    background-color: #fffdd6;
+    height: 45vh;
     overflow-y: auto;
     padding: 20 0px;
     /*height: 40%;*/
@@ -165,15 +167,6 @@ height: 45vh;
     border-radius: 4px;
 }
 
-/* 共通部分 */
-body {
-    font-family: sans-serif;
-    color: #202124;
-    margin: 0;
-    padding: 0;
-    background-color: #f8f9fa; 
-}
-
 hr {
     border: none;
     border-top: 1px solid #ddd;
@@ -186,27 +179,6 @@ h1 {
     display: flex;
     text-align: center;
     justify-content: center;
-}
-
-/* サイト共通の標準ボタン (青背景・白文字・指定サイズ) */
-.button {
-    background-color: #1a73e8;
-    color: #ffffff;
-    border: none;
-    padding: 12px 35px;
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    outline: none;
-    display: inline-block;
-    text-decoration: none;
-    text-align: center;
-}
-.button:hover {
-    background-color: #7dadeb;
 }
 
 /* 各ページのレイアウト */
@@ -222,7 +194,6 @@ h1 {
 .page-home main .button {
     font-size: 12px;
 }
-
 .content {
     display: flex;
     height: 100%;
@@ -234,7 +205,9 @@ h1 {
     padding: 20px;
     background-color: #f9f9f9;
 }
-.scroll-area th { text-align: left; }
+.scroll-area th {
+    text-align: left;
+}
 .scroll-area a {
     color: black;
     text-decoration: none;
@@ -372,27 +345,11 @@ h1 {
     text-align: center;
 }
 
-/* 複数画面で使い回す汎用レイアウト */
-.layout {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 0;
+/*  マイページ */
+.hello{
+    color: black;
+    border-bottom: 2px dotted #2c3e50;
 }
-.flex {
-    display: flex;
-    gap: 80px;
+.coupon{
+    color: #6d3b0c;
 }
-.right {
-    width: 200px;
-    border-left: 0.5px solid #ccc;
-    padding-left: 10px;
-}
-.page-home .right { float: right; }
-.page-register .right, .page-subscribe .right { height: 100vh; }
-
-.left {
-    font-size: 20px;
-    margin: 0 auto;
-}
-.page-home .left { flex: 1; float: left; }

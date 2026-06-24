@@ -115,11 +115,13 @@ public class LoginController {
 
   @GetMapping("/privacy-policy")
   public String privacypolicy() {
-    return "dotachan/privacy-policy";
+    // return "dotachan/privacy-policy";
+    return "/privacy-policy";
   }
 
   @GetMapping("/agreement")
   public String agreement() {
-    return "dotachan/agreement";
+    // return "dotachan/agreement";
+    return "/agreement";
   }
 }

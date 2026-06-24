@@ -28,7 +28,7 @@ CREATE TABLE Store(
   email         VARCHAR(254)    NOT NULL  UNIQUE,
   password      VARCHAR(255)    NOT NULL,
   address       VARCHAR(100)    NOT NULL,
-  phone_number  INT NOT NULL,
+  phone_number  BIGINT NOT NULL,
   payment       VARCHAR(100)    NOT NULL,
   price_range   INT,
   genre         VARCHAR(100)    NOT NULL,
@@ -69,21 +69,21 @@ CREATE TABLE StoreReview(
 -- サンプル投入 =================================================================
 
 INSERT INTO User (mail, name, password, reviewed)
-VALUES('komo@com', 'komo', '$2y$10$KyVGOWdiYzM20FelSjynGefbVigdTviw4ZkbGE/JotuKe3MjiOia.', TRUE), 
+VALUES('komo@com', 'komo', '$2y$10$KyVGOWdiYzM20FelSjynGefbVigdTviw4ZkbGE/JotuKe3MjiOia.', FALSE), 
   -- komokatatakahiro
   ('masa@com', 'masa', '$2y$10$oRIrthmAt1fIomV/Lt.pBeC1LDQ46.mAra7FOcfPMngupPRrzvqzm', FALSE),
   -- mukaedamasayoshi
-  ('nishi@com', 'nishi', '$2y$10$rsFA7/2tSllqZkYFa/oTiurOCJTMYfPFuqXkcM96pLMVxn8vbYAXW', TRUE);
+  ('nishi@com', 'nishi', '$2y$10$rsFA7/2tSllqZkYFa/oTiurOCJTMYfPFuqXkcM96pLMVxn8vbYAXW', FALSE);
   -- nishiyamaryuushin
 
 
 
-INSERT INTO Store (name, email, password, address, phone_number, payment, genre)
-VALUE('こもかた', 'komo@example.com', '$2y$10$59st1xNeyQUQ3Uup5V2LT.t6/nP1CgrOevMN2MbD6RGgLpxXWjVay','福岡県', '0120444444','現金', '海鮮'),
+INSERT INTO Store (name, email, password, address, phone_number, payment, genre, coupon)
+VALUE('こもかた', 'komo@example.com', '$2y$10$59st1xNeyQUQ3Uup5V2LT.t6/nP1CgrOevMN2MbD6RGgLpxXWjVay','福岡県', '0120444444','現金', '海鮮', '10%off'),
   -- takahirokomokata
-  ('むかえだ', 'masa@example.com', '$2y$10$2Y3eRJuXHlXw3/aqomj1Re92Yflz89gIwaPLbvsXw1/rIZv2WlwAW','佐賀県', '0120444445','現金', '肉'),
+  ('むかえだ', 'masa@example.com', '$2y$10$2Y3eRJuXHlXw3/aqomj1Re92Yflz89gIwaPLbvsXw1/rIZv2WlwAW','佐賀県', '0120444445','現金', '肉', '10%off'),
   -- masayoshimukaeda
-  ('にしやま', 'nishi@example.com', '$2y$10$UdEiioBDH.U1cj5sRYdiqOHbbxA.zkyKof3lwUAZ1hsn8UjQ2g9B6','福岡県', '0120444446','paypay', '野菜');
+  ('にしやま', 'nishi@example.com', '$2y$10$UdEiioBDH.U1cj5sRYdiqOHbbxA.zkyKof3lwUAZ1hsn8UjQ2g9B6','福岡県', '0120444446','paypay', '野菜', '10%off');
   -- ryuushinnnishiyama
 
 

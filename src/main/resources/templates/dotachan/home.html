@@ -1,18 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja">
 
-<head th:replace="~{fragments/layout :: head('土壇場でキャンセルが来ても安心！ドタチャン！')}">
-</head>
+<head th:replace="~{header/layout :: head('土壇場でキャンセルが来ても安心！ドタチャン！')}">
+<!-- <link rel="stylesheet" href="/css/home.css"> -->
 
-<body>
-    <header>
-        <ul class="header">
-            <li><a href="/register">会員登録</a></li>
-            <li><a href="/storeLogin">店舗ログイン</a></li>
-            <li><a href="/login">一般会員ログイン</a></li>
-        </ul>
-    </header>
-    <h1><a href="/home">ドタチャン</a></h1>
+<body class="page-home">
 
     <!-- store_idにidを変更 -->
     <h2>突発セール情報</h2>

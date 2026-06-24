@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{header/layout :: head('ログイン')}"></head>
+
+<body>
+  <div class=login>
+
+    <div class=login-form>
+      <h2 class=login-title>一般会員の方</h2>
+
+      <form action="/userLogin" method="post">
+        <p><label for="mail">メールアドレス：</label>
+          <input type="text" id="mail" name="mail">
+        </p>
+
+        <p><label for="password">パスワード：</label>
+          <input type="password" id="password" name="password">
+        </p>
+        <!-- エラーメッセージ -->
+        <p th:if="${errorMessage}" th:text="${errorMessage}">エラー</p>
+
+        <p>下記に記載のプライバシーポリシー・規約に同意のうえ以下の「ログイン」を押してください。</p>
+        <button type="submit" class="login-button">ログイン</button>
+      </form>
+
+      <br>
+      <div><a href="/privacy-policy">プライバシーポリシー</a></div>
+      <div><a href="/agreement">規約</a></div>
+    </div>
+
+    <div class=login-form>
+      <h2 class=login-title>まだ会員登録がお済でない方</h2>
+      <p><a href="/register" class="login-button">新規会員登録へ</a></p>
+    </div>
+  </div>
+</body>
+
+</html>

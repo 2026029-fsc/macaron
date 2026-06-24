@@ -2,6 +2,7 @@ package com.example.macaron;
 
 import java.util.List;
 import java.util.Optional;
+// import jakarta.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,15 +10,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class ViewController {
     private ViewService viewService;
+    private UserSubmitService userSubmitService;
 
-    public ViewController(ViewService viewService) {
+    public ViewController(ViewService viewService, UserSubmitService userSubmitService) {
         this.viewService = viewService;
+        this.userSubmitService = userSubmitService;
     }
 
-    //キーワードサーチ
+    // キーワードサーチ
     @GetMapping("/keywordSerch")
     public String storeSerch(@RequestParam String keyword, Model model) {
         model.addAttribute("Sale", viewService.saleserchByKeyword(keyword).getSale());
@@ -51,11 +56,19 @@ public class ViewController {
 
     // 西山 店舗の詳細表示
     @GetMapping("/store_detail/{id}")
-    public String detail(@PathVariable Long id, Model model) {
+    public String detail(@PathVariable Integer id, Model model, HttpSession session) {
         Optional<Storeview> storeOpt = viewService.StoreDetailId(id);
         if (storeOpt.isEmpty()) {
             return "redirect:/home";
         }
+
+        // セッションのメールアドレスからユーザー情報を取得する
+        String email = (String) session.getAttribute("userEmail");
+        User user = userSubmitService.findByMail(email).orElse(null);
+        if (user != null) {
+            model.addAttribute("user", user);// HTML側にuserという名前でデータを渡す
+        }
+
         model.addAttribute("Store", storeOpt.get());
 
         List<Saleview> saleList = viewService.SaleDetailId(id);

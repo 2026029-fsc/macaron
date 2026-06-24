@@ -6,7 +6,7 @@ public class SuddenSale {
     private final Integer store_id;
     private final String name;
     private final String contents;
-    private boolean completed;
+    private final boolean completed;
 
     public SuddenSale(Integer id, Integer store_id, String name, String contents, boolean completed) {
         this.id = id;
@@ -31,7 +31,5 @@ public class SuddenSale {
     public boolean getCompleted() {
         return completed;
     }
-    public void setCompleted(boolean completed) {
-        this.completed = completed;
-    }
+ 
 }

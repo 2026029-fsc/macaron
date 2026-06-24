@@ -16,6 +16,13 @@ public class SaleRepository {
     }
 
     
+    //こも(迎田) セールの編集
+    public Optional<IdSale> editSale(Integer id) {
+        return jdbcClient.sql("SELECT name, contents FROM Sale WHERE store_id = :id")
+        .param("id",id)
+        .query(IdSale.class)
+        .optional();
+    }
 
     //無理やりSaleviewClassに格納
     public List<Saleview> dtoserchByGenre(String keyword) {
@@ -28,13 +35,13 @@ public class SaleRepository {
     //Sale情報をキーワード検索
 
     public List<Saleview> dtosearchByKeyword(String keyword) {
-        return jdbcClient.sql("SELECT Sale.id AS id, Sale.store_id, Sale.name AS name, Store.name AS contents FROM Sale JOIN Store ON Store.id = Sale.store_id WHERE Sale.name LIKE :keyword")
+        return jdbcClient.sql("SELECT Sale.id AS id, Sale.store_id, Sale.name AS name, Store.name AS contents FROM Sale JOIN Store ON Store.id = Sale.store_id WHERE Sale.name LIKE :keyword OR Store.name LIKE :keyword")
                 .param("keyword", "%" + keyword + "%")
                 .query(Saleview.class)
                 .list();
     }
 
-    public Optional<Saleview> saleDetailById(Long id) {
+    public Optional<Saleview> saleDetailById(Integer id) {
         return jdbcClient.sql("SELECT * FROM Store WHERE id = :id")
                 .param("id", id)
                 .query(Saleview.class)
@@ -42,7 +49,7 @@ public class SaleRepository {
     }
 
     //西山 idで絞り込んでのSale情報の表示(Storeテーブルとの結合なし)
-    public List<Saleview> previewSaleForId(Long id) {
+    public List<Saleview> previewSaleForId(Integer id) {
         return jdbcClient.sql("SELECT * FROM Sale WHERE id = :id ")
                 .param("id",id)
                 .query(Saleview.class)

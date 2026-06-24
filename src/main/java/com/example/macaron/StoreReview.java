@@ -1,6 +1,5 @@
 package com.example.macaron;
 
-
 public class StoreReview {
     private final Integer id;
     private final Integer store_id;

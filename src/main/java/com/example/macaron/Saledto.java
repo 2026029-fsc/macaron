@@ -24,5 +24,4 @@ public class Saledto {
         return ssale;
     }
 
-
 }

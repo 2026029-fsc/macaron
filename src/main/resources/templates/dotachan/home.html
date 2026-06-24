@@ -7,7 +7,6 @@
 </head>
 
 <body>
-    <link rel="stylesheet" href="static/css/home.css">
 
     <div class="layout">
         <div class="left">
@@ -77,8 +76,11 @@
         <!-- 広告 -->
         <div class="right">
             <div th:each="Storead : ${Storead}">
-                <p>↓広告</p>
-                <a th:href="@{/store_detail/{id}(id=${Storead.id})}" th:text="${Storead.name}"></a>
+                <!-- <p>↓広告</p> -->
+                <!-- <a th:href="@{/store_detail/{id}(id=${Storead.id})}" th:text="${Storead.name}"></a> -->
+                <a th:href="@{/store_detail/{id}(id=${Storead.id})}">
+                    <img src="./img/spidermanAd.png" alt="storeAd">
+                </a>
             </div>
         </div>
     </div>

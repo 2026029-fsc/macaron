@@ -69,42 +69,42 @@ CREATE TABLE StoreReview(
 -- サンプル投入 =================================================================
 
 INSERT INTO User (mail, name, password, reviewed)
-VALUES('komo@com', 'komo', '$2y$10$KyVGOWdiYzM20FelSjynGefbVigdTviw4ZkbGE/JotuKe3MjiOia.', FALSE), 
+VALUES('2026015@fsc-educ.com', 'Hotoshock', 'hanayamakaoru', FALSE), 
   -- komokatatakahiro
-  ('masa@com', 'masa', '$2y$10$oRIrthmAt1fIomV/Lt.pBeC1LDQ46.mAra7FOcfPMngupPRrzvqzm', FALSE),
+  ('2026029@fsc-educ.com', '菰方貴大', 'doppoorochi', FALSE),
   -- mukaedamasayoshi
-  ('nishi@com', 'nishi', '$2y$10$rsFA7/2tSllqZkYFa/oTiurOCJTMYfPFuqXkcM96pLMVxn8vbYAXW', FALSE);
+  ('2026056@fsc-educ.com', '愚地独歩', 'hannmabaki', FALSE);
   -- nishiyamaryuushin
 
 
 
 INSERT INTO Store (name, email, password, address, phone_number, payment, genre, coupon)
-VALUE('こもかた', 'komo@example.com', '$2y$10$59st1xNeyQUQ3Uup5V2LT.t6/nP1CgrOevMN2MbD6RGgLpxXWjVay','福岡県', '0120444444','現金', '海鮮', '10%off'),
+VALUE('エンポリオ', 'komokata@example.com', 'burningdownthehouse','福岡県福岡市博多区大字下臼井778-1', '0123456789','現金', 'イタリアン', '店内全品5%off'),
   -- takahirokomokata
-  ('むかえだ', 'masa@example.com', '$2y$10$2Y3eRJuXHlXw3/aqomj1Re92Yflz89gIwaPLbvsXw1/rIZv2WlwAW','佐賀県', '0120444445','現金', '肉', '10%off'),
+  ('宇治抹茶専門店　MIDORI', 'mukaeda@example.com', 'teasweets','東京都大田区羽田空港3-4-2', '0120222222','現金', 'スイーツ', '宇治抹茶ドリンク1杯サービス'),
   -- masayoshimukaeda
-  ('にしやま', 'nishi@example.com', '$2y$10$UdEiioBDH.U1cj5sRYdiqOHbbxA.zkyKof3lwUAZ1hsn8UjQ2g9B6','福岡県', '0120444446','paypay', '野菜', '10%off');
+  ('SUTYA SUTYARI', 'nishiyama@example.com', 'glassesclush','Westminister, London SW1A 0AA, United Kingdom', '0120333333','クレジットカード', '野菜', '10%off');
   -- ryuushinnnishiyama
 
 
 
 INSERT INTO Sale(store_id, name, contents)
-  VALUE(1, 'タイムセール', '一割引き'),
-  (2, 'ハッピーアワー', 'ドリンク290円'),
-  (3, '夕方セール', '対象商品20%off');
+  VALUE(1, 'ハッピーアワー16時から18時', 'ビール299円！ハイボール199円！'),
+  (2, '早朝価格全品50円引き', 'ドリンク290円'),
+  (3, '夕方2時間タイムセール', '対象商品20%off');
 
 
 
 INSERT INTO Suddensale(store_id, name, contents, completed)
-  VALUE(1, '余った', '余りました助けて', FALSE),
-  (2, 'ドタキャン', '助けて', FALSE),
-  (3, '終わり', 'むり', FALSE);
+  VALUE(1, '5000円コース→4700円で提供！', '6名様キャンセル出ました！普段5000円のコースを4700円で提供します！', FALSE),
+  (2, '8名様キャンセル出ました', '8名分のキャンセルが出たのでお席空いてます。コーヒーサービスします！', FALSE),
+  (3, 'ホークスリーグ優勝おめでとうセール', '店内対象商品890円引き', FALSE);
 
 
 
 INSERT INTO StoreReview(store_id, comments,  evaluation, user_id)
-  VALUE(1, 'まず', FALSE, 3),
-  (2, 'いいね', TRUE, 2),
-  (3, 'うま', TRUE, 1);
+  VALUE(1, '非常においしい', TRUE, 3),
+  (2, '抹茶好きにはうれしい！おいしかった！', TRUE, 2),
+  (3, '海外に初めてきたが、まぁまぁな味。イギリスにきたなら食べてもいい。', FALSE, 1);
 
 -- =============================================================================

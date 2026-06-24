@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <!-- <head th:place="~{fragments/layout2::head('マイページ')}"> -->
+<link rel="stylesheet" href="../../static/css/style.css">
 
 <head th:replace="~{header/layout :: head('土壇場でキャンセルが来ても安心！ドタチャン！')}"></head>
 
 <body>
-    <p>こんにちは。<span th:text="${user?.name}?: 'ゲスト'">名前</span>さん</p>
-    <p>メールアドレス:<span th:text="${user.mail}"></span></p>
+    <div class="hello">
+        <p>こんにちは。<span th:text="${user?.name}?: 'ゲスト'">名前</span>さん</p>
+        <p>メールアドレス:<span th:text="${user.mail}"></span></p>
+    </div>
 
     <!-- レビューをしていたらクーポン一覧を表示する -->
-    <div th:unless="${user.reviewed}">
+    <div th:unless="${user.reviewed}" class="coupon">
         <p>レビューを書いたら、クーポンゲット！</p>
     </div>
 

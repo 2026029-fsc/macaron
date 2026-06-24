@@ -343,3 +343,12 @@ h1 {
 .page-subscribe {
     text-align: center;
 }
+
+/*  マイページ */
+.hello{
+    color: black;
+    border-bottom: 2px dotted #2c3e50;
+}
+.coupon{
+    color: #6d3b0c;
+}

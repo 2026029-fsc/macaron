@@ -40,6 +40,7 @@ body {
     font-weight: bold;
 }
 
+/* 押したら動くのがhover */
 .button:hover {
     background-color: #467bc0;
 }
@@ -165,7 +166,6 @@ height: 45vh;
     border-radius: 4px;
 }
 
-
 hr {
     border: none;
     border-top: 1px solid #ddd;
@@ -180,8 +180,6 @@ h1 {
     justify-content: center;
 }
 
-
-
 /* 各ページのレイアウト */
 
 /* ホーム画面 */
@@ -195,7 +193,6 @@ h1 {
 .page-home main .button {
     font-size: 12px;
 }
-
 .content {
     display: flex;
     height: 100%;
@@ -207,7 +204,9 @@ h1 {
     padding: 20px;
     background-color: #f9f9f9;
 }
-.scroll-area th { text-align: left; }
+.scroll-area th {
+    text-align: left;
+}
 .scroll-area a {
     color: black;
     text-decoration: none;
@@ -344,28 +343,3 @@ h1 {
 .page-subscribe {
     text-align: center;
 }
-
-/* 複数画面で使い回す汎用レイアウト */
-.layout {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 0;
-}
-.flex {
-    display: flex;
-    gap: 80px;
-}
-.right {
-    width: 200px;
-    border-left: 0.5px solid #ccc;
-    padding-left: 10px;
-}
-.page-home .right { float: right; }
-.page-register .right, .page-subscribe .right { height: 100vh; }
-
-.left {
-    font-size: 20px;
-    margin: 0 auto;
-}
-.page-home .left { flex: 1; float: left; }

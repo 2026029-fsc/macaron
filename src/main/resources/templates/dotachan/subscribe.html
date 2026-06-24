@@ -1,9 +1,38 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{header/layout :: head('店舗のサブスク詳細')}"></head>
-<body class="page-subscribe">
-    <p>店舗管理の方の登録</p>
-    <p>0120-xxxx-xxxxまで</p>
-    <p>サブスクの詳細</p>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>店舗のサブスクの詳細</title>
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <!-- リンク先はあっているのかわかりませんが、これで反映はできます。 -->
+    <div th:replace="~{header/layout :: head(title)}"></div>
+</head>
+
+<body>
+
+    <div class="layout">
+        <div class="left">
+            <h3>店舗様へ</h3>
+            <p>急なキャンセル、雨の日の売れ残り、仕込みすぎ……
+                諦めていた「その赤字」、今すぐその場で利益に変えませんか？
+
+                突発的な空席や余剰在庫を、近隣の消費者にリアルタイムで告知・販売できる。
+                飲食店・食品店のための“ドタキャン・売れ残り救済”システム。
+            </p>
+            <h3>「ドタチャン！土壇場キャンセルチャンスセール」加盟店募集中！</h3>
+            <h4>ご登録はこちらから 0120-xxxx-xxxxまで</h4>
+        </div>
+
+        <!-- 広告 -->
+        <div class="right">
+            <div th:each="Storead : ${Storead}">
+                <p>↓広告</p>
+                <a th:href="@{/store_detail/{id}(id=${Storead.id})}" th:text="${Storead.name}"></a>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>

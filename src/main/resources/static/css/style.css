@@ -1,7 +1,7 @@
 /*とりあえず張り付けただけ クラスの名前を編集する必要がある*/
 /*全体*/
 body {
-    background-color: #fffdd6;;
+    background-color: #fffdd6;
     color: #0d3368;
 }
 
@@ -165,14 +165,6 @@ height: 45vh;
     border-radius: 4px;
 }
 
-/* 共通部分 */
-body {
-    font-family: sans-serif;
-    color: #202124;
-    margin: 0;
-    padding: 0;
-    background-color: #f8f9fa; 
-}
 
 hr {
     border: none;
@@ -188,26 +180,7 @@ h1 {
     justify-content: center;
 }
 
-/* サイト共通の標準ボタン (青背景・白文字・指定サイズ) */
-.button {
-    background-color: #1a73e8;
-    color: #ffffff;
-    border: none;
-    padding: 12px 35px;
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    outline: none;
-    display: inline-block;
-    text-decoration: none;
-    text-align: center;
-}
-.button:hover {
-    background-color: #7dadeb;
-}
+
 
 /* 各ページのレイアウト */
 

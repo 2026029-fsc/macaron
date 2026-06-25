@@ -69,33 +69,42 @@ CREATE TABLE StoreReview(
 -- サンプル投入 =================================================================
 
 INSERT INTO User (mail, name, password, reviewed)
-VALUES('2026015@fsc-educ.com', 'Hotoshock', 'hanayamakaoru', FALSE), 
-  -- komokatatakahiro
-  ('2026029@fsc-educ.com', '菰方貴大', 'doppoorochi', FALSE),
-  -- mukaedamasayoshi
-  ('2026056@fsc-educ.com', '愚地独歩', 'hannmabaki', FALSE),
-  -- nishiyamaryuushin
-  ('2026042@fsc-educ.com', '岩本 剛', 'kaoruhanayama', FALSE),
-  ('2026088@fsc-educ.com', '烈海王', 'shorinjikenpo', TRUE),
-  ('2026011@fsc-educ.com', '淵上 拓海', 'shibukawa01', FALSE),
-  ('2026001@fsc-educ.com', '範馬勇次郎', 'ogre_strongest', TRUE),
-  ('2026035@fsc-educ.com', '今岡 蓮', 'baki0624', FALSE);
+VALUE('2026015@fsc-educ.com', 'Hotoshock', '$2a$10$q7QnuI5FBO/LIwJZIXIc8eMXuqHh4zgATd7.VatCRX3GR4FqzXHb.', FALSE), 
+  -- K1dF7xM26
+  ('2026029@fsc-educ.com', '菰方貴大', '$2a$10$ZomjzB.Y7Jmj911d4zLjye1o5NUx9UKvRxeG3ZS9KohV2fY0Ig0bG', FALSE),
+  -- doppoorochi
+  ('2026056@fsc-educ.com', '愚地独歩', '$2a$10$o4dTynx6Z.A1h.Maj1sXPewfK.0STodu8SlMLsPL2Xd4fNYzKZiOq', FALSE),
+  -- nishiyamadady
+  ('2026042@fsc-educ.com', '岩本 剛', '$2a$10$GX2M13PseH64WulUReq5nuxDefIcH9kmDX9XHYpQFBr8C./0CwY5G', FALSE),
+  -- doraemonjaian
+  ('2026088@fsc-educ.com', '烈海王', '$2a$10$HOzCxAuVkJVHsMPf7Glb2OU6C4tLxAd.Li1KMmBEveHxtdTCC2RNS', TRUE),
+  -- shorinjikenpo
+  ('2026011@fsc-educ.com', '淵上 拓海', '$2a$10$0nuvkwiWOyGK756WDRX/mOMxM3gTKPOn0T/eU36jPxFWJ3G/LGaUa', FALSE),
+  -- shibukawa01
+  ('2026001@fsc-educ.com', '範馬勇次郎', '$2a$10$nGM6qRMHyZ9.wLO4oBiuNuIoBu1EUsinscs/tEdgfvn.sEiECWsZ6', TRUE),
+  -- ogre_strongest
+  ('2026035@fsc-educ.com', '今岡 蓮', '$2a$10$0.VJux875ILPntyKWpLd.OCJMhNq75Wa.6RWVOII74tiFHvXG/lPK', FALSE);
+  -- baki0624
 
 
 
 INSERT INTO Store (name, email, password, address, phone_number, payment, genre, coupon)
-VALUE('エンポリオ', 'komokata@example.com', 'burningdownthehouse','福岡県福岡市博多区大字下臼井778-1', '0123456789','現金', 'イタリアン', '店内全品5%off'),
-  -- takahirokomokata
-  ('宇治抹茶専門店　MIDORI', 'mukaeda@example.com', 'teasweets','東京都大田区羽田空港3-4-2', '0120222222','現金', 'スイーツ', '宇治抹茶ドリンク1杯サービス'),
-  -- masayoshimukaeda
-  ('SUTYA SUTYARI', 'nishiyama@example.com', 'glassesclush','Westminister, London SW1A 0AA, United Kingdom', '0120333333','クレジットカード', '野菜', '10%off'),
-  -- ryuushinnnishiyama
-  ('博多もつ鍋処 まかろん', 'macaron_hakata@example.com', 'sweetstew2026', '福岡県福岡市博多区中洲5丁目2-1', '0921234567', 'クレジットカード・電子マネー・現金', '居酒屋', 'ドタチャン限定：お好きなトッピング1品無料'),
-  ('極濃豚骨 麺屋オロチ', 'orochi_men@example.com', 'doppomendou', '大阪府大阪市北区梅田3丁目1-1', '0698765432', '現金', 'ラーメン', '替玉1玉またはトッピング煮卵無料'),
-  ('Cafe Stand BAKI', 'baki_cafe@example.com', 'grapplercoffee', '東京都渋谷区道玄坂2丁目29-1', '0311112222', 'クレジットカード・電子マネー', 'カフェ', 'お会計から10%OFF（他券併用不可）'),
-  ('本格インド咖喱 スパイスマサラ', 'masala_spice@example.com', 'hotcurry999', '福岡県福岡市博多区博多駅中央街1-1', '0927778888', '現金・QRコード決済', 'カレー', 'ランチタイム限定：焼きたてナン1枚おかわり無料'),
-  ('STEAK HOUSE HANAYAMA', 'hanayama_sh@example.com', 'standingchary', '2201 Kalakaua Ave, Honolulu, HI 96815, United States', '18089224422', 'クレジットカード', 'ステーキ', 'Welcome Drink 1杯サービス');
-
+VALUE('エンポリオ', 'komokata@example.com', '$2a$10$aNH0ujgx55PqbsX9zUjUi.0m1CKrCex.vUua8rM03jlyV5NQw7Cue','福岡県福岡市博多区大字下臼井778-1', '0123456789','現金', 'イタリアン', '店内全品5%off'),
+  -- takahirokomokata---burningdownthehouse
+  ('宇治抹茶専門店　MIDORI', 'mukaeda@example.com', '$2a$10$BLf6rd/eAIx.k1m4HiPNquzjnpziWNlsEKhP.QXr0Vn.CJl.JYED2','東京都大田区羽田空港3-4-2', '0120222222','現金', 'カフェ', '宇治抹茶ドリンク1杯サービス'),
+  -- masayoshimukaeda---teasweets
+  ('SUTYA SUTYARI', 'nishiyama@example.com', '$2a$10$rpB8DdI4Xlfb3DTH6O8JyO3kaTI7JMNIz4O01IrBuCE2.3WKl.CQ.','Westminister, London SW1A 0AA, United Kingdom', '0120333333','クレジットカード', '野菜', '10%off'),
+  -- ryuushinnnishiyama---glassesclush
+  ('博多もつ鍋処 まかろん', 'macaron_hakata@example.com', '$2a$10$964lRkTqjRsP0UVqZ2ruSuN2rUMuN7TWtoTwKDqLE9lhS55rWz14O', '福岡県福岡市博多区中洲5丁目2-1', '0921234567', 'クレジットカード・電子マネー・現金', '居酒屋', 'ドタチャン限定：お好きなトッピング1品無料'),
+  -- sweetstew2026
+  ('極濃豚骨 麺屋オロチ', 'orochi_men@example.com', '$2a$10$HHBvzv7Q4HwBbp2PTUsKZ.uu7B.EihxjKsFcARJLhCtuqrHpb8IDS', '大阪府大阪市北区梅田3丁目1-1', '0698765432', '現金', 'ラーメン', '替玉1玉またはトッピング煮卵無料'),
+  -- doppomendou
+  ('Cafe Stand BAKI', 'baki_cafe@example.com', '$2a$10$AG6VQi8dloSMbdpIJZGdF.hhqvVYJN0pdXIJXJKJ5LSzjZjLtCzMS', '東京都渋谷区道玄坂2丁目29-1', '0311112222', 'クレジットカード・電子マネー', 'カフェ', 'お会計から10%OFF（他券併用不可）'),
+  -- grapplercoffee
+  ('本格インドカレー スパイスマサラ', 'masala_spice@example.com', '$2a$10$vGLDeL1OogmZeQ9yDEeFA.fedy1dxE2POActvGqFGUJQT4G5aRy1y', '福岡県福岡市博多区博多駅中央街1-1', '0927778888', '現金・QRコード決済', 'カレー', 'ランチタイム限定：焼きたてナン1枚おかわり無料'),
+  -- hotcurry999
+  ('STEAK HOUSE HANAYAMA', 'hanayama_sh@example.com', '$2a$10$E3btX87vyqlVMOv7mM88ceUciRV0Brp2N1zK9fzbAbpYORPmMa.nu', '2201 Kalakaua Ave, Honolulu, HI 96815, United States', '18089224422', 'クレジットカード', 'ステーキ', 'Welcome Drink 1杯サービス');
+  -- standingchary
 
 INSERT INTO Sale(store_id, name, contents)
   VALUE(1, 'ハッピーアワー16時から18時', 'ビール299円！ハイボール199円！'),

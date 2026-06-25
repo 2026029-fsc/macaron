@@ -1,45 +1,68 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="https://www.thymeleaf.org">
 
-<head th:replace="~{header/layout :: head('店舗詳細画面')}"></head>
+<head th:replace="~{header/layout :: head('店舗詳細画面')}">
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
 
 <body>
-    <header>
-        <a th:href="@{/saleedit/{id}(id=${id})}">突発セール編集</a>
-    </header>
-    <h3>アカウント情報</h3>
-    <!-- <div th:each="email : ${email}"> -->
-    <p th:text="${StoreForm.email}">メールアドレス</p>
-        <!-- <input type="text" name="title" required placeholder="メールアドレス"><br> -->
-    <!-- </div> -->
-    <form th:action="@{/mystore/{id}(id=${id})}" method="post" th:object="${StoreForm}">
-        <h3>店舗詳細画面（編集）</h3>
-        <a>必須項目</a><br>
+    <div class="mystore">
 
-        <input type="text" th:field="*{name}" id="name" name="name"required placeholder="店舗名"><br>
-        <input type="text" th:field="*{address}" id="address" name="address" required placeholder="店舗住所 "><br>
-        <input type="text" th:field="*{phone_number}" id="phone_number" name="phone_number" required placeholder="店舗電話番号"><br>
-        <input type="text" th:field="*{payment}" id="payment" name="payment" required placeholder="支払い方法"><br>
-        <input type="text" th:field="*{genre}" id="genre" name="genre" required placeholder="ジャンル"><br>
+        <div class="layout">
+            <div class="left flex">
 
-        <a>任意項目</a><br>
-        <input type="text" th:field="*{price_range}" id="price_range" name="price_range" placeholder="価格帯"><br>
-        <input type="text" th:field="*{free_desc}" id="free_desc" name="free_desc" placeholder="自由記述欄"><br>
+                <header>
+                    <a th:href="@{/saleedit/{id}(id=${id})}">突発セール編集ページはこちら</a>
+                </header>
 
-        <a>クーポン登録</a><br>
-        <input type="text" th:field="*{coupon}" id="coupon" name="coupon" placeholder="クーポン内容"><br>
+                <div class="mystore_acount">
+                    <h3>アカウント情報</h3>
+                    <!-- <div th:each="email : ${email}"> -->
+                    <p th:text="${StoreForm.email}">メールアドレス</p>
+                </div>
+                <!-- <input type="text" name="title" required placeholder="メールアドレス"><br> -->
+                <!-- </div> -->
+                <form th:action="@{/mystore/{id}(id=${id})}" method="post" th:object="${StoreForm}">
+                    <h3>店舗詳細画面（編集）</h3>
+                    <a>必須項目</a><br>
 
-        <button type="submit">更新</button>
-    </form>
+                    <input type="text" th:field="*{name}" id="name" name="name" required placeholder="店舗名"><br>
+                    <input type="text" th:field="*{address}" id="address" name="address" required
+                        placeholder="店舗住所 "><br>
+                    <input type="text" th:field="*{phone_number}" id="phone_number" name="phone_number" required
+                        placeholder="店舗電話番号"><br>
+                    <input type="text" th:field="*{payment}" id="payment" name="payment" required
+                        placeholder="支払い方法"><br>
+                    <input type="text" th:field="*{genre}" id="genre" name="genre" required placeholder="ジャンル"><br>
 
+                    <a>任意項目</a><br>
+                    <input type="text" th:field="*{price_range}" id="price_range" name="price_range"
+                        placeholder="価格帯"><br>
+                    <input type="text" th:field="*{free_desc}" id="free_desc" name="free_desc" placeholder="自由記述欄"><br>
 
-    <form th:action="@{/sale/{id}(id=${id})}" method="post" th:object="${sale}">
-        <h3>恒常セール</h3>
-        <input type="text" th:field="*{name}" id="name" name="name" required placeholder="恒常セール名">
-        <input type="text" th:field="*{contents}" id="contents" name="contents" required placeholder="恒常セール内容"><br>
-        <button type="submit">保存</button>
-    </form>
+                    <a>クーポン登録</a><br>
+                    <input type="text" th:field="*{coupon}" id="coupon" name="coupon" placeholder="クーポン内容"><br>
 
+                    <button class="button" type="submit">更新</button>
+                </form>
+
+                <div class="suddensale_edit">
+
+                    <form th:action="@{/sale/{id}(id=${id})}" method="post" th:object="${sale}">
+                        <h3>恒常セール</h3>
+                        <input type="text" th:field="*{name}" id="name" name="name" required placeholder="恒常セール名">
+                        <input class="mystore_sale" type="text" th:field="*{contents}" id="contents" name="contents"
+                            required placeholder="恒常セール内容"><br>
+                        <button class="button" type="submit">保存</button>
+                    </form>
+                </div>
+
+            </div>
+
+            <div class="right"></div>
+
+        </div>
+    </div>
 
 </body>
 

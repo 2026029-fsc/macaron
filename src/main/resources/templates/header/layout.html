@@ -37,9 +37,9 @@
 
             <!-- 店舗ユーザーでログインしている場合 -->
             <button th:if="${session.storeEmail != null}" class="button"
-                th:onclick="|location.href='@{/saleedit/{id}(id=${Storeid})}'|">突発セール編集</button>
+                th:onclick="|location.href='@{/saleedit/{id}(id=${session.storeId})}'|">突発セール編集</button>
             <button th:if="${session.storeEmail != null}" class="button"
-                th:onclick="|location.href='@{/mystore/{id}(id=${Storeid})}'|">マイページ・クーポン編集</button>
+                th:onclick="|location.href='@{/mystore/{id}(id=${session.storeId})}'|">マイページ・クーポン編集</button>
             <button th:if="${session.storeEmail != null}" class="button"
                 onclick="location.href='/logout'">ログアウト</button>
         </nav>
@@ -47,6 +47,16 @@
 </head>
 
 <body>
+    <div th:fragment="koukoku" class="right">
+        <a th:if="${session.storeEmail == null && session.userEmail == null}" href="/register">
+            <img th:src="@{/images/会員登録　広告.jpg}" alt="UserLogin">
+        </a>
+
+        <a th:if="${session.storeEmail == null && session.userEmail == null}" href="/subscribe">
+            <img th:src="@{/images/店舗の皆様へ.png}" alt="StoreLogin">
+        </a>
+        <div><img th:src="@{/images/spidermanAd.png}" alt="Koukoku" class="koukoku"></div>
+    </div>
 </body>
 
 </html>

@@ -1,37 +1,46 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head th:replace="~{header/layout :: head('店舗ログイン画面')}"></head>
+
+<head th:replace="~{header/layout :: head('店舗ログイン画面')}">
+  <link rel="stylesheet" href="../static/css/style.css">
+</head>
 
 <body>
 
-  <div class=login>
-    <div class=login-form>
-      <h2 class=login-title>店舗会員の方</h2>
+  <div class="register">
 
-      <form action="/storeLogin" method="post">
-        <p><label for="mail">メールアドレス：</label>
-          <input type="text" id="mail" name="mail" class=login-input>
-        </p>
+    <div class="layout">
+      <div class="left flex">
+        <div class="register_left">
+          <h2 class=login-title>店舗会員の方</h2>
 
-        <p><label for="password">パスワード：</label>
-          <input type="password" id="password" name="password" class=login-input>
-        </p>
+          <form action="/storeLogin" method="post">
+            <p><label for="mail">メールアドレス：</label>
+              <input type="text" id="mail" name="mail" class=login-input>
+            </p>
 
-        <!-- エラーメッセージ -->
-        <p th:if="${errorMessage}" th:text="${errorMessage}"></p>
+            <p><label for="password">パスワード：</label>
+              <input type="password" id="password" name="password" class=login-input>
+            </p>
 
-        <p>下記に記載のプライバシーポリシー・規約に同意のうえ以下の「ログイン」を押してください。</p>
-        <button type="submit" class="login-button">ログイン</button>
-      </form>
+            <!-- エラーメッセージ -->
+            <p th:if="${errorMessage}" th:text="${errorMessage}"></p>
 
-      <br><div><a href="/privacy-policy">プライバシーポリシー</a></div>
-      <div><a href="/agreement">規約</a></div>
+            <p>下記に記載のプライバシーポリシー・規約に同意のうえ以下の「ログイン」を押してください。</p>
+            <button type="submit" class="button">ログイン</button>
+          </form>
 
-    </div>
+          <br>
+          <div><a href="/privacy-policy">プライバシーポリシー</a></div>
+          <div><a href="/agreement">規約</a></div>
 
-    <div class=login-form>
-      <h2 class=login-title>まだ会員登録がお済でない方</h2>
-      <p><a href="/subscribe" class="login-button">店舗サブスク案内へ</a></p>
+        </div>
+
+        <div class="register_right">
+          <h2 class="title">まだ会員登録がお済でない方</h2>
+          <p><a href="/subscribe" class="button">店舗サブスク案内へ</a></p>
+        </div>
+      </div>
     </div>
   </div>
 </body>

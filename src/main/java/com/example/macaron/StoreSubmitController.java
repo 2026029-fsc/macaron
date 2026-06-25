@@ -15,12 +15,10 @@ import org.springframework.ui.Model;
 
 @Controller
 public class StoreSubmitController {
-    private final LoginController loginController;
     private final StoreSubmitService storeSubmitService;
 
-    public StoreSubmitController(StoreSubmitService storeSubmitService, LoginController loginController) {
+    public StoreSubmitController(StoreSubmitService storeSubmitService) {
         this.storeSubmitService = storeSubmitService;
-        this.loginController = loginController;
     }
 
     // 店舗ページ表示

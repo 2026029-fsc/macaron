@@ -89,7 +89,7 @@ VALUE('2026015@fsc-educ.com', 'Hotoshock', '$2a$10$q7QnuI5FBO/LIwJZIXIc8eMXuqHh4
 
 
 INSERT INTO Store (name, email, password, address, phone_number, payment, genre, coupon)
-VALUE('エンポリオ', 'komokata@example.com', '$2a$10$aNH0ujgx55PqbsX9zUjUi.0m1CKrCex.vUua8rM03jlyV5NQw7Cue','福岡県福岡市博多区大字下臼井778-1', '0123456789','現金', 'イタリアン', '店内全品5%off'),
+VALUE('ご飯処 菰方', 'komo@com', '$2a$10$aNH0ujgx55PqbsX9zUjUi.0m1CKrCex.vUua8rM03jlyV5NQw7Cue','福岡県福岡市博多区大字下臼井778-1', '0123456789','現金', 'イタリアン', '店内全品5%off'),
   -- takahirokomokata---burningdownthehouse
   ('宇治抹茶専門店　MIDORI', 'mukaeda@example.com', '$2a$10$BLf6rd/eAIx.k1m4HiPNquzjnpziWNlsEKhP.QXr0Vn.CJl.JYED2','東京都大田区羽田空港3-4-2', '0120222222','現金', 'カフェ', '宇治抹茶ドリンク1杯サービス'),
   -- masayoshimukaeda---teasweets
